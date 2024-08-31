@@ -32,14 +32,12 @@ class _TrainingViewState extends State<TrainingView> {
           Expanded(
             child: Row(
               children: [
-                Spacer(),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   child: Align(
                       alignment: Alignment.center, child: const PLUListMenu()),
                 ),
                 ScoreView(),
-                Spacer()
               ],
             ),
           ),
