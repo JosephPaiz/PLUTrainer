@@ -28,7 +28,7 @@ class _TrainingViewState extends State<TrainingView> {
             padding: EdgeInsets.all(30),
             child: SelectionBarMenu(),
           ),
-          // PLUListMenu(),
+          // fPLUListMenu(),
           Expanded(
             child: Row(
               children: [
