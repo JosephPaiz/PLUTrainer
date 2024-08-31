@@ -29,8 +29,6 @@ class _ScoreViewState extends State<ScoreView> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-            color: Colors.black), // Añadir un borde para mejor visibilidad
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
