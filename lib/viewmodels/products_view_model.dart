@@ -99,6 +99,7 @@ class ProductViewModel extends ChangeNotifier {
 
   void _handleResultsReachedLimit() {
     _timerViewModel?.stopTimer();
+    _timerViewModel?.resetTimer();
 
     if (_timerViewModel?.onTimerEnd != null) {
       _timerViewModel?.onTimerEnd!();

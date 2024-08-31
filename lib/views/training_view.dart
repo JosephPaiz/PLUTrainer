@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/widgets/Score/score_view.dart';
 import 'package:plu_trainer/widgets/Training/PLUListView/plulist_menu.dart';
 import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
 import 'package:plu_trainer/widgets/Training/SelectionBar/selectionbar_menu.dart';
@@ -27,7 +28,21 @@ class _TrainingViewState extends State<TrainingView> {
             padding: EdgeInsets.all(30),
             child: SelectionBarMenu(),
           ),
-          const PLUListMenu(),
+          // PLUListMenu(),
+          const Expanded(
+            child: Row(
+              children: [
+                Spacer(),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Align(
+                      alignment: Alignment.center, child: const PLUListMenu()),
+                ),
+                ScoreView(),
+                Spacer()
+              ],
+            ),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(30),

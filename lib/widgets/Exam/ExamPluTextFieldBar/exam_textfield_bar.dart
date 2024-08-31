@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
 
-class PLUTextFiedBar extends StatefulWidget {
+class ExamTextfieldBar extends StatefulWidget {
   final void Function(String) onPLUEntered;
 
-  const PLUTextFiedBar({super.key, required this.onPLUEntered});
+  const ExamTextfieldBar({super.key, required this.onPLUEntered});
 
   @override
-  State<PLUTextFiedBar> createState() => _PLUTextFiedBarState();
+  State<ExamTextfieldBar> createState() => _ExamTextfieldBarState();
 }
 
-class _PLUTextFiedBarState extends State<PLUTextFiedBar> {
+class _ExamTextfieldBarState extends State<ExamTextfieldBar> {
   final TextEditingController _pluController = TextEditingController();
 
   void _submitPLU() {

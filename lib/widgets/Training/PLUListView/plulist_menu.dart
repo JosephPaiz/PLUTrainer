@@ -38,54 +38,57 @@ class _PLUListMenuState extends State<PLUListMenu> {
     final productsViewModel = Provider.of<ProductViewModel>(context);
 
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        width: 500,
-        child: Column(
-          children: [
-            const TimerView(),
-            productsViewModel.isLoading
-                ? const CircularProgressIndicator()
-                : productsViewModel.errorMessage != null
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(productsViewModel.errorMessage!),
-                          const SizedBox(height: 20),
-                          ElevatedButton(
-                            onPressed: () {
-                              productsViewModel.fetchRandomProducts();
+      child: Center(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          width: 500,
+          child: Column(
+            children: [
+              const TimerView(),
+              productsViewModel.isLoading
+                  ? const CircularProgressIndicator()
+                  : productsViewModel.errorMessage != null
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(productsViewModel.errorMessage!),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: () {
+                                productsViewModel.fetchRandomProducts();
+                              },
+                              child: const Text('Reintentar'),
+                            ),
+                          ],
+                        )
+                      : Expanded(
+                          child: ListView.builder(
+                            itemCount: productsViewModel.products.length,
+                            itemBuilder: (context, index) {
+                              return AnimatedOpacity(
+                                opacity:
+                                    productsViewModel.visibilityFlags[index]
+                                        ? 1.0
+                                        : 0.0,
+                                duration: const Duration(milliseconds: 500),
+                                child: PLUListText(
+                                  showIcon:
+                                      index < productsViewModel.results.length,
+                                  isCorrectAnswer:
+                                      productsViewModel.results.length > index
+                                          ? productsViewModel.results[index]
+                                          : false,
+                                  text: productsViewModel.products[index].name,
+                                ),
+                              );
                             },
-                            child: const Text('Reintentar'),
                           ),
-                        ],
-                      )
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: productsViewModel.products.length,
-                          itemBuilder: (context, index) {
-                            return AnimatedOpacity(
-                              opacity: productsViewModel.visibilityFlags[index]
-                                  ? 1.0
-                                  : 0.0,
-                              duration: const Duration(milliseconds: 500),
-                              child: PLUListText(
-                                showIcon:
-                                    index < productsViewModel.results.length,
-                                isCorrectAnswer:
-                                    productsViewModel.results.length > index
-                                        ? productsViewModel.results[index]
-                                        : false,
-                                text: productsViewModel.products[index].name,
-                              ),
-                            );
-                          },
                         ),
-                      ),
-          ],
+            ],
+          ),
         ),
       ),
     );

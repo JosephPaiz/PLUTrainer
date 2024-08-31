@@ -15,8 +15,6 @@ class TimerViewModel extends ChangeNotifier {
   void startTimer() {
     if (_isTimerRunning) return;
 
-    _initialTimeLeft = _timerModel.timeLeft;
-
     _isTimerRunning = true;
     notifyListeners();
 

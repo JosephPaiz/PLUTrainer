@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SideBarViewModel extends ChangeNotifier {
-  int _selectedIndex = -1;
+  int _selectedIndex = 2;
 
   int get selectedIndex => _selectedIndex;
 

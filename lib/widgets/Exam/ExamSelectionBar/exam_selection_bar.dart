@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
+import 'package:plu_trainer/viewmodels/Training/selectionbar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/widgets/Training/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
 import 'package:provider/provider.dart';
 
-class ExamSelectionBarMenu extends StatefulWidget {
-  const ExamSelectionBarMenu({super.key});
+class ExamSelectionBar extends StatefulWidget {
+  const ExamSelectionBar({super.key});
 
   @override
-  State<ExamSelectionBarMenu> createState() => _ExamSelectionBarMenuState();
+  State<ExamSelectionBar> createState() => _ExamSelectionBarState();
 }
 
-class _ExamSelectionBarMenuState extends State<ExamSelectionBarMenu> {
+class _ExamSelectionBarState extends State<ExamSelectionBar> {
   bool selectionBarIsOpen = true;
   @override
   void didChangeDependencies() {

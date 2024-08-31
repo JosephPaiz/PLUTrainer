@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
+import 'package:plu_trainer/viewmodels/score_view_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PlayStopButtonViewModel()),
         ChangeNotifierProvider(create: (context) => ProductViewModel()),
         ChangeNotifierProvider(create: (context) => PLUHelperViewModel()),
+        ChangeNotifierProvider(create: (context) => ScoreViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

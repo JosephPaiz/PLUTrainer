@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:plu_trainer/widgets/contract_button.dart';
+// import 'package:plu_trainer/widgets/contract_button.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
 import 'package:provider/provider.dart';
@@ -41,12 +41,12 @@ class _SidebarMenuState extends State<SidebarMenu> {
               children: [
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedHome11,
-                  text: 'Home',
+                  text: 'Home: Coming Soon',
                   index: 0,
-                  isSelected: sideBarViewModel.selectedIndex == 0,
+                  isSelected: sideBarViewModel.selectedIndex == 10,
                   isSidebarOpen: isSidebarOpen,
                   onTap: () {
-                    sideBarViewModel.selectIndex(0);
+                    sideBarViewModel.selectIndex(2);
                   },
                 ),
                 SideBarButton(
@@ -54,9 +54,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: 'Learning: Coming Soon',
                   isSidebarOpen: isSidebarOpen,
                   index: 1,
-                  isSelected: sideBarViewModel.selectedIndex == 1,
+                  isSelected: sideBarViewModel.selectedIndex == 10,
                   onTap: () {
-                    sideBarViewModel.selectIndex(1);
+                    sideBarViewModel.selectIndex(2);
                   },
                 ),
                 SideBarButton(
@@ -74,34 +74,34 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: 'Exam',
                   isSidebarOpen: isSidebarOpen,
                   index: 3,
-                  isSelected: sideBarViewModel.selectedIndex == 3,
+                  isSelected: sideBarViewModel.selectedIndex == 10,
                   onTap: () {
-                    sideBarViewModel.selectIndex(3);
+                    sideBarViewModel.selectIndex(2);
                   },
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedWorkHistory,
-                  text: 'History',
+                  text: 'History: Coming Soon',
                   isSidebarOpen: isSidebarOpen,
                   index: 4,
-                  isSelected: sideBarViewModel.selectedIndex == 4,
+                  isSelected: sideBarViewModel.selectedIndex == 10,
                   onTap: () {
-                    sideBarViewModel.selectIndex(4);
+                    sideBarViewModel.selectIndex(2);
                   },
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedUser,
-                  text: 'User',
+                  text: 'User: Coming Soon',
                   isSidebarOpen: isSidebarOpen,
                   index: 5,
-                  isSelected: sideBarViewModel.selectedIndex == 5,
+                  isSelected: sideBarViewModel.selectedIndex == 10,
                   onTap: () {
-                    sideBarViewModel.selectIndex(5);
+                    sideBarViewModel.selectIndex(2);
                   },
                 ),
-                ContractButton(
-                  onTap: () {},
-                ),
+                // ContractButton(
+                //   onTap: () {},
+                // ),
               ],
             ),
           ),
