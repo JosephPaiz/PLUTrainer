@@ -28,19 +28,19 @@ class _TrainingViewState extends State<TrainingView> {
             padding: EdgeInsets.all(30),
             child: SelectionBarMenu(),
           ),
-          // fPLUListMenu(),
-          Expanded(
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 30),
-                  child: Align(
-                      alignment: Alignment.center, child: const PLUListMenu()),
-                ),
-                ScoreView(),
-              ],
-            ),
-          ),
+          PLUListMenu(),
+          // Expanded(
+          //   child: Row(
+          //     children: [
+          //       Padding(
+          //         padding: EdgeInsets.symmetric(horizontal: 30),
+          //         child: Align(
+          //             alignment: Alignment.center, child: const PLUListMenu()),
+          //       ),
+          //       ScoreView(),
+          //     ],
+          //   ),
+          // ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(30),
