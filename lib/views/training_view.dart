@@ -28,19 +28,25 @@ class _TrainingViewState extends State<TrainingView> {
             padding: EdgeInsets.all(30),
             child: SelectionBarMenu(),
           ),
-          PLUListMenu(),
-          // Expanded(
-          //   child: Row(
-          //     children: [
-          //       Padding(
-          //         padding: EdgeInsets.symmetric(horizontal: 30),
-          //         child: Align(
-          //             alignment: Alignment.center, child: const PLUListMenu()),
-          //       ),
-          //       ScoreView(),
-          //     ],
-          //   ),
-          // ),
+          const Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child:
+                        PLUListMenu(), // PLUListMenu ocupa todo el espacio disponible a la izquierda
+                  ),
+                  SizedBox(width: 10), // Espacio reducido entre los widgets
+                  SizedBox(
+                    width: 300, // Ancho fijo para ScoreView
+                    child: ScoreView(), // ScoreView a la derecha
+                  ),
+                ],
+              ),
+            ),
+          ),
           Center(
             child: Padding(
               padding: const EdgeInsets.all(30),
