@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 import 'package:plu_trainer/widgets/Training/PLUHelper/pluhelper_view.dart';
 
 class PLUTextFiedBar extends StatefulWidget {
@@ -47,7 +48,7 @@ class _PLUTextFiedBarState extends State<PLUTextFiedBar> {
                     FilteringTextInputFormatter.digitsOnly,
                   ],
                   decoration: InputDecoration(
-                    labelText: 'Enter PLU',
+                    labelText: LocalizationsEsp.insertPLUText,
                     floatingLabelBehavior: FloatingLabelBehavior.never,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),

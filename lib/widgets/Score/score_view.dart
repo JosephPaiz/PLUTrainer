@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:provider/provider.dart';
@@ -35,17 +36,17 @@ class _ScoreViewState extends State<ScoreView> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
-            'Score',
+            LocalizationsEsp.scoreTitle,
             style: TextStyle(fontSize: 30),
           ),
           Text(
-            'Correct Answers: ${scoreViewModel.correctAnswers}',
+            '${LocalizationsEsp.correctAnswersText}: ${scoreViewModel.correctAnswers}',
             style: const TextStyle(
               fontSize: 18,
             ),
           ),
           Text(
-            'Result: ${scoreViewModel.result}',
+            '${LocalizationsEsp.resultText}: ${scoreViewModel.result}',
             style: const TextStyle(
               fontSize: 18,
             ),

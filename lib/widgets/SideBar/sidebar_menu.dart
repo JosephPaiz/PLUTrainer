@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 // import 'package:plu_trainer/widgets/contract_button.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
@@ -32,7 +33,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
         children: [
           DrawerHeader(
             child: Text(
-              isSidebarOpen ? 'PLU Trainer' : 'PT',
+              isSidebarOpen ? LocalizationsEsp.titleApp : 'PT',
               style: const TextStyle(color: Colors.black, fontSize: 24),
             ),
           ),
@@ -41,7 +42,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
               children: [
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedHome11,
-                  text: 'Home: Coming Soon',
+                  text: LocalizationsEsp.homeButton,
                   index: 0,
                   isSelected: sideBarViewModel.selectedIndex == 10,
                   isSidebarOpen: isSidebarOpen,
@@ -51,7 +52,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedEditRoad,
-                  text: 'Learning: Coming Soon',
+                  text: LocalizationsEsp.learningButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 1,
                   isSelected: sideBarViewModel.selectedIndex == 10,
@@ -61,7 +62,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedBlockGame,
-                  text: 'Trainning',
+                  text: LocalizationsEsp.trainingButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 2,
                   isSelected: sideBarViewModel.selectedIndex == 2,
@@ -71,7 +72,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedBlockchain04,
-                  text: 'Exam',
+                  text: LocalizationsEsp.examButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 3,
                   isSelected: sideBarViewModel.selectedIndex == 10,
@@ -81,7 +82,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedWorkHistory,
-                  text: 'History: Coming Soon',
+                  text: LocalizationsEsp.historyButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 4,
                   isSelected: sideBarViewModel.selectedIndex == 10,
@@ -91,7 +92,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                 ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedUser,
-                  text: 'User: Coming Soon',
+                  text: LocalizationsEsp.userButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 5,
                   isSelected: sideBarViewModel.selectedIndex == 10,
@@ -99,9 +100,6 @@ class _SidebarMenuState extends State<SidebarMenu> {
                     sideBarViewModel.selectIndex(2);
                   },
                 ),
-                // ContractButton(
-                //   onTap: () {},
-                // ),
               ],
             ),
           ),

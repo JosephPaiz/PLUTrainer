@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:plu_trainer/style/custom_colors.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 
 class PLUListText extends StatefulWidget {
   final bool showIcon;

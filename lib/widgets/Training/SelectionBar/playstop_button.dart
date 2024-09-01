@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 
 class PlayStopButton extends StatefulWidget {
   final bool isSelectionBarOpen;
@@ -49,11 +50,15 @@ class _PlayStopButtonState extends State<PlayStopButton> {
               title: widget.isSelectionBarOpen
                   ? AnimatedDefaultTextStyle(
                       style: TextStyle(
-                        fontSize: isHovered ? 17.0 : 16.0,
+                        fontSize: isHovered ? 15.0 : 16.0,
                         color: Colors.white,
                       ),
                       duration: const Duration(milliseconds: 100),
-                      child: Text(widget.isPlaying ? 'Pause' : 'Play'),
+                      child: Text(
+                        widget.isPlaying
+                            ? LocalizationsEsp.stopText
+                            : LocalizationsEsp.playText,
+                      ),
                     )
                   : null,
               onTap: widget.onTap,
