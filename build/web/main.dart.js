@@ -77115,7 +77115,7 @@ r.b=p
 r.a9()
 if(r.b.length===6)r.ZM()},
 L(a){var s=null,r=A.cV(a,!0,t.KQ),q=A.h6(20)
-return A.eZ(s,A.qs(A.b([B.Rc,A.e8("Correct Answers: "+r.c,s,s,s,B.xE,s,s),A.e8("Result: "+B.c.a8(r.d,2),s,s,s,B.xE,s,s)],t.E),B.aI,B.cn,B.aR),B.z,s,s,new A.cv(B.j,s,s,q,s,s,B.a3),s,s,s,s,s,s,300)}}
+return A.eZ(s,A.qs(A.b([B.Rd,A.e8("Respuestas correctas: "+r.c,s,s,s,B.xE,s,s),A.e8("Resultado: "+B.c.a8(r.d,2),s,s,s,B.xE,s,s)],t.E),B.aI,B.cn,B.aR),B.z,s,s,new A.cv(B.j,s,s,q,s,s,B.a3),s,s,s,s,s,s,300)}}
 A.zE.prototype={
 ac(){return new A.SW()}}
 A.SW.prototype={
@@ -77142,8 +77142,8 @@ $S:0}
 A.zG.prototype={
 ac(){return new A.SX()}}
 A.SX.prototype={
-L(a){var s=null,r=A.cV(a,!0,t.cZ),q=A.e8("PLU Trainer",s,s,s,B.OZ,s,s),p=r.a,o=p===10,n=t.E
-o=A.b([A.zF(B.D8,0,o,!0,new A.alx(r),"Home: Coming Soon"),A.zF(B.Do,1,o,!0,new A.aly(r),"Learning: Coming Soon"),A.zF(B.Dk,2,p===2,!0,new A.alz(r),"Trainning"),A.zF(B.Dl,3,o,!0,new A.alA(r),"Exam"),A.zF(B.Dm,4,o,!0,new A.alB(r),"History: Coming Soon"),A.zF(B.Dh,5,o,!0,new A.alC(r),"User: Coming Soon")],n)
+L(a){var s=null,r=A.cV(a,!0,t.cZ),q=A.e8("Entrenador PLU",s,s,s,B.OZ,s,s),p=r.a,o=p===10,n=t.E
+o=A.b([A.zF(B.D8,0,o,!0,new A.alx(r),"Inicio: Pronto"),A.zF(B.Do,1,o,!0,new A.aly(r),"Aprender: Pronto"),A.zF(B.Dk,2,p===2,!0,new A.alz(r),"Entrenamiento"),A.zF(B.Dl,3,o,!0,new A.alA(r),"Prueba"),A.zF(B.Dm,4,o,!0,new A.alB(r),"Historial: Pronto"),A.zF(B.Dh,5,o,!0,new A.alC(r),"Usuario: Pronto")],n)
 p=A.au([null,0],t.LO,t.S)
 return A.v0(s,A.qs(A.b([new A.Hm(q,s),A.HA(new A.xE(new A.ac9(!0,!0,!0,o,p),s,B.aO,!1,s,s,B.ki,!1,s,6,B.af,B.wr,s,B.am,B.ap,s))],n),B.aI,B.aQ,B.aR),B.J,B.yT,B.aX,s,s,250)}}
 A.alx.prototype={
@@ -77273,7 +77273,7 @@ r.toString
 s=this.d
 r.ahc(s.a.a)
 s.pS(0,B.MG)},
-L(a){var s=null,r=A.h6(20),q=A.b([$.azG()],t.VS),p=A.auA(s,new A.i2(4,A.h6(20),B.p),s,B.Cx,s,s,s,s,!0,s,s,s,s,s,s,s,s,s,B.fh,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,"Enter PLU",s,s,s,s,s,s,s,s,s,s,s,s,s),o=t.E
+L(a){var s=null,r=A.h6(20),q=A.b([$.azG()],t.VS),p=A.auA(s,new A.i2(4,A.h6(20),B.p),s,B.Cx,s,s,s,s,!0,s,s,s,s,s,s,s,s,s,B.fh,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,"Ingresa el PLU",s,s,s,s,s,s,s,s,s,s,s,s,s),o=t.E
 return A.z9(A.b([B.IQ,A.eZ(s,A.z9(A.b([A.HA(new A.Al(this.d,p,B.MW,B.M7,B.M8,new A.ajz(this),q,!0,s)),A.au2(B.Ds,this.ga9l(),A.aEE(s,s,B.co,s,s,s,s,s,s,s,B.j,s,s,B.lA,s,B.hJ,s,s,s,s))],o),B.cn,B.aR),B.z,s,s,new A.cv(B.j,s,s,r,s,s,B.a3),s,50,s,s,s,s,600)],o),B.cn,B.aR)}}
 A.ajz.prototype={
 $1(a){return this.a.N2()},
@@ -77282,9 +77282,9 @@ A.yv.prototype={
 ac(){return new A.QV()}}
 A.QV.prototype={
 L(a){var s,r=this,q=null,p=r.a,o=p.c,n=o?130:65,m=p.d?B.iT:B.co,l=A.h6(15)
-if(o){p=A.hw(q,q,B.j,q,q,q,q,q,q,q,q,r.d?17:16,q,q,q,q,q,!0,q,q,q,q,q,q,q,q)
+if(o){p=A.hw(q,q,B.j,q,q,q,q,q,q,q,q,r.d?15:16,q,q,q,q,q,!0,q,q,q,q,q,q,q,q)
 o=r.a
-p=A.v2(A.e8(o.d?"Pause":"Play",q,q,q,q,q,q),B.J,B.ao,p)}else{o=p
+p=A.v2(A.e8(o.d?"Parar":"Iniciar",q,q,q,q,q,q),B.J,B.ao,p)}else{o=p
 p=q}s=o.d?B.Di:B.Dj
 return A.hZ(new A.cD(B.f3,A.v0(B.Y,A.h7(A.aqd(A.WX(A.x3(s,B.j,q,r.d?27:24),B.J,B.V),o.e,p),q,q),B.J,new A.cv(m,q,q,l,q,q,B.a3),B.ao,40,q,n),q),B.aW,q,new A.ajE(r),new A.ajF(r),q)}}
 A.ajE.prototype={
@@ -82592,8 +82592,8 @@ B.zZ=new A.UM()
 B.kP=new A.XO(0,"pixel")
 B.A2=new A.vA(null,null,null,null,null,null,null)
 B.Pb=new A.m(!0,null,null,null,null,null,20,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.Rd=new A.mp("Not yet available for mobile",null,B.Pb,null,null,null,null,null,null)
-B.A3=new A.lj(B.Y,null,null,B.Rd,null)
+B.Rc=new A.mp("Not yet available for mobile",null,B.Pb,null,null,null,null,null,null)
+B.A3=new A.lj(B.Y,null,null,B.Rc,null)
 B.A4=new A.lk(1,"error")
 B.kQ=new A.lk(5,"heartbeat")
 B.kR=new A.lk(6,"accessToken")
@@ -84881,7 +84881,7 @@ B.PH=new A.m(!0,B.o,null,"Roboto",B.K,null,null,null,null,null,null,null,null,nu
 B.PR=new A.m(!0,B.o,null,"Roboto",B.K,null,null,null,null,null,null,null,null,null,null,null,null,B.e,null,null,null,"blackHelsinki labelSmall",null,null,null,null)
 B.Rb=new A.dj(B.QE,B.NI,B.OH,B.PG,B.PT,B.N7,B.Og,B.Nc,B.Pq,B.Q5,B.OR,B.Q7,B.Qi,B.PH,B.PR)
 B.Pc=new A.m(!0,null,null,null,null,null,30,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null)
-B.Rc=new A.mp("Score",null,B.Pc,null,null,null,null,null,null)
+B.Rd=new A.mp("Puntaje",null,B.Pc,null,null,null,null,null,null)
 B.Re=new A.mp("Reintentar",null,null,null,null,null,null,null,null)
 B.Uj=new A.adW(0,"system")
 B.Is=new A.i(0.05,0)
