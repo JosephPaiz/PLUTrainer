@@ -17,7 +17,7 @@ class PLUHelperViewModel extends ChangeNotifier {
   void initAnimationController(TickerProvider vsync) {
     _animationController = AnimationController(
       vsync: vsync,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 5),
     );
 
     _animationController.addStatusListener((status) {
