@@ -119,19 +119,16 @@ class _PLUHelperViewState extends State<PLUHelperView>
     final productViewModel = Provider.of<ProductViewModel>(context);
     final viewModel = Provider.of<PLUHelperViewModel>(context, listen: false);
 
-    viewModel.checkAndAnimate(
-      isTimerRunning: timerViewModel.isTimerRunning,
-      products: productViewModel.products,
-      results: productViewModel.results,
-    );
+    viewModel.startAnimationIfNeeded(timerViewModel.isTimerRunning,
+        productViewModel.results, productViewModel.products);
   }
 
-  @override
-  void dispose() {
-    final viewModel = Provider.of<PLUHelperViewModel>(context, listen: false);
-    viewModel.disposeAnimationController();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   final viewModel = Provider.of<PLUHelperViewModel>(context, listen: false);
+  //   viewModel.disposeAnimationController();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {

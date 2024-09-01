@@ -4,9 +4,11 @@ class PLUHelperViewModel extends ChangeNotifier {
   late AnimationController _animationController;
   bool _hasAnimationStarted = false;
   bool _isAnimationComplete = false;
-  List<dynamic> _previousProducts = [];
-  int _lastResultsLength = 0;
+  int _lastListLength = 0;
+  bool _firstAnimationDone = false;
+  bool _wasTimerRunning = false;
   int _productIndex = 0;
+  List<dynamic> _previousList = [];
 
   AnimationController get animationController => _animationController;
   bool get isAnimationComplete => _isAnimationComplete;
@@ -15,7 +17,7 @@ class PLUHelperViewModel extends ChangeNotifier {
   void initAnimationController(TickerProvider vsync) {
     _animationController = AnimationController(
       vsync: vsync,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 1),
     );
 
     _animationController.addStatusListener((status) {
@@ -26,52 +28,35 @@ class PLUHelperViewModel extends ChangeNotifier {
     });
   }
 
-  void disposeAnimationController() {
-    _animationController.dispose();
-  }
-
-  void checkAndAnimate({
-    required bool isTimerRunning,
-    required List<dynamic> products,
-    required List<bool> results,
-  }) {
-    if (isTimerRunning && !_hasAnimationStarted) {
-      _startAnimation();
-    } else if (isTimerRunning &&
-        (_hasProductsChanged(products) || _hasResultsChanged(results))) {
-      _startAnimation();
+  void startAnimationIfNeeded(
+      bool isTimerRunning, List<bool> boolList, List<dynamic> dynamicList) {
+    if (_hasListChanged(dynamicList)) {
+      resetIndex();
     }
+
+    if (isTimerRunning && !_wasTimerRunning) {
+      _startAnimation();
+      _firstAnimationDone = true;
+    } else if (isTimerRunning) {
+      if (_firstAnimationDone && boolList.length > _lastListLength) {
+        _incrementIndexAndStartAnimation();
+      }
+      _lastListLength = boolList.length;
+    }
+
+    _wasTimerRunning = isTimerRunning;
   }
 
-  bool _hasProductsChanged(List<dynamic> currentProducts) {
-    if (currentProducts.length != _previousProducts.length) {
-      _previousProducts = List.from(currentProducts);
-      _resetProductIndex();
+  bool _hasListChanged(List<dynamic> dynamicList) {
+    if (_previousList.length != dynamicList.length) {
+      _previousList = List.from(dynamicList);
       return true;
     }
-
-    for (int i = 0; i < currentProducts.length; i++) {
-      if (currentProducts[i] != _previousProducts[i]) {
-        _previousProducts = List.from(currentProducts);
-        _resetProductIndex();
+    for (int i = 0; i < dynamicList.length; i++) {
+      if (_previousList[i] != dynamicList[i]) {
+        _previousList = List.from(dynamicList);
         return true;
       }
-    }
-
-    return false;
-  }
-
-  void _resetProductIndex() {
-    _productIndex = 0;
-    notifyListeners();
-  }
-
-  bool _hasResultsChanged(List<bool> results) {
-    if (results.length > _lastResultsLength) {
-      _lastResultsLength = results.length;
-      _productIndex = _lastResultsLength;
-      notifyListeners();
-      return true;
     }
     return false;
   }
@@ -81,5 +66,31 @@ class PLUHelperViewModel extends ChangeNotifier {
     _isAnimationComplete = false;
     _animationController.forward(from: 0.0);
     notifyListeners();
+  }
+
+  void _incrementIndexAndStartAnimation() {
+    _productIndex++;
+    _startAnimation();
+  }
+
+  void resetIndex() {
+    _productIndex = 0;
+    notifyListeners();
+  }
+
+  void resetAnimation() {
+    _hasAnimationStarted = false;
+    _isAnimationComplete = false;
+    _firstAnimationDone = false;
+    _lastListLength = 0;
+    _productIndex = 0;
+    _previousList.clear();
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 }
