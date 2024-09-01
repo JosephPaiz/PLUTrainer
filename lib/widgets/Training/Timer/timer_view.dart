@@ -13,9 +13,23 @@ class _TimerViewState extends State<TimerView> {
   @override
   Widget build(BuildContext context) {
     final timerViewModel = Provider.of<TimerViewModel>(context);
+
+    // Convertir el tiempo restante en minutos y segundos
+    String formattedTime = _formatTime(timerViewModel.timeLeft);
+
     return Text(
-      '${timerViewModel.timeLeft}',
+      formattedTime,
       style: const TextStyle(fontSize: 40),
     );
+  }
+
+  String _formatTime(int totalSeconds) {
+    final minutes = totalSeconds ~/ 60;
+    final seconds = totalSeconds % 60;
+    return '${_twoDigits(minutes)}:${_twoDigits(seconds)}';
+  }
+
+  String _twoDigits(int n) {
+    return n.toString().padLeft(2, '0');
   }
 }

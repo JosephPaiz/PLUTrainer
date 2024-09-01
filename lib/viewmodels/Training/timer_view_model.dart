@@ -12,6 +12,8 @@ class TimerViewModel extends ChangeNotifier {
   int get timeLeft => _timerModel.timeLeft;
   bool get isTimerRunning => _isTimerRunning;
 
+  String get formattedTime => _formatTime(_timerModel.timeLeft);
+
   void startTimer() {
     if (_isTimerRunning) return;
 
@@ -51,6 +53,16 @@ class TimerViewModel extends ChangeNotifier {
     _timerModel.timeLeft = seconds;
     _initialTimeLeft = seconds;
     notifyListeners();
+  }
+
+  String _formatTime(int totalSeconds) {
+    final minutes = totalSeconds ~/ 60;
+    final seconds = totalSeconds % 60;
+    return '${_twoDigits(minutes)}:${_twoDigits(seconds)}';
+  }
+
+  String _twoDigits(int n) {
+    return n.toString().padLeft(2, '0');
   }
 
   @override

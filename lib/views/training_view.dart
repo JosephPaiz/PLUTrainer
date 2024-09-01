@@ -35,13 +35,12 @@ class _TrainingViewState extends State<TrainingView> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Expanded(
-                    child:
-                        PLUListMenu(), // PLUListMenu ocupa todo el espacio disponible a la izquierda
+                    child: PLUListMenu(),
                   ),
-                  SizedBox(width: 10), // Espacio reducido entre los widgets
+                  SizedBox(width: 10),
                   SizedBox(
-                    width: 300, // Ancho fijo para ScoreView
-                    child: ScoreView(), // ScoreView a la derecha
+                    width: 300,
+                    child: ScoreView(),
                   ),
                 ],
               ),
