@@ -14,11 +14,13 @@ class PLUTextFiedBar extends StatefulWidget {
 }
 
 class _PLUTextFiedBarState extends State<PLUTextFiedBar> {
-  final TextEditingController _pluController = TextEditingController();
+  final TextEditingController pluController = TextEditingController();
+  final FocusNode focusNode = FocusNode();
 
   void _submitPLU() {
-    widget.onPLUEntered(_pluController.text);
-    _pluController.clear();
+    widget.onPLUEntered(pluController.text);
+    pluController.clear();
+    focusNode.requestFocus();
   }
 
   @override
@@ -42,7 +44,8 @@ class _PLUTextFiedBarState extends State<PLUTextFiedBar> {
             children: [
               Expanded(
                 child: TextField(
-                  controller: _pluController,
+                  controller: pluController,
+                  focusNode: focusNode,
                   keyboardType: TextInputType.number,
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly,
