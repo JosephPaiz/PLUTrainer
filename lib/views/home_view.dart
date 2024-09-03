@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/views/exam_view.dart';
+import 'package:plu_trainer/views/login-view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
 class HomeView extends StatefulWidget {

@@ -17,4 +17,10 @@ class LocalizationsEsp {
   static const String scoreTitle = 'Puntaje';
   static const String correctAnswersText = 'Respuestas correctas';
   static const String resultText = 'Resultado';
+
+  //Loing
+  static const String welcomeToPlUTrainer = 'Bienvenido al Entrenador de PLU';
+  static const String enterYourSuperKey = 'Ingresa tu super clave';
+  static const String toAccesEnterYourSuperKEy =
+      'Para acceder ingresa tu super clave';
 }

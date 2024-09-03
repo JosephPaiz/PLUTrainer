@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProductViewModel()),
         ChangeNotifierProvider(create: (context) => PLUHelperViewModel()),
         ChangeNotifierProvider(create: (context) => ScoreViewModel()),
+        ChangeNotifierProvider(create: (context) => LoginTitleViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
