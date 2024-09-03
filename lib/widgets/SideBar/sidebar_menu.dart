@@ -44,10 +44,10 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   icon: HugeIcons.strokeRoundedHome11,
                   text: LocalizationsEsp.homeButton,
                   index: 0,
-                  isSelected: sideBarViewModel.selectedIndex == 10,
+                  isSelected: sideBarViewModel.selectedIndex == 0,
                   isSidebarOpen: isSidebarOpen,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(0);
                   },
                 ),
                 SideBarButton(
@@ -55,9 +55,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: LocalizationsEsp.learningButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 1,
-                  isSelected: sideBarViewModel.selectedIndex == 10,
+                  isSelected: sideBarViewModel.selectedIndex == 1,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(1);
                   },
                 ),
                 SideBarButton(
@@ -75,9 +75,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: LocalizationsEsp.examButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 3,
-                  isSelected: sideBarViewModel.selectedIndex == 10,
+                  isSelected: sideBarViewModel.selectedIndex == 3,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(3);
                   },
                 ),
                 SideBarButton(
@@ -85,9 +85,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: LocalizationsEsp.historyButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 4,
-                  isSelected: sideBarViewModel.selectedIndex == 10,
+                  isSelected: sideBarViewModel.selectedIndex == 4,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(4);
                   },
                 ),
                 SideBarButton(
@@ -95,9 +95,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   text: LocalizationsEsp.userButton,
                   isSidebarOpen: isSidebarOpen,
                   index: 5,
-                  isSelected: sideBarViewModel.selectedIndex == 10,
+                  isSelected: sideBarViewModel.selectedIndex == 5,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(5);
                   },
                 ),
               ],

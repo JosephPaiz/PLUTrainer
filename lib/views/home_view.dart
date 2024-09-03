@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:plu_trainer/Views/training_view.dart';
-import 'package:plu_trainer/views/exam_view.dart';
-import 'package:plu_trainer/views/login-view.dart';
+
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
 class HomeView extends StatefulWidget {
@@ -27,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
           );
         } else {
           return const Row(
-            children: [SidebarMenu(), Expanded(flex: 4, child: TrainingView())],
+            children: [Expanded(flex: 4, child: TrainingView())],
           );
         }
       }),

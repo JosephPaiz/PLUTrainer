@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/models/products_model.dart';
-import 'package:plu_trainer/services/products_service.dart';
+import 'package:plu_trainer/services/supabase_service.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 
 class ProductViewModel extends ChangeNotifier {
