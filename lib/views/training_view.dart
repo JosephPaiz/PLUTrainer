@@ -22,8 +22,8 @@ class _TrainingViewState extends State<TrainingView> {
     final timerViewModel = Provider.of<TimerViewModel>(context);
     return Scaffold(
       backgroundColor: Colors.green,
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth < 800) {
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth < 800) {
           return const Center(
             child: Text(
               'Not yet available for mobile',
@@ -33,7 +33,7 @@ class _TrainingViewState extends State<TrainingView> {
         } else {
           return Row(
             children: [
-              SidebarMenu(),
+              const SidebarMenu(),
               Expanded(
                   flex: 4,
                   child: Container(

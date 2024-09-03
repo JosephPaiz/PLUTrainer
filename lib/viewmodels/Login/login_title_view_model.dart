@@ -33,6 +33,7 @@ class LoginTitleViewModel extends ChangeNotifier {
     _controller.forward();
   }
 
+  @override
   void dispose() {
     _controller.dispose();
     super.dispose();

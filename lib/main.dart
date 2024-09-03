@@ -79,7 +79,11 @@ import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
 import 'package:plu_trainer/views/auth_checker.dart';
+import 'package:plu_trainer/views/exam_view.dart';
+import 'package:plu_trainer/views/history_view.dart';
+import 'package:plu_trainer/views/leaning_viewd.dart';
 import 'package:plu_trainer/views/login_view.dart';
+import 'package:plu_trainer/views/user_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
@@ -125,9 +129,13 @@ class MyApp extends StatelessWidget {
         ),
         home: const AuthChecker(),
         routes: {
-          '/home': (context) => HomeView(),
-          '/training': (context) => TrainingView(),
-          '/login': (context) => LoginView(),
+          '/home': (context) => const HomeView(),
+          '/learning': (context) => const LearningView(),
+          '/training': (context) => const TrainingView(),
+          '/exam': (context) => const ExamView(),
+          '/history': (context) => const HistoryView(),
+          '/user': (context) => const UserView(),
+          '/login': (context) => const LoginView(),
         },
       ),
     );

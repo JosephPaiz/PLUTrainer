@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/Views/training_view.dart';
 
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
@@ -15,8 +14,8 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green,
-      body: LayoutBuilder(builder: (context, Constraints) {
-        if (Constraints.maxWidth < 800) {
+      body: LayoutBuilder(builder: (context, constraints) {
+        if (constraints.maxWidth < 800) {
           return const Center(
             child: Text(
               'Not yet available for mobile',
@@ -24,8 +23,17 @@ class _HomeViewState extends State<HomeView> {
             ),
           );
         } else {
-          return const Row(
-            children: [Expanded(flex: 4, child: TrainingView())],
+          return Row(
+            children: [
+              const SidebarMenu(),
+              Expanded(
+                flex: 4,
+                child: Container(
+                  color: Colors.green,
+                  child: const Text('Home View'),
+                ),
+              )
+            ],
           );
         }
       }),

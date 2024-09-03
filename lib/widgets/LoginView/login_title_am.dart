@@ -25,6 +25,7 @@ class _LoginTitleAMState extends State<LoginTitleAM>
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     final LoginTitleViewModel loginTitleViewModel =
         Provider.of<LoginTitleViewModel>(context);

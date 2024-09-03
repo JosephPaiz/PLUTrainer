@@ -9,6 +9,7 @@ class ProductViewModel extends ChangeNotifier {
   List<Product> _products = [];
   bool _isLoading = false;
   String? _errorMessage;
+  // ignore: prefer_final_fields
   List<bool> _results = [];
   int _currentIndex = 0;
   List<bool> _visibilityFlags = [];

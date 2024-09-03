@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:plu_trainer/services/supabase_service.dart';
 
@@ -18,11 +19,10 @@ class LoginViewModel extends ChangeNotifier {
     try {
       final isValid = await _supabaseService.checkSuperkey(superkey);
       if (isValid) {
-        // Guardar la superkey en SharedPreferences
         final prefs = await SharedPreferences.getInstance();
         await prefs.setInt('superkey', superkey);
 
-        // Navegar a la pantalla de inicio
+        // ignore: use_build_context_synchronously
         Navigator.pushReplacementNamed(context, '/home');
       } else {
         _errorMessage = 'Superkey inválido';
@@ -38,6 +38,7 @@ class LoginViewModel extends ChangeNotifier {
   Future<void> logout(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.remove('superkey');
+    // ignore: use_build_context_synchronously
     Navigator.pushReplacementNamed(context, '/');
   }
 

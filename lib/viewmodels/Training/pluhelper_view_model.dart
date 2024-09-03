@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class PLUHelperViewModel extends ChangeNotifier {
   late AnimationController _animationController;
+  // ignore: unused_field
   bool _hasAnimationStarted = false;
   bool _isAnimationComplete = false;
   int _lastListLength = 0;

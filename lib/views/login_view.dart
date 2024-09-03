@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';

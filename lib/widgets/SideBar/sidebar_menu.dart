@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
+import 'package:plu_trainer/services/navigation_service.dart';
 // import 'package:plu_trainer/widgets/contract_button.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
@@ -48,6 +49,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSidebarOpen: isSidebarOpen,
                   onTap: () {
                     sideBarViewModel.selectIndex(0);
+                    NavigationService.navigateTo(context, '/home');
                   },
                 ),
                 SideBarButton(
@@ -58,6 +60,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSelected: sideBarViewModel.selectedIndex == 1,
                   onTap: () {
                     sideBarViewModel.selectIndex(1);
+                    NavigationService.navigateTo(context, '/learning');
                   },
                 ),
                 SideBarButton(
@@ -68,6 +71,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSelected: sideBarViewModel.selectedIndex == 2,
                   onTap: () {
                     sideBarViewModel.selectIndex(2);
+                    NavigationService.navigateTo(context, '/training');
                   },
                 ),
                 SideBarButton(
@@ -78,6 +82,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSelected: sideBarViewModel.selectedIndex == 3,
                   onTap: () {
                     sideBarViewModel.selectIndex(3);
+                    NavigationService.navigateTo(context, '/exam');
                   },
                 ),
                 SideBarButton(
@@ -88,6 +93,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSelected: sideBarViewModel.selectedIndex == 4,
                   onTap: () {
                     sideBarViewModel.selectIndex(4);
+                    NavigationService.navigateTo(context, '/history');
                   },
                 ),
                 SideBarButton(
@@ -98,6 +104,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   isSelected: sideBarViewModel.selectedIndex == 5,
                   onTap: () {
                     sideBarViewModel.selectIndex(5);
+                    NavigationService.navigateTo(context, '/user');
                   },
                 ),
               ],

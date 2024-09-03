@@ -9,6 +9,7 @@ class SupabaseService {
   Future<List<Product>> fetchRandomProducts() async {
     final response = await _client.rpc('get_random_products').select();
 
+    // ignore: unnecessary_null_comparison
     if (response != null) {
       _logger.d('Recovered Products: $response');
       return (response as List)
@@ -32,6 +33,7 @@ class SupabaseService {
       return false;
     }
 
+    // ignore: unnecessary_null_comparison
     final exists = response != null;
 
     if (exists) {

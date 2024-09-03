@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/Views/home_view.dart';
-import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/views/login_view.dart';
 import 'package:provider/provider.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthChecker extends StatefulWidget {
@@ -40,17 +40,15 @@ class _AuthCheckerState extends State<AuthChecker> {
         } else {
           if (snapshot.data == true) {
             if (_lastRoute != null && _lastRoute!.isNotEmpty) {
-              // Si hay una última ruta almacenada y no es la ruta inicial, navega a esa ruta
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 Navigator.pushReplacementNamed(context, _lastRoute!);
               });
-              return const SizedBox
-                  .shrink(); // Evita que cualquier otra UI se muestre.
+              return const SizedBox.shrink();
             } else {
-              return TrainingView();
+              return const HomeView();
             }
           } else {
-            return LoginView(); // Si no está autenticado, muestra la pantalla de inicio de sesión.
+            return const LoginView();
           }
         }
       },
