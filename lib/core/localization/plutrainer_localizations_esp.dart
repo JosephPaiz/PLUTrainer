@@ -23,4 +23,15 @@ class LocalizationsEsp {
   static const String enterYourSuperKey = 'Ingresa tu super clave';
   static const String toAccesEnterYourSuperKEy =
       'Para acceder ingresa tu super clave';
+
+  static const String showYourKnowledge = 'Muestra tu conocimiento';
+  static const String trainYourMind = 'Entrena tu mente';
+  static const String trainYourEyesight = 'Entrena tu vista';
+
+  static const String showYourKnowledgeDescription =
+      'Muestra tu conocimientos en PLUS acertando la mayor cantidad de productos en el menor tiempo.';
+  static const String trainYourMindDescription =
+      'Entrena tu mente en los PLUS trantando de completar un reto de 6 productos en corto tiempo.';
+  static const String trainYourEyesightDescrition =
+      'Entrena tu vista en los PLUS observando la imagen del producto y acertando la respuesta.';
 }

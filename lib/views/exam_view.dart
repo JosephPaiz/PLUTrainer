@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
-import 'package:plu_trainer/widgets/Training/PLUListView/plulist_menu.dart';
+import 'package:plu_trainer/widgets/PLUListView/plulist_menu.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
-import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
-import 'package:plu_trainer/widgets/Training/SelectionBar/selectionbar_menu.dart';
+import 'package:plu_trainer/widgets/PLUTextField/plutextfield_bar.dart';
+import 'package:plu_trainer/widgets/SelectionBar/selectionbar_menu.dart';
 import 'package:provider/provider.dart';
 
 class ExamView extends StatefulWidget {

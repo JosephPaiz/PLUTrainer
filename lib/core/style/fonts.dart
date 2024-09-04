@@ -32,4 +32,10 @@ class Fonts {
     fontWeight: FontWeight.w400,
     color: CustomColors.grey,
   );
+
+  static final TextStyle trainingOptionButtonText = GoogleFonts.nunito(
+      fontSize: 20, fontWeight: FontWeight.w800, color: Colors.black);
+
+  static final TextStyle trainingOptionButtonDescription = GoogleFonts.nunito(
+      fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black);
 }

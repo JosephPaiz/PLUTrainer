@@ -3,8 +3,12 @@ import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
+import 'package:plu_trainer/viewmodels/Training/training_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
+import 'package:plu_trainer/views/Trainings/show_your_knowledge_view.dart';
+import 'package:plu_trainer/views/Trainings/train_your_eyesight_view.dart';
+import 'package:plu_trainer/views/Trainings/train_your_mind_view.dart';
 import 'package:plu_trainer/views/auth_checker.dart';
 import 'package:plu_trainer/views/exam_view.dart';
 import 'package:plu_trainer/views/history_view.dart';
@@ -46,6 +50,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ScoreViewModel()),
         ChangeNotifierProvider(create: (context) => LoginTitleViewModel()),
         ChangeNotifierProvider(create: (context) => LoginViewModel()),
+        ChangeNotifierProvider(create: (context) => TrainingViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -59,6 +64,11 @@ class MyApp extends StatelessWidget {
           '/home': (context) => const HomeView(),
           '/learning': (context) => const LearningView(),
           '/training': (context) => const TrainingView(),
+          '/training/showyourknowledge': (context) =>
+              const ShowYourKnowledgeView(),
+          '/training/trainyourmind': (context) => const TrainYourMindView(),
+          '/training/trainyoureyesight': (context) =>
+              const TrainYourEyesightView(),
           '/exam': (context) => const ExamView(),
           '/history': (context) => const HistoryView(),
           '/user': (context) => const UserView(),

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/widgets/Score/score_view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
-import 'package:plu_trainer/widgets/Training/PLUListView/plulist_menu.dart';
-import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
-import 'package:plu_trainer/widgets/Training/SelectionBar/selectionbar_menu.dart';
-import 'package:plu_trainer/viewmodels/products_view_model.dart';
-import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
+import 'package:plu_trainer/widgets/Training/training_option_button.dart';
+import 'package:plu_trainer/viewmodels/Training/training_view_model.dart';
 import 'package:provider/provider.dart';
 
 class TrainingView extends StatefulWidget {
@@ -18,12 +14,13 @@ class TrainingView extends StatefulWidget {
 class _TrainingViewState extends State<TrainingView> {
   @override
   Widget build(BuildContext context) {
-    final productViewModel = Provider.of<ProductViewModel>(context);
-    final timerViewModel = Provider.of<TimerViewModel>(context);
+    final trainingViewModel =
+        Provider.of<TrainingViewModel>(context); // Obtener el ViewModel
+
     return Scaffold(
       backgroundColor: Colors.green,
       body: LayoutBuilder(builder: (context, constraints) {
-        if (constraints.maxWidth < 800) {
+        if (constraints.maxWidth < 600) {
           return const Center(
             child: Text(
               'Not yet available for mobile',
@@ -35,56 +32,21 @@ class _TrainingViewState extends State<TrainingView> {
             children: [
               const SidebarMenu(),
               Expanded(
-                  flex: 4,
-                  child: Container(
-                    color: Colors.green,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.all(30),
-                          child: SelectionBarMenu(
-                            firstTime: 120,
-                            secondTime: 300,
-                            thirdTime: 600,
-                            firstText: '2',
-                            secondText: '5',
-                            thirdText: '10',
-                          ),
-                        ),
-                        const Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 30),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Expanded(
-                                  child: PLUListMenu(),
-                                ),
-                                SizedBox(width: 10),
-                                SizedBox(
-                                  width: 300,
-                                  child: ScoreView(),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(30),
-                            child: PLUTextFiedBar(
-                              onPLUEntered: timerViewModel.isTimerRunning
-                                  ? (pluStr) {
-                                      productViewModel.checkPLU(pluStr);
-                                    }
-                                  : (pluStr) {},
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ))
+                flex: 4,
+                child: Wrap(
+                  spacing: 4.0,
+                  runSpacing: 4.0,
+                  children: List.generate(3, (index) {
+                    return TrainingOptionButton(
+                      trainingIcon: trainingViewModel.icons[index],
+                      nameOfTheTraining: trainingViewModel.names[index],
+                      descriptionOfTheTraining:
+                          trainingViewModel.descriptions[index],
+                      rute: trainingViewModel.rutes[index],
+                    );
+                  }),
+                ),
+              ),
             ],
           );
         }
@@ -92,55 +54,3 @@ class _TrainingViewState extends State<TrainingView> {
     );
   }
 }
-
-
-// class _TrainingViewState extends State<TrainingView> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final productViewModel = Provider.of<ProductViewModel>(context);
-//     final timerViewModel = Provider.of<TimerViewModel>(context);
-//     return 
-// Container(
-//       color: Colors.green,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           const Padding(
-//             padding: EdgeInsets.all(30),
-//             child: SelectionBarMenu(),
-//           ),
-//           const Expanded(
-//             child: Padding(
-//               padding: EdgeInsets.symmetric(horizontal: 30),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.start,
-//                 children: [
-//                   Expanded(
-//                     child: PLUListMenu(),
-//                   ),
-//                   SizedBox(width: 10),
-//                   SizedBox(
-//                     width: 300,
-//                     child: ScoreView(),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//           Center(
-//             child: Padding(
-//               padding: const EdgeInsets.all(30),
-//               child: PLUTextFiedBar(
-//                 onPLUEntered: timerViewModel.isTimerRunning
-//                     ? (pluStr) {
-//                         productViewModel.checkPLU(pluStr);
-//                       }
-//                     : (pluStr) {},
-//               ),
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
