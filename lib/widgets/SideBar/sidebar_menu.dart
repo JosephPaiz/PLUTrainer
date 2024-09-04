@@ -20,7 +20,7 @@ class SidebarMenu extends StatelessWidget {
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
-      width: sideBarViewModel.isOpenSideBar ? 250 : 70,
+      width: sideBarViewModel.isOpenSideBar ? 250 : 90,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(

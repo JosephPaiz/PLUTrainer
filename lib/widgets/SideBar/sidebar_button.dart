@@ -45,20 +45,22 @@ class _SideBarButtonState extends State<SideBarButton> {
             border: Border.all(color: Colors.white, width: 4.0),
             borderRadius: BorderRadius.circular(15.0),
           ),
-          child: ListTile(
-            leading: Icon(
-              widget.icon,
-              color: widget.isSelected ? Colors.white : Colors.blue,
-              size: 24.0,
+          child: Center(
+            child: ListTile(
+              leading: Icon(
+                widget.icon,
+                color: widget.isSelected ? Colors.white : Colors.blue,
+                size: 24.0,
+              ),
+              title: widget.isSidebarOpen
+                  ? Text(
+                      widget.text,
+                      style: TextStyle(
+                        color: widget.isSelected ? Colors.white : Colors.grey,
+                      ),
+                    )
+                  : null,
             ),
-            title: widget.isSidebarOpen
-                ? Text(
-                    widget.text,
-                    style: TextStyle(
-                      color: widget.isSelected ? Colors.white : Colors.grey,
-                    ),
-                  )
-                : null,
           ),
         ),
       ),
