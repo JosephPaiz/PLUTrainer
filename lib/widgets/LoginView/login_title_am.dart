@@ -15,7 +15,6 @@ class _LoginTitleAMState extends State<LoginTitleAM>
   @override
   void initState() {
     super.initState();
-    // Inicializar el ViewModel y las animaciones
     Provider.of<LoginTitleViewModel>(context, listen: false).initialize(this);
   }
 
@@ -33,12 +32,19 @@ class _LoginTitleAMState extends State<LoginTitleAM>
       scale: loginTitleViewModel.scaleAnimation,
       child: FadeTransition(
         opacity: loginTitleViewModel.fadeAnimation,
-        child: RichText(
-          text: TextSpan(
-            children: [
-              TextSpan(text: 'A', style: Fonts.amRed),
-              TextSpan(text: 'M', style: Fonts.amGreen),
-            ],
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 1.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: RichText(
+            text: TextSpan(
+              children: [
+                TextSpan(text: 'A', style: Fonts.amRed),
+                TextSpan(text: 'M', style: Fonts.amGreen),
+              ],
+            ),
           ),
         ),
       ),

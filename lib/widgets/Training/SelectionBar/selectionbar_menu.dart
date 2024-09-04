@@ -10,7 +10,21 @@ import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.
 import 'package:provider/provider.dart';
 
 class SelectionBarMenu extends StatefulWidget {
-  const SelectionBarMenu({super.key});
+  final int firstTime;
+  final int secondTime;
+  final int thirdTime;
+  final String firstText;
+  final String secondText;
+  final String thirdText;
+
+  const SelectionBarMenu(
+      {super.key,
+      required this.firstTime,
+      required this.secondTime,
+      required this.thirdTime,
+      required this.firstText,
+      required this.secondText,
+      required this.thirdText});
 
   @override
   State<SelectionBarMenu> createState() => _SelectionBarMenuState();
@@ -18,10 +32,12 @@ class SelectionBarMenu extends StatefulWidget {
 
 class _SelectionBarMenuState extends State<SelectionBarMenu> {
   bool selectionBarIsOpen = true;
+  bool _isInitialized = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final timerViewModel = Provider.of<TimerViewModel>(context);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
     final productViewModel = Provider.of<ProductViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
@@ -30,6 +46,11 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
       productViewModel.fetchRandomProducts();
       playStopButtonViewModel.stopPlaying();
     };
+
+    if (!_isInitialized) {
+      timerViewModel.initializeTimer(widget.firstTime);
+      _isInitialized = true;
+    }
   }
 
   @override
@@ -68,7 +89,7 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
               children: [
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeQuarterPass,
-                  text: '2min',
+                  text: '${widget.firstText}min',
                   isSelectionBarOpen: selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 0,
                   onTap: timerViewModel.isTimerRunning
@@ -76,12 +97,12 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
                       : () {
                           productsViewModel.fetchRandomProducts();
                           selectionBarViewModel.selectIndex(0);
-                          timerViewModel.setTimerDuration(120);
+                          timerViewModel.setTimerDuration(widget.firstTime);
                         },
                 ),
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeHalfPass,
-                  text: '5min',
+                  text: '${widget.secondText}min',
                   isSelectionBarOpen: selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 1,
                   onTap: timerViewModel.isTimerRunning
@@ -89,12 +110,12 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
                       : () {
                           productsViewModel.fetchRandomProducts();
                           selectionBarViewModel.selectIndex(1);
-                          timerViewModel.setTimerDuration(300);
+                          timerViewModel.setTimerDuration(widget.secondTime);
                         },
                 ),
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeQuarter,
-                  text: '10min',
+                  text: '${widget.thirdText}min',
                   isSelectionBarOpen: selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 2,
                   onTap: timerViewModel.isTimerRunning
@@ -102,7 +123,7 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
                       : () {
                           productsViewModel.fetchRandomProducts();
                           selectionBarViewModel.selectIndex(2);
-                          timerViewModel.setTimerDuration(600);
+                          timerViewModel.setTimerDuration(widget.thirdTime);
                         },
                 ),
                 PlayStopButton(

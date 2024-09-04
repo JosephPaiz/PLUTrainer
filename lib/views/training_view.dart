@@ -43,7 +43,14 @@ class _TrainingViewState extends State<TrainingView> {
                       children: [
                         const Padding(
                           padding: EdgeInsets.all(30),
-                          child: SelectionBarMenu(),
+                          child: SelectionBarMenu(
+                            firstTime: 120,
+                            secondTime: 300,
+                            thirdTime: 600,
+                            firstText: '2',
+                            secondText: '5',
+                            thirdText: '10',
+                          ),
                         ),
                         const Expanded(
                           child: Padding(

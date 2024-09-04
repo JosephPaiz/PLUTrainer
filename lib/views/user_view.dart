@@ -29,7 +29,17 @@ class _UserViewState extends State<UserView> {
                 flex: 4,
                 child: Container(
                   color: Colors.green,
-                  child: const Text('Learning View'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Expanded(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],
