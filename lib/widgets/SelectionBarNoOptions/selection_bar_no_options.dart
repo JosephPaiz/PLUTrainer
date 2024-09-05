@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
 import 'package:plu_trainer/widgets/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
+import 'package:plu_trainer/widgets/SelectionBar/restar_button.dart';
 import 'package:provider/provider.dart';
 
 class SelectionBarNoOptions extends StatefulWidget {
@@ -36,11 +38,14 @@ class _ExamSelectionBarState extends State<SelectionBarNoOptions> {
   Widget build(BuildContext context) {
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
+    final plulistViewStopWatchViewModel =
+        Provider.of<PLUListStopWatchViewModel>(context);
+    final stopWatchViewModel = Provider.of<StopWatchViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? 500 : 200,
+      width: selectionBarIsOpen ? 500 : 250,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -75,7 +80,14 @@ class _ExamSelectionBarState extends State<SelectionBarNoOptions> {
                           playStopButtonViewModel.togglePlayStop();
                           widget.playVoid();
                         },
-                )
+                ),
+                RestarButton(
+                    icon: HugeIcons.strokeRoundedReload,
+                    isSelectionBarOpen: selectionBarIsOpen,
+                    onTap: () {
+                      plulistViewStopWatchViewModel.resetButton();
+                      stopWatchViewModel.reset();
+                    }),
               ],
             ),
           ),

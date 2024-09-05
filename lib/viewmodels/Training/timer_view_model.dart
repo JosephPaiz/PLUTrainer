@@ -8,15 +8,18 @@ class TimerViewModel extends ChangeNotifier {
   bool _isTimerRunning = false;
   VoidCallback? onTimerEnd;
   late int _initialTimeLeft;
+  int _elapsedSeconds = 0;
 
   int get timeLeft => _timerModel.timeLeft;
   bool get isTimerRunning => _isTimerRunning;
+  int get elapsedSeconds => _elapsedSeconds;
 
   String get formattedTime => _formatTime(_timerModel.timeLeft);
 
   void initializeTimer(int initialTime) {
     _initialTimeLeft = initialTime;
     _timerModel = TimerModel(timeLeft: initialTime);
+    _elapsedSeconds = 0;
     notifyListeners();
   }
 
@@ -31,11 +34,13 @@ class TimerViewModel extends ChangeNotifier {
       (Timer timer) {
         if (_timerModel.timeLeft > 0) {
           _timerModel.timeLeft--;
+          _elapsedSeconds++;
           notifyListeners();
         } else {
           stopTimer();
           if (onTimerEnd != null) {
             onTimerEnd!();
+            notifyListeners();
           }
         }
       },
@@ -43,14 +48,17 @@ class TimerViewModel extends ChangeNotifier {
   }
 
   void stopTimer() {
-    _timer?.cancel();
-    _isTimerRunning = false;
-    notifyListeners();
+    if (_isTimerRunning) {
+      _timer?.cancel();
+      _isTimerRunning = false;
+      notifyListeners();
+    }
   }
 
   void resetTimer() {
     stopTimer();
     _timerModel.timeLeft = _initialTimeLeft;
+    _elapsedSeconds = 0;
     notifyListeners();
   }
 
@@ -58,6 +66,7 @@ class TimerViewModel extends ChangeNotifier {
     stopTimer();
     _timerModel.timeLeft = seconds;
     _initialTimeLeft = seconds;
+    _elapsedSeconds = 0;
     notifyListeners();
   }
 

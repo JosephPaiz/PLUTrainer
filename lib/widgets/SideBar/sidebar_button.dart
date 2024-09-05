@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/fonts.dart';
 
 class SideBarButton extends StatefulWidget {
   final IconData icon;
@@ -53,12 +54,15 @@ class _SideBarButtonState extends State<SideBarButton> {
                 size: 24.0,
               ),
               title: widget.isSidebarOpen
-                  ? Text(
-                      widget.text,
-                      style: TextStyle(
-                        color: widget.isSelected ? Colors.white : Colors.grey,
-                      ),
-                    )
+                  ? Text(widget.text,
+                      style: widget.isSelected
+                          ? Fonts.sideBarButtonTextStyleActive
+                          : Fonts.sideBarButtonTextStyledesactive
+
+                      //  TextStyle(
+                      //   color: widget.isSelected ? Colors.white : Colors.grey,
+                      // ),
+                      )
                   : null,
             ),
           ),

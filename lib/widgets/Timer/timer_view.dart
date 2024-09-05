@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -18,7 +19,7 @@ class _TimerViewState extends State<TimerView> {
 
     return Text(
       formattedTime,
-      style: const TextStyle(fontSize: 40),
+      style: Fonts.timerTextStyle,
     );
   }
 

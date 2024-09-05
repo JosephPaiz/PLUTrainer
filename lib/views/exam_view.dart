@@ -45,7 +45,9 @@ class _ExamViewState extends State<ExamView> {
                         padding: EdgeInsets.all(30),
                         child: ExamSelectionBar(),
                       ),
-                      const PLUListMenu(),
+                      const PLUListMenu(
+                        trainingType: 'Prueba',
+                      ),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.all(30),

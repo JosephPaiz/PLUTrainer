@@ -52,7 +52,9 @@ class _ExamViewState extends State<TrainYourMindView> {
                           thirdText: '2',
                         ),
                       ),
-                      const PLUListMenu(),
+                      const PLUListMenu(
+                        trainingType: 'Entrena tu mente',
+                      ),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.all(30),

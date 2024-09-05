@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +17,7 @@ class _StopWatchViewState extends State<StopWatchView> {
     final StopWatchViewViewModel = Provider.of<StopWatchViewModel>(context);
     return Text(
       StopWatchViewViewModel.formattedTime,
-      style: const TextStyle(fontSize: 40),
+      style: Fonts.stopWatchTextStyle,
     );
   }
 }

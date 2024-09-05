@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
+import 'package:plu_trainer/core/style/fonts.dart';
 
 class PLUListText extends StatefulWidget {
   final bool showIcon;
@@ -33,7 +34,7 @@ class _PLUListTextState extends State<PLUListText> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
                   widget.text,
-                  style: const TextStyle(color: CustomColors.deepGrey),
+                  style: Fonts.pluListTextStyle,
                 ),
               ),
             ),

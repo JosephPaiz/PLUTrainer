@@ -10,10 +10,12 @@ class PLUHelperViewModel extends ChangeNotifier {
   bool _wasTimerRunning = false;
   int _productIndex = 0;
   List<dynamic> _previousList = [];
+  int _pluHelperUsage = 0;
 
   AnimationController get animationController => _animationController;
   bool get isAnimationComplete => _isAnimationComplete;
   int get productIndex => _productIndex;
+  int get pluHelperUsage => _pluHelperUsage;
 
   void initAnimationController(TickerProvider vsync) {
     _animationController = AnimationController(
@@ -24,6 +26,7 @@ class PLUHelperViewModel extends ChangeNotifier {
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         _isAnimationComplete = true;
+        _pluHelperUsage++;
         notifyListeners();
       }
     });
@@ -76,6 +79,11 @@ class PLUHelperViewModel extends ChangeNotifier {
 
   void resetIndex() {
     _productIndex = 0;
+    notifyListeners();
+  }
+
+  void resetPluHelperUsage() {
+    _pluHelperUsage = 0;
     notifyListeners();
   }
 

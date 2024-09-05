@@ -59,4 +59,29 @@ class SupabaseService {
 
     return exists;
   }
+
+  Future<void> insertHistory(
+      int superkey,
+      double score,
+      int answeredQuestions,
+      int correctAnswers,
+      int pluHelperUsage,
+      String trainingType,
+      int duration) async {
+    final response = await _client.from('history').insert({
+      'superkey': superkey,
+      'score': score,
+      'answered_questions': answeredQuestions,
+      'correct_answers': correctAnswers,
+      'pluhelper_usage': pluHelperUsage,
+      'training_type': trainingType,
+      'duration': duration,
+    });
+
+    if (response.error != null) {
+      _logger.w('Error inserting into history: ${response.error!.message}');
+    } else {
+      _logger.d('History inserted successfully');
+    }
+  }
 }

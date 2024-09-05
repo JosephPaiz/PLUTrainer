@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
+import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
@@ -33,7 +34,7 @@ class SidebarMenu extends StatelessWidget {
           DrawerHeader(
             child: Text(
               sideBarViewModel.isOpenSideBar ? LocalizationsEsp.titleApp : 'PT',
-              style: const TextStyle(color: Colors.black, fontSize: 24),
+              style: Fonts.sidebarTitleTextStyle,
             ),
           ),
           Expanded(

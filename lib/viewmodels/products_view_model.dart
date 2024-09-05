@@ -13,7 +13,7 @@ class ProductViewModel extends ChangeNotifier {
   List<bool> _results = [];
   int _currentIndex = 0;
   List<bool> _visibilityFlags = [];
-  TimerViewModel? _timerViewModel;
+  bool _showScore = false;
 
   List<Product> get products => _products;
   bool get isLoading => _isLoading;
@@ -21,17 +21,19 @@ class ProductViewModel extends ChangeNotifier {
   List<bool> get results => _results;
   int get currentIndex => _currentIndex;
   List<bool> get visibilityFlags => _visibilityFlags;
+  bool get showScore => _showScore;
 
-  void setTimerViewModel(TimerViewModel timerViewModel) {
-    _timerViewModel = timerViewModel;
-    _timerViewModel?.onTimerEnd = () {
-      _handleTimerEnd();
-      fetchRandomProducts();
+  void connectToTimer(TimerViewModel timerViewModel) {
+    timerViewModel.onTimerEnd = () {
+      _showScore = true;
+
+      notifyListeners();
     };
   }
 
   Future<void> fetchRandomProducts() async {
     _isLoading = true;
+
     notifyListeners();
 
     try {
@@ -79,34 +81,36 @@ class ProductViewModel extends ChangeNotifier {
     _currentIndex++;
     notifyListeners();
 
+    checkResultsLength();
+
     if (_results.length >= 6) {
       _handleResultsReachedLimit();
     }
+  }
+
+  void checkResultsLength() {
+    if (_results.length >= 6) {
+      _showScore = true;
+    } else {
+      _showScore = false;
+    }
+    notifyListeners();
   }
 
   bool hasMoreProducts() {
     return _currentIndex < _products.length;
   }
 
-  void _handleTimerEnd() {
-    _handleRestartCondition();
-  }
-
-  void _handleRestartCondition() {
-    fetchRandomProducts();
-    _timerViewModel?.resetTimer();
-    _timerViewModel?.startTimer();
-  }
-
   void _handleResultsReachedLimit() {
-    _timerViewModel?.stopTimer();
-    _timerViewModel?.resetTimer();
-
-    if (_timerViewModel?.onTimerEnd != null) {
-      _timerViewModel?.onTimerEnd!();
-    }
-
-    fetchRandomProducts();
     notifyListeners();
+  }
+
+  void openScoreView() {
+    _showScore = true;
+  }
+
+  void resetButton() {
+    _showScore = false;
+    fetchRandomProducts();
   }
 }

@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/SelectionBar/selectionbar_button.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
+import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/selectionbar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/widgets/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
+import 'package:plu_trainer/widgets/SelectionBar/restar_button.dart';
 import 'package:provider/provider.dart';
 
 class SelectionBarMenu extends StatefulWidget {
@@ -43,9 +45,17 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
         Provider.of<PlayStopButtonViewModel>(context);
 
     timerViewModel.onTimerEnd = () {
-      productViewModel.fetchRandomProducts();
+      timerViewModel.stopTimer();
       playStopButtonViewModel.stopPlaying();
     };
+
+    productViewModel.connectToTimer(timerViewModel);
+
+    if (productViewModel.showScore) {
+      productViewModel.checkResultsLength();
+      timerViewModel.stopTimer();
+      playStopButtonViewModel.stopPlaying();
+    }
 
     if (!_isInitialized) {
       timerViewModel.initializeTimer(widget.firstTime);
@@ -60,11 +70,12 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
     final timerViewModel = Provider.of<TimerViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
+    final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? MediaQuery.of(context).size.width : 400,
+      width: selectionBarIsOpen ? MediaQuery.of(context).size.width : 500,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -129,16 +140,26 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
                 PlayStopButton(
                   isSelectionBarOpen: selectionBarIsOpen,
                   isPlaying: playStopButtonViewModel.isPlaying,
-                  onTap: playStopButtonViewModel.isPlaying
-                      ? () {
-                          playStopButtonViewModel.togglePlayStop();
-                          timerViewModel.stopTimer();
-                        }
-                      : () {
-                          playStopButtonViewModel.togglePlayStop();
-                          timerViewModel.startTimer();
-                        },
-                )
+                  onTap: productsViewModel.showScore
+                      ? () {}
+                      : playStopButtonViewModel.isPlaying
+                          ? () {
+                              playStopButtonViewModel.togglePlayStop();
+                              timerViewModel.stopTimer();
+                            }
+                          : () {
+                              playStopButtonViewModel.togglePlayStop();
+                              timerViewModel.startTimer();
+                            },
+                ),
+                RestarButton(
+                    icon: HugeIcons.strokeRoundedReload,
+                    isSelectionBarOpen: selectionBarIsOpen,
+                    onTap: () {
+                      productsViewModel.resetButton();
+                      timerViewModel.resetTimer();
+                      pluHelperViewModel.resetPluHelperUsage();
+                    }),
               ],
             ),
           ),

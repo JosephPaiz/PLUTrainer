@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/widgets/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
+import 'package:plu_trainer/widgets/SelectionBar/restar_button.dart';
 import 'package:provider/provider.dart';
 
 class ExamSelectionBar extends StatefulWidget {
@@ -26,9 +28,16 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
         Provider.of<PlayStopButtonViewModel>(context);
 
     timerViewModel.onTimerEnd = () {
-      productViewModel.fetchRandomProducts();
+      timerViewModel.stopTimer();
       playStopButtonViewModel.stopPlaying();
     };
+    productViewModel.connectToTimer(timerViewModel);
+
+    if (productViewModel.showScore) {
+      productViewModel.checkResultsLength();
+      timerViewModel.stopTimer();
+      playStopButtonViewModel.stopPlaying();
+    }
 
     if (!_isInitialized) {
       timerViewModel.initializeTimer(120);
@@ -41,11 +50,12 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
     final timerViewModel = Provider.of<TimerViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
+    final productsViewModel = Provider.of<ProductViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? 500 : 200,
+      width: selectionBarIsOpen ? 500 : 250,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
@@ -80,7 +90,14 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
                           playStopButtonViewModel.togglePlayStop();
                           timerViewModel.startTimer();
                         },
-                )
+                ),
+                RestarButton(
+                    icon: HugeIcons.strokeRoundedReload,
+                    isSelectionBarOpen: selectionBarIsOpen,
+                    onTap: () {
+                      productsViewModel.resetButton();
+                      timerViewModel.resetTimer();
+                    }),
               ],
             ),
           ),

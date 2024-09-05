@@ -1,22 +1,27 @@
 class LocalizationsEsp {
   //Sidebar
   static const String titleApp = 'Entrenador PLU';
-  static const String homeButton = 'Inicio: Pronto';
-  static const String learningButton = 'Aprender: Pronto';
+  static const String homeButton = 'Inicio';
+  static const String learningButton = 'Aprender';
   static const String trainingButton = 'Entrenamiento';
   static const String examButton = 'Prueba';
-  static const String historyButton = 'Historial: Pronto';
-  static const String userButton = 'Usuario: Pronto';
+  static const String historyButton = 'Historial';
+  static const String userButton = 'Usuario';
   //PlayStopButton
   static const String playText = 'Iniciar';
   static const String stopText = 'Parar';
+  //RestarButton
+  static const String restarText = 'Reiniciar';
   //TextField
   static const String insertPLUText = 'Ingresa el PLU';
 
   //Score
   static const String scoreTitle = 'Puntaje';
+  static const String answeredAnswers = 'Respuestas contestadas';
   static const String correctAnswersText = 'Respuestas correctas';
-  static const String resultText = 'Resultado';
+  static const String pluHelperUsage = 'Usos de PLU Helper';
+  static const String duration = 'Duración';
+  static const String result = 'Resultado';
 
   //Loing
   static const String welcomeToPlUTrainer = 'Bienvenido al Entrenador de PLU';

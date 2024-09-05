@@ -14,6 +14,7 @@ class PLUListStopWatchViewModel extends ChangeNotifier {
   List<bool> _visibilityFlags = [];
   final ScrollController _scrollController = ScrollController();
   double _pluListTextHeight = 0;
+  bool _showScore = false;
 
   ScrollController get scrollController => _scrollController;
 
@@ -23,6 +24,7 @@ class PLUListStopWatchViewModel extends ChangeNotifier {
   List<bool> get results => _results;
   int get currentIndex => _currentIndex;
   List<bool> get visibilityFlags => _visibilityFlags;
+  bool get showScore => _showScore;
 
   Future<void> fetchRandomMoreProducts() async {
     _isLoading = true;
@@ -65,7 +67,18 @@ class PLUListStopWatchViewModel extends ChangeNotifier {
       _results.add(false);
     }
 
+    checkResultsLength();
+
     _currentIndex++;
+    notifyListeners();
+  }
+
+  void checkResultsLength() {
+    if (_results.length >= 50) {
+      _showScore = true;
+    } else {
+      _showScore = false;
+    }
     notifyListeners();
   }
 
@@ -94,5 +107,10 @@ class PLUListStopWatchViewModel extends ChangeNotifier {
   void dispose() {
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void resetButton() {
+    _showScore = false;
+    fetchRandomMoreProducts();
   }
 }

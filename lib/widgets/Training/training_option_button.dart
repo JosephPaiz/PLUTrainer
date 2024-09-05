@@ -46,7 +46,9 @@ class _TrainingOptionButtonState extends State<TrainingOptionButton> {
             width: _isHovered ? 265 : 250,
             height: _isHovered ? 515 : 500,
             decoration: BoxDecoration(
-                color: _isHovered ? Colors.grey[300] : Colors.white,
+                color: _isHovered
+                    ? Colors.grey[300]
+                    : Colors.white.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Column(
@@ -69,9 +71,17 @@ class _TrainingOptionButtonState extends State<TrainingOptionButton> {
                 const SizedBox(
                   height: 50,
                 ),
-                Text(
-                  widget.nameOfTheTraining,
-                  style: Fonts.trainingOptionButtonText,
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      widget.nameOfTheTraining,
+                      style: Fonts.trainingOptionButtonText,
+                    ),
+                  ),
                 ),
                 Container(
                   alignment: Alignment.center,

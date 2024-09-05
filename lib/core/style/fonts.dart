@@ -16,7 +16,7 @@ class Fonts {
       fontSize: 20, fontWeight: FontWeight.w700, color: CustomColors.white);
 
   static final TextStyle title = GoogleFonts.exo2(
-    fontSize: 16.0,
+    fontSize: 15.0,
     fontWeight: FontWeight.w400,
     color: CustomColors.black,
   );
@@ -33,9 +33,32 @@ class Fonts {
     color: CustomColors.grey,
   );
 
-  static final TextStyle trainingOptionButtonText = GoogleFonts.nunito(
-      fontSize: 20, fontWeight: FontWeight.w800, color: Colors.black);
+  static final TextStyle trainingOptionButtonText = GoogleFonts.comfortaa(
+      fontSize: 15, fontWeight: FontWeight.w800, color: Colors.white);
 
-  static final TextStyle trainingOptionButtonDescription = GoogleFonts.nunito(
-      fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black);
+  static final TextStyle trainingOptionButtonDescription =
+      GoogleFonts.comfortaa(
+          fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black);
+
+  static final TextStyle timerTextStyle = GoogleFonts.rubik(
+      fontSize: 40, fontWeight: FontWeight.w500, color: Colors.black);
+
+  static final TextStyle stopWatchTextStyle = GoogleFonts.rubik(
+      fontSize: 40, fontWeight: FontWeight.w500, color: Colors.black);
+
+  static final TextStyle sidebarTitleTextStyle = GoogleFonts.comfortaa(
+      fontSize: 24, fontWeight: FontWeight.w800, color: Colors.grey[600]);
+
+  static final TextStyle pluListTextStyle = GoogleFonts.comfortaa(
+      fontWeight: FontWeight.w800, color: Colors.grey[600]);
+
+  static final TextStyle sideBarButtonTextStyleActive =
+      GoogleFonts.comfortaa(fontWeight: FontWeight.w800, color: Colors.white);
+
+  static final TextStyle sideBarButtonTextStyledesactive =
+      GoogleFonts.comfortaa(
+          fontWeight: FontWeight.w800, color: Colors.grey[600]);
+
+  static final TextStyle scoreViewTitleTexStyle = GoogleFonts.comfortaa(
+      fontSize: 30, fontWeight: FontWeight.w800, color: Colors.black);
 }
