@@ -14,7 +14,6 @@ class TimerViewModel extends ChangeNotifier {
 
   String get formattedTime => _formatTime(_timerModel.timeLeft);
 
-  // Método para inicializar el temporizador con un tiempo específico
   void initializeTimer(int initialTime) {
     _initialTimeLeft = initialTime;
     _timerModel = TimerModel(timeLeft: initialTime);

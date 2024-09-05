@@ -26,9 +26,10 @@ class _PLUHelperViewState extends State<PLUHelperView>
     super.didChangeDependencies();
     final timerViewModel = Provider.of<TimerViewModel>(context);
     final productViewModel = Provider.of<ProductViewModel>(context);
-    final viewModel = Provider.of<PLUHelperViewModel>(context, listen: false);
+    final pluHelperviewModel =
+        Provider.of<PLUHelperViewModel>(context, listen: false);
 
-    viewModel.startAnimationIfNeeded(timerViewModel.isTimerRunning,
+    pluHelperviewModel.startAnimationIfNeeded(timerViewModel.isTimerRunning,
         productViewModel.results, productViewModel.products);
   }
 
@@ -36,7 +37,7 @@ class _PLUHelperViewState extends State<PLUHelperView>
   Widget build(BuildContext context) {
     final timerViewModel = Provider.of<TimerViewModel>(context);
     final productViewModel = Provider.of<ProductViewModel>(context);
-    final viewModel = Provider.of<PLUHelperViewModel>(context);
+    final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
 
     return Container(
       width: 70,
@@ -49,10 +50,11 @@ class _PLUHelperViewState extends State<PLUHelperView>
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: timerViewModel.isTimerRunning
-            ? viewModel.isAnimationComplete
+            ? pluHelperViewModel.isAnimationComplete
                 ? Center(
                     child: Text(
-                      productViewModel.products[viewModel.productIndex].plu
+                      productViewModel
+                          .products[pluHelperViewModel.productIndex].plu
                           .toString(),
                       style: const TextStyle(
                         color: Colors.black,
@@ -61,10 +63,10 @@ class _PLUHelperViewState extends State<PLUHelperView>
                     ),
                   )
                 : AnimatedBuilder(
-                    animation: viewModel.animationController,
+                    animation: pluHelperViewModel.animationController,
                     builder: (context, child) {
                       return LinearProgressIndicator(
-                        value: viewModel.animationController.value,
+                        value: pluHelperViewModel.animationController.value,
                         backgroundColor: CustomColors.grey,
                         valueColor: const AlwaysStoppedAnimation<Color>(
                             CustomColors.deepGrey),

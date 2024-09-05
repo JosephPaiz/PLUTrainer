@@ -21,6 +21,21 @@ class SupabaseService {
     }
   }
 
+  Future<List<Product>> fetchRandomMoreProducts() async {
+    final response = await _client.rpc('get_random_more_products').select();
+
+    // ignore: unnecessary_null_comparison
+    if (response != null) {
+      _logger.d('Recovered Products: $response');
+      return (response as List)
+          .map((json) => Product.fromJson(json as Map<String, dynamic>))
+          .toList();
+    } else {
+      _logger.e('Error: No products were found.');
+      throw Exception('No products were obtained.');
+    }
+  }
+
   Future<bool> checkSuperkey(int superkey) async {
     final response = await _client
         .from('profiles')

@@ -15,10 +15,12 @@ class ExamSelectionBar extends StatefulWidget {
 
 class _ExamSelectionBarState extends State<ExamSelectionBar> {
   bool selectionBarIsOpen = true;
+  bool _isInitialized = false;
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final timerViewModel = Provider.of<TimerViewModel>(context);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
     final productViewModel = Provider.of<ProductViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
@@ -27,6 +29,11 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
       productViewModel.fetchRandomProducts();
       playStopButtonViewModel.stopPlaying();
     };
+
+    if (!_isInitialized) {
+      timerViewModel.initializeTimer(120);
+      _isInitialized = true;
+    }
   }
 
   @override
@@ -38,7 +45,7 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? MediaQuery.of(context).size.width : 400,
+      width: selectionBarIsOpen ? 500 : 200,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(

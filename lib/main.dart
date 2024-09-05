@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
+import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
+import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/training_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
@@ -51,6 +53,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginTitleViewModel()),
         ChangeNotifierProvider(create: (context) => LoginViewModel()),
         ChangeNotifierProvider(create: (context) => TrainingViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => PLUListStopWatchViewModel()),
+        ChangeNotifierProvider(create: (context) => StopWatchViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

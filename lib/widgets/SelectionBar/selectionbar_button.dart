@@ -55,7 +55,7 @@ class _SelectionbarButtonState extends State<SelectionbarButton> {
                         fontSize: isHovered ? 17.0 : 16.0,
                         color: Colors.white,
                       ),
-                      duration: const Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 300),
                       child: Text(widget.text),
                     )
                   : null,

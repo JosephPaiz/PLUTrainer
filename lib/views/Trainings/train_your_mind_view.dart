@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
-
+import 'package:plu_trainer/widgets/PLUHelper/pluhelper_view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
+import 'package:plu_trainer/widgets/PLUListView/plulist_menu.dart';
+import 'package:plu_trainer/viewmodels/products_view_model.dart';
+import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
+import 'package:plu_trainer/widgets/PLUTextField/plutextfield_bar.dart';
+import 'package:plu_trainer/widgets/SelectionBar/selectionbar_menu.dart';
+import 'package:provider/provider.dart';
 
 class TrainYourMindView extends StatefulWidget {
   const TrainYourMindView({super.key});
 
   @override
-  State<TrainYourMindView> createState() => _HomeViewState();
+  State<TrainYourMindView> createState() => _ExamViewState();
 }
 
-class _HomeViewState extends State<TrainYourMindView> {
+class _ExamViewState extends State<TrainYourMindView> {
   @override
   Widget build(BuildContext context) {
+    final productViewModel = Provider.of<ProductViewModel>(context);
+    final timerViewModel = Provider.of<TimerViewModel>(context);
     return Scaffold(
       backgroundColor: Colors.green,
       body: LayoutBuilder(builder: (context, constraints) {
@@ -30,7 +38,36 @@ class _HomeViewState extends State<TrainYourMindView> {
                 flex: 4,
                 child: Container(
                   color: Colors.green,
-                  child: const Text('Train your Mind'),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.all(30),
+                        child: SelectionBarMenu(
+                          firstTime: 60,
+                          secondTime: 90,
+                          thirdTime: 120,
+                          firstText: '1',
+                          secondText: '1.5',
+                          thirdText: '2',
+                        ),
+                      ),
+                      const PLUListMenu(),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(30),
+                          child: PLUTextFiedBar(
+                            pluHelper: const PLUHelperView(),
+                            onPLUEntered: timerViewModel.isTimerRunning
+                                ? (pluStr) {
+                                    productViewModel.checkPLU(pluStr);
+                                  }
+                                : (pluStr) {},
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

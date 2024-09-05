@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/widgets/Exam/ExamSelectionBar/exam_selection_bar.dart';
+import 'package:plu_trainer/widgets/PLUHelper/pluhelper_view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 import 'package:plu_trainer/widgets/PLUListView/plulist_menu.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/widgets/PLUTextField/plutextfield_bar.dart';
-import 'package:plu_trainer/widgets/SelectionBar/selectionbar_menu.dart';
 import 'package:provider/provider.dart';
 
 class ExamView extends StatefulWidget {
@@ -42,20 +43,14 @@ class _ExamViewState extends State<ExamView> {
                     children: [
                       const Padding(
                         padding: EdgeInsets.all(30),
-                        child: SelectionBarMenu(
-                          firstTime: 60,
-                          secondTime: 90,
-                          thirdTime: 120,
-                          firstText: '1',
-                          secondText: '1.5',
-                          thirdText: '2',
-                        ),
+                        child: ExamSelectionBar(),
                       ),
                       const PLUListMenu(),
                       Center(
                         child: Padding(
                           padding: const EdgeInsets.all(30),
                           child: PLUTextFiedBar(
+                            pluHelper: const PLUHelperView(),
                             onPLUEntered: timerViewModel.isTimerRunning
                                 ? (pluStr) {
                                     productViewModel.checkPLU(pluStr);
