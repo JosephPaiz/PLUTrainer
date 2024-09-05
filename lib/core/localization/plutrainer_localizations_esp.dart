@@ -2,7 +2,7 @@ class LocalizationsEsp {
   //Sidebar
   static const String titleApp = 'Entrenador PLU';
   static const String homeButton = 'Inicio';
-  static const String learningButton = 'Aprender';
+  static const String learningButton = 'Aprender:Pronto';
   static const String trainingButton = 'Entrenamiento';
   static const String examButton = 'Prueba';
   static const String historyButton = 'Historial';
@@ -31,7 +31,7 @@ class LocalizationsEsp {
 
   static const String showYourKnowledge = 'Muestra tu conocimiento';
   static const String trainYourMind = 'Entrena tu mente';
-  static const String trainYourEyesight = 'Entrena tu vista';
+  static const String trainYourEyesight = 'Entrena tu vista: Pronto';
 
   static const String showYourKnowledgeDescription =
       'Muestra tu conocimientos en PLUS acertando la mayor cantidad de productos en el menor tiempo.';

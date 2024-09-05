@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/widgets/Learning/learning_selection_bar.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
+import 'package:plu_trainer/widgets/Learning/product_list_view.dart';
 
 class LearningView extends StatefulWidget {
   const LearningView({super.key});
@@ -29,7 +31,9 @@ class _LearningViewState extends State<LearningView> {
                 flex: 4,
                 child: Container(
                   color: Colors.green,
-                  child: const Text('Training View'),
+                  child: const Column(
+                    children: [LearningSelectionBar(), ProductListMenu()],
+                  ),
                 ),
               )
             ],

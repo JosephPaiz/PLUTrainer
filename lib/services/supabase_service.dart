@@ -141,19 +141,43 @@ class SupabaseService {
   Future<ProfileModel?> fetchProfileBySuperkey(int superkey) async {
     try {
       final response = await _client
-          .from('profiles') // La tabla en donde está el perfil
+          .from('profiles')
           .select()
           .eq('superkey', superkey)
-          .single(); // Esto busca un único perfil con esa superkey
+          .single();
 
       // ignore: unnecessary_null_comparison
       if (response != null) {
-        return ProfileModel.fromMap(
-            response); // Si existe, lo retorna como un objeto Profile
+        return ProfileModel.fromMap(response);
       }
-      return null; // Retorna null si no encuentra el perfil
+      return null;
     } catch (error) {
       throw Exception('Error fetching profile: $error');
+    }
+  }
+
+  Future<List<Product>> fetchProductsByLetter(String letter) async {
+    try {
+      final response = await _client
+          .rpc('get_products_by_letter', params: {'letter_input': letter});
+
+      // Verificar si la respuesta no está vacía
+      if (response != null && response.isNotEmpty) {
+        _logger.d('Productos recuperados: $response');
+
+        // Mapear los datos de la respuesta en objetos Product
+        return (response as List).map((json) {
+          return Product.fromJson(json as Map<String, dynamic>);
+        }).toList();
+      } else {
+        _logger.w(
+            'No se encontraron productos que comiencen con la letra: $letter');
+        return [];
+      }
+    } catch (e) {
+      // En caso de error, lo registra y lanza la excepción
+      _logger.e('Error al obtener productos por letra: $e');
+      throw Exception('Error al obtener productos por letra.');
     }
   }
 }

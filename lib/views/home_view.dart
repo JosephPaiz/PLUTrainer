@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/widgets/Home/home_layout.dart';
 
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
@@ -30,7 +31,7 @@ class _HomeViewState extends State<HomeView> {
                 flex: 4,
                 child: Container(
                   color: Colors.green,
-                  child: const Text('Home View'),
+                  child: HomeLayout(),
                 ),
               )
             ],
