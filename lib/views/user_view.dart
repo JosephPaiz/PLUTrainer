@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
+import 'package:plu_trainer/widgets/UserView/user_view_layout.dart';
 
 class UserView extends StatefulWidget {
   const UserView({super.key});
@@ -37,6 +38,7 @@ class _UserViewState extends State<UserView> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
+                        child: UserViewLayout(),
                       ),
                     ),
                   ),

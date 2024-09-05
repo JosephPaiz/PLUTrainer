@@ -6,6 +6,7 @@ import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
+import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
 class SidebarMenu extends StatelessWidget {
@@ -14,6 +15,7 @@ class SidebarMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final sideBarViewModel = Provider.of<SideBarViewModel>(context);
+    final loginViewModel = Provider.of<LoginViewModel>(context);
 
     if (!sideBarViewModel.isInitialized) {
       return const Center(child: CircularProgressIndicator());
@@ -102,8 +104,9 @@ class SidebarMenu extends StatelessWidget {
                   index: 5,
                   isSelected: sideBarViewModel.selectedIndex == 5,
                   onTap: () {
-                    sideBarViewModel.selectIndex(5);
-                    NavigationService.navigateTo(context, '/user');
+                    sideBarViewModel.selectIndex(0);
+                    loginViewModel.logout(context);
+                    // NavigationService.navigateTo(context, '/user');
                   },
                 ),
                 ContractButton(

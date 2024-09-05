@@ -68,4 +68,7 @@ class Fonts {
       fontSize: 35, fontWeight: FontWeight.w800, color: Colors.black);
   static final TextStyle noHistoryExistTextStyle = GoogleFonts.comfortaa(
       fontSize: 18, fontWeight: FontWeight.w800, color: Colors.black);
+
+  static final TextStyle userViewTitleTextStyle = GoogleFonts.comfortaa(
+      fontSize: 35, fontWeight: FontWeight.w800, color: Colors.white);
 }

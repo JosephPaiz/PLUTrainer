@@ -6,7 +6,7 @@ class LocalizationsEsp {
   static const String trainingButton = 'Entrenamiento';
   static const String examButton = 'Prueba';
   static const String historyButton = 'Historial';
-  static const String userButton = 'Usuario';
+  static const String userButton = 'Cerrar Sesión';
   //PlayStopButton
   static const String playText = 'Iniciar';
   static const String stopText = 'Parar';
