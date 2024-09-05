@@ -51,6 +51,8 @@ class Fonts {
 
   static final TextStyle pluListTextStyle = GoogleFonts.comfortaa(
       fontWeight: FontWeight.w800, color: Colors.grey[600]);
+  static final TextStyle historyProfileText =
+      GoogleFonts.comfortaa(fontWeight: FontWeight.w800, color: Colors.white);
 
   static final TextStyle sideBarButtonTextStyleActive =
       GoogleFonts.comfortaa(fontWeight: FontWeight.w800, color: Colors.white);
@@ -61,4 +63,9 @@ class Fonts {
 
   static final TextStyle scoreViewTitleTexStyle = GoogleFonts.comfortaa(
       fontSize: 30, fontWeight: FontWeight.w800, color: Colors.black);
+
+  static final TextStyle historyViewTitleTextStyle = GoogleFonts.comfortaa(
+      fontSize: 35, fontWeight: FontWeight.w800, color: Colors.black);
+  static final TextStyle noHistoryExistTextStyle = GoogleFonts.comfortaa(
+      fontSize: 18, fontWeight: FontWeight.w800, color: Colors.black);
 }

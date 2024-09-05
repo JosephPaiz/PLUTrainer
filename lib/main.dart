@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/Views/training_view.dart';
+import 'package:plu_trainer/viewmodels/History/history_view_model.dart';
+import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
@@ -56,6 +58,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => PLUListStopWatchViewModel()),
         ChangeNotifierProvider(create: (context) => StopWatchViewModel()),
+        ChangeNotifierProvider(create: (context) => ProfileWithRoleViewModel()),
+        ChangeNotifierProvider(create: (context) => HistoryViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

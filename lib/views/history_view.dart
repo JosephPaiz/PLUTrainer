@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/widgets/History/MasterUserWidgets/history_master_profile_layout.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
 class HistoryView extends StatefulWidget {
@@ -29,7 +30,20 @@ class _HistoryViewState extends State<HistoryView> {
                 flex: 4,
                 child: Container(
                   color: Colors.green,
-                  child: const Text('History View'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(30.0),
+                    child: Expanded(
+                      child: Container(
+                        height: MediaQuery.of(context).size.height,
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const HistoryMasterProfileLayout(),
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],

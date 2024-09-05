@@ -15,6 +15,23 @@ class CustomColors {
 
   static const Color blue = Color(0xff1694f1);
   static const Color deepBlue = Color(0xff1376c0);
+  static List<Color> backgroundHistoryProfileButton = [
+    Colors.purple[200] ?? Colors.purple,
+    Colors.green[200] ?? Colors.green,
+    Colors.orange[200] ?? Colors.orange,
+    Colors.blue[200] ?? Colors.blue,
+    Colors.yellow[200] ?? Colors.yellow,
+    Colors.white,
+  ];
+
+  static List<Color> tagHistoryProfileButton = [
+    Colors.purple,
+    Colors.green,
+    Colors.orange,
+    Colors.blue,
+    Colors.yellow,
+    Colors.grey,
+  ];
 
   // static const Color  = Color(0xff); thas is a base
 }

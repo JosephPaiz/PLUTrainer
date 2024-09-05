@@ -1,4 +1,6 @@
+import 'package:plu_trainer/models/history_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:plu_trainer/models/profile_model.dart';
 import 'package:plu_trainer/models/products_model.dart';
 import 'package:logger/logger.dart';
 
@@ -81,7 +83,77 @@ class SupabaseService {
     if (response.error != null) {
       _logger.w('Error inserting into history: ${response.error!.message}');
     } else {
-      _logger.d('History inserted successfully');
+      _logger.d('HistoryModel inserted successfully');
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> getProfilesWithRoles() async {
+    final response = await _client.rpc('get_profiles_with_roles').select();
+    // ignore: unnecessary_null_comparison
+    if (response == null) {
+      throw Exception('Error fetching profiles with roles: No data received');
+    }
+
+    return List<Map<String, dynamic>>.from(response as List);
+  }
+
+  Future<bool> isUserInRole(int superkey, List<int> allowedRoles) async {
+    try {
+      final response = await _client
+          .from('profile_roles')
+          .select('role_id')
+          .eq('profile_superkey', superkey);
+
+      if (response.isNotEmpty) {
+        final userRoles =
+            List<int>.from(response.map((item) => item['role_id']));
+        return userRoles.any((role) => allowedRoles.contains(role));
+      }
+
+      return false;
+    } catch (e) {
+      _logger.e('Error checking roles: $e');
+      return false;
+    }
+  }
+
+  Future<List<HistoryModel>> fetchHistoryBySuperkey(int superkey) async {
+    try {
+      final response = await _client
+          .from('history')
+          .select(
+              'profiles!inner(name), score, answered_questions, correct_answers, pluhelper_usage, duration, date, training_type')
+          .eq('superkey', superkey);
+
+      if (response.isNotEmpty) {
+        return (response as List)
+            .map((data) => HistoryModel.fromMap(data as Map<String, dynamic>))
+            .toList();
+      } else {
+        return [];
+      }
+    } catch (e) {
+      _logger.e('Error fetching history: $e');
+      throw Exception('Failed to fetch history.');
+    }
+  }
+
+  Future<ProfileModel?> fetchProfileBySuperkey(int superkey) async {
+    try {
+      final response = await _client
+          .from('profiles') // La tabla en donde está el perfil
+          .select()
+          .eq('superkey', superkey)
+          .single(); // Esto busca un único perfil con esa superkey
+
+      // ignore: unnecessary_null_comparison
+      if (response != null) {
+        return ProfileModel.fromMap(
+            response); // Si existe, lo retorna como un objeto Profile
+      }
+      return null; // Retorna null si no encuentra el perfil
+    } catch (error) {
+      throw Exception('Error fetching profile: $error');
     }
   }
 }
