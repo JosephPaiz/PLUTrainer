@@ -15,13 +15,11 @@ class HistoryMasterProfileLayout extends StatefulWidget {
 
 class _HistoryMasterProfileLayoutState
     extends State<HistoryMasterProfileLayout> {
-  // Variable para almacenar la superkey seleccionada
   int? _selectedSuperkey;
 
   @override
   void initState() {
     super.initState();
-    // Obtén los perfiles y roles al cargar el widget si está autorizado
     final loginViewModel = Provider.of<LoginViewModel>(context, listen: false);
     if (loginViewModel.isAuthorized) {
       Provider.of<ProfileWithRoleViewModel>(context, listen: false)
@@ -34,12 +32,10 @@ class _HistoryMasterProfileLayoutState
     final viewModel = Provider.of<ProfileWithRoleViewModel>(context);
     final loginViewModel = Provider.of<LoginViewModel>(context);
 
-    // Si ya hay una superkey seleccionada, mostrar directamente HistoryProfileLayout
     if (_selectedSuperkey != null) {
       return HistoryProfileLayout(superkey: _selectedSuperkey!);
     }
 
-    // Mostrar loading o los perfiles
     return Align(
       alignment: Alignment.topCenter,
       child: loginViewModel.isAuthorized
