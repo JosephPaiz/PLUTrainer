@@ -18,6 +18,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20), color: Colors.white),
+          child: Text('Hello history'),
         ),
       ),
     );

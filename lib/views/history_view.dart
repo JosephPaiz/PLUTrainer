@@ -31,22 +31,7 @@ class _HistoryViewState extends State<HistoryView> {
                 flex: 4,
                 child: Container(
                     color: const Color.fromRGBO(76, 175, 80, 1),
-                    child: HistoryScreen()
-                    // Padding(
-                    //   padding: const EdgeInsets.all(30.0),
-                    //   child: Expanded(
-                    //     child: Container(
-                    //       height: MediaQuery.of(context).size.height,
-                    //       width: MediaQuery.of(context).size.width,
-                    //       decoration: BoxDecoration(
-                    //         color: Colors.grey[300],
-                    //         borderRadius: BorderRadius.circular(20),
-                    //       ),
-                    //       child: const HistoryMasterProfileLayout(),
-                    //     ),
-                    //   ),
-                    // ),
-                    ),
+                    child: HistoryScreen()),
               )
             ],
           );
