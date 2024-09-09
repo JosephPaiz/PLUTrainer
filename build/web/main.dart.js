@@ -79392,24 +79392,22 @@ s.r[this.b]=!0
 s.V()},
 $S:0}
 A.pP.prototype={
-alu(a,b,c,d,e,f,g){var s,r=this
-r.b=c
-r.c=d
-r.d=f
-r.x=a
-r.w=g
-r.r=b
-if(e!==r.z&&e)r.Q=!1
-r.z=e
-r.e=J.bM(c)
-s=r.c
-r.f=new A.aM(s,new A.adS(),A.a3(s).i("aM<1>")).gt(0)
-r.y=A.aDh(B.c.ad(r.y,2))
-s=r.e
-if(s>0)r.y=r.f/s*100
-else r.y=0
-if(r.z&&!r.Q)r.yn()
-r.V()},
+alu(a,b,c,d,e,f,g){var s,r,q=this
+q.b=c
+q.c=d
+q.d=f
+q.x=a
+q.w=g
+q.r=b
+if(e!==q.z){if(e)q.Q=!1
+q.z=e}q.e=J.bM(c)
+s=q.c
+s=new A.aM(s,new A.adS(),A.a3(s).i("aM<1>")).gt(0)
+q.f=s
+r=q.e
+q.y=A.aDh(B.c.ad(r>0?q.y=s/r*100:q.y=0,2))
+if(q.z&&!q.Q)q.yn()
+q.V()},
 yn(){var s=0,r=A.H(t.H),q=1,p,o=this,n,m,l
 var $async$yn=A.I(function(a,b){if(a===1){p=b
 s=q}while(true)switch(s){case 0:q=3
