@@ -79399,10 +79399,9 @@ r.d=f
 r.x=a
 r.w=g
 r.r=b
-if(e!==r.z){r.z=e
-if(e){s=r.e
+if(e&&!r.z){s=r.e
 r.y=A.aDh(B.c.ad(s>0?r.y=r.f/s*100:r.y=0,2))
-r.yn()}}r.e=J.bM(r.b)
+r.yn()}r.e=J.bM(r.b)
 s=r.c
 r.f=new A.aM(s,new A.adS(),A.a3(s).i("aM<1>")).gt(0)
 r.U()},
@@ -79412,7 +79411,7 @@ s=q}while(true)switch(s){case 0:q=3
 s=6
 return A.w(o.Q.ym(o.d,o.y,o.e,o.f,o.r,o.w,o.x),$async$yn)
 case 6:o.a.hJ(B.cx,"History successfully inserted into Supabase.",null,null)
-o.z=!1
+o.z=!0
 o.U()
 q=1
 s=5
