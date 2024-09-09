@@ -93,8 +93,8 @@ class SidebarMenu extends StatelessWidget {
                   index: 4,
                   isSelected: sideBarViewModel.selectedIndex == 4,
                   onTap: () {
-                    // sideBarViewModel.selectIndex(4);
-                    // NavigationService.navigateTo(context, '/history');
+                    sideBarViewModel.selectIndex(4);
+                    NavigationService.navigateTo(context, '/history');
                   },
                 ),
                 SideBarButton(
