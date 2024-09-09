@@ -74,7 +74,9 @@ class _HistoryViewState extends State<HistoryView> {
                 flex: 4,
                 child: Container(
                     color: const Color.fromRGBO(76, 175, 80, 1),
-                    child: const HistoryScreen()), // Usar HistoryScreen aquí
+                    child: const HistoryScreen()
+                    // const HistoryScreen(),
+                    ), // Usar HistoryScreen aquí
               ),
             ],
           );
