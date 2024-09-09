@@ -112,7 +112,6 @@ class ScoreViewModel extends ChangeNotifier {
   int duration = 0;
   double _score = 0.0;
   bool _shouldInsert = false;
-  bool _hasInserted = false;
 
   final SupabaseService _supabaseService = SupabaseService();
 
@@ -140,25 +139,20 @@ class ScoreViewModel extends ChangeNotifier {
     this.trainingType = trainingType;
     _pluHelperUsage = pluHelperUsage;
 
-    // Solo si cambia el valor de shouldInsert
+    // Cambiar el estado de shouldInsert y ejecutar la inserción si es necesario
     if (shouldInsert != _shouldInsert) {
       _shouldInsert = shouldInsert;
+
       if (_shouldInsert) {
-        // Si shouldInsert es true, reiniciamos el flag de inserción
-        _hasInserted = false;
+        // Si shouldInsert es true, realizar la inserción
+        _calculateScore();
+        insertHistoryInSupabase();
       }
     }
 
     // Calcular respuestas y puntaje
     _answeredAnswers = _previousProducts.length;
     _correctAnswers = _responses.where((response) => response == true).length;
-    _calculateScore();
-
-    // Si shouldInsert es true, pero no se ha insertado todavía
-    if (_shouldInsert && !_hasInserted) {
-      insertHistoryInSupabase();
-    }
-
     notifyListeners();
   }
 
@@ -173,26 +167,23 @@ class ScoreViewModel extends ChangeNotifier {
 
   Future<void> insertHistoryInSupabase() async {
     try {
-      // Hacemos la inserción en la tabla solo si aún no se ha hecho
-      if (!_hasInserted) {
-        await _supabaseService.insertHistory(
-          superKey,
-          _score,
-          _answeredAnswers,
-          _correctAnswers,
-          _pluHelperUsage,
-          trainingType,
-          duration,
-        );
-        _logger.d('History successfully inserted into Supabase.');
-        _hasInserted = false; // Asegurar que solo se inserte una vez
-      }
+      // Inserción en Supabase
+      await _supabaseService.insertHistory(
+        superKey,
+        _score,
+        _answeredAnswers,
+        _correctAnswers,
+        _pluHelperUsage,
+        trainingType,
+        duration,
+      );
+      _logger.d('History successfully inserted into Supabase.');
+
+      // Reiniciar shouldInsert a false después de la inserción
+      _shouldInsert = false;
+      notifyListeners();
     } catch (e) {
       _logger.e('Error inserting history into Supabase: $e');
     }
-  }
-
-  void resetInsertFlag() {
-    _hasInserted = false; // Permitir que se inserte nuevamente si es necesario
   }
 }
