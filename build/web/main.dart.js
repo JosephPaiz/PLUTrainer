@@ -79399,14 +79399,15 @@ q.d=f
 q.x=a
 q.w=g
 q.r=b
-if(e!==q.z){if(e)q.Q=!1
-q.z=e}q.e=J.bM(c)
+if(e!==q.z){q.z=e
+if(e)q.Q=!1}q.e=J.bM(c)
 s=q.c
 s=new A.aM(s,new A.adS(),A.a3(s).i("aM<1>")).gt(0)
 q.f=s
 r=q.e
 q.y=A.aDh(B.c.ad(r>0?q.y=s/r*100:q.y=0,2))
-if(q.z&&!q.Q)q.yn()
+s=q.z
+if(s)q.yn()
 q.V()},
 yn(){var s=0,r=A.H(t.H),q=1,p,o=this,n,m,l
 var $async$yn=A.I(function(a,b){if(a===1){p=b
@@ -79414,7 +79415,7 @@ s=q}while(true)switch(s){case 0:q=3
 s=6
 return A.w(o.as.ym(o.d,o.y,o.e,o.f,o.r,o.w,o.x),$async$yn)
 case 6:o.a.hJ(B.cx,"History successfully inserted into Supabase.",null,null)
-o.Q=!0
+o.Q=!1
 q=1
 s=5
 break
