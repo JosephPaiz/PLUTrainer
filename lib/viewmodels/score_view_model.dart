@@ -109,8 +109,8 @@ class ScoreViewModel extends ChangeNotifier {
   int duration = 0;
   double _score = 0.0;
   bool _shouldInsert = false;
-  bool _isInserting =
-      false; // Control para evitar múltiples inserciones simultáneas.
+  bool _hasInserted =
+      false; // Nueva variable para controlar si ya se ha insertado
 
   final SupabaseService _supabaseService = SupabaseService();
 
@@ -138,40 +138,28 @@ class ScoreViewModel extends ChangeNotifier {
     this.trainingType = trainingType;
     _pluHelperUsage = pluHelperUsage;
 
-    // Verifica si se debe hacer la inserción
-    if (shouldInsert && !_shouldInsert) {
-      _logger.d('Setting _shouldInsert to true');
+    // Si debe insertar y no se ha insertado todavía
+    if (shouldInsert && !_shouldInsert && !_hasInserted) {
       _shouldInsert = true;
+      _logger.d('Setting _shouldInsert to true');
       _calculateAndInsertData();
-    } else {
-      _logger.d('Setting _shouldInsert to false');
-      _shouldInsert = false;
     }
 
     notifyListeners();
   }
 
   Future<void> _calculateAndInsertData() async {
-    if (_isInserting) {
-      _logger.w('Insertion already in progress, skipping...');
-      return; // Evita hacer múltiples inserciones simultáneas.
-    }
-
-    _isInserting = true; // Marca que estamos en proceso de inserción.
-
     _answeredAnswers = _previousProducts.length;
     _correctAnswers = _responses.where((response) => response == true).length;
     _calculateScore();
 
-    // Verifica si los datos son válidos antes de insertar.
+    // Verifica si los datos son válidos antes de intentar insertar
     if (_answeredAnswers > 0 && _correctAnswers >= 0) {
       _logger.d('Data is valid, proceeding with insert');
       await insertHistoryInSupabase();
     } else {
       _logger.e('Data is incomplete or incorrect, skipping insertion.');
     }
-
-    _isInserting = false; // Termina el proceso de inserción.
   }
 
   void _calculateScore() {
@@ -186,18 +174,31 @@ class ScoreViewModel extends ChangeNotifier {
 
   Future<void> insertHistoryInSupabase() async {
     try {
-      await _supabaseService.insertHistory(
-        superKey,
-        _score,
-        _answeredAnswers,
-        _correctAnswers,
-        _pluHelperUsage,
-        trainingType,
-        duration,
-      );
-      _logger.d('History successfully inserted into Supabase.');
+      // Solo inserta si no se ha insertado ya
+      if (!_hasInserted) {
+        await _supabaseService.insertHistory(
+          superKey,
+          _score,
+          _answeredAnswers,
+          _correctAnswers,
+          _pluHelperUsage,
+          trainingType,
+          duration,
+        );
+        _logger.d('History successfully inserted into Supabase.');
+
+        _hasInserted = true; // Marca como que ya se ha insertado.
+        _shouldInsert =
+            false; // Resetea la variable para prevenir inserciones adicionales.
+      } else {
+        _logger.w('Skipping insert, as history has already been inserted.');
+      }
     } catch (e) {
       _logger.e('Error inserting history into Supabase: $e');
     }
+  }
+
+  void resetInsertFlag() {
+    _hasInserted = false; // Permite que se inserte nuevamente si es necesario
   }
 }
