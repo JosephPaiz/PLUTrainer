@@ -40,6 +40,4 @@ class CustomColors {
     Colors.yellow,
     Colors.grey,
   ];
-
-  // static const Color  = Color(0xff); thas is a base
 }
