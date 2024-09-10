@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 
 class SideBarButton extends StatefulWidget {
@@ -34,36 +35,36 @@ class _SideBarButtonState extends State<SideBarButton> {
       onExit: (_) => _onHover(false),
       child: GestureDetector(
         onTap: widget.onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
+        child: Padding(
           padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            color: widget.isSelected
-                ? Colors.green
-                : _isHovered
-                    ? Colors.grey.shade300
-                    : Colors.white,
-            border: Border.all(color: Colors.white, width: 4.0),
-            borderRadius: BorderRadius.circular(15.0),
-          ),
-          child: Center(
-            child: ListTile(
-              leading: Icon(
-                widget.icon,
-                color: widget.isSelected ? Colors.white : Colors.blue,
-                size: 24.0,
-              ),
-              title: widget.isSidebarOpen
-                  ? Text(widget.text,
-                      style: widget.isSelected
-                          ? Fonts.sideBarButtonTextStyleActive
-                          : Fonts.sideBarButtonTextStyledesactive
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              color: widget.isSelected
+                  ? Colors.green
+                  : _isHovered
+                      ? CustomColors.lightGrey
+                      : CustomColors.mediumGrey,
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            child: Center(
+              child: ListTile(
+                leading: Icon(
+                  widget.icon,
+                  color: CustomColors.white,
+                  size: 24.0,
+                ),
+                title: widget.isSidebarOpen
+                    ? Text(widget.text,
+                        style: Fonts.sideBarButtonTextStyleActive
 
-                      //  TextStyle(
-                      //   color: widget.isSelected ? Colors.white : Colors.grey,
-                      // ),
-                      )
-                  : null,
+                        //  TextStyle(
+                        //   color: widget.isSelected ? Colors.white : Colors.grey,
+                        // ),
+                        )
+                    : null,
+              ),
             ),
           ),
         ),

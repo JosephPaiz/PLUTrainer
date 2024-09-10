@@ -29,22 +29,39 @@ class ScoreView extends StatefulWidget {
 
 class _ScoreViewState extends State<ScoreView> {
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
 
+    // Llama a updateData solo una vez cuando el widget se crea.
     final scoreViewModel = Provider.of<ScoreViewModel>(context, listen: false);
 
-    scoreViewModel.updateData(
-      products: widget.products,
-      responses: widget.responses,
-      superKey: widget.superKey,
-      duration: widget.duration,
-      trainingType: widget.trainingType,
-      pluHelperUsage: widget.pluHelperUsage,
-      shouldInsert: widget.shouldInsert,
-    );
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scoreViewModel.updateData(
+          products: widget.products,
+          responses: widget.responses,
+          superKey: widget.superKey,
+          duration: widget.duration,
+          trainingType: widget.trainingType,
+          pluHelperUsage: widget.pluHelperUsage,
+          shouldInsert: widget.shouldInsert);
+    });
   }
+
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+
+  //   final scoreViewModel = Provider.of<ScoreViewModel>(context, listen: false);
+
+  //   scoreViewModel.updateData(
+  //     products: widget.products,
+  //     responses: widget.responses,
+  //     superKey: widget.superKey,
+  //     duration: widget.duration,
+  //     trainingType: widget.trainingType,
+  //     pluHelperUsage: widget.pluHelperUsage,
+  //     shouldInsert: widget.shouldInsert,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {

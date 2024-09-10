@@ -24,7 +24,16 @@ class _LoginViewState extends State<LoginView>
     final LoginViewModel loginViewModel = Provider.of<LoginViewModel>(context);
     return Scaffold(
       body: Container(
-        color: CustomColors.green,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              CustomColors.veryDarkGrey,
+              CustomColors.deepDarkGreen,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,11 +56,9 @@ class _LoginViewState extends State<LoginView>
                       final superkey = int.tryParse(value);
                       if (superkey != null) {
                         loginViewModel.verifySuperkey(superkey, context);
-                      } else {
-                        // Manejar el error de entrada aquí si es necesario
-                      }
+                      } else {}
                     },
-                  )
+                  ),
                 ],
               ),
             ],

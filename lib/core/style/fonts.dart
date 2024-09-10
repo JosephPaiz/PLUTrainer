@@ -47,7 +47,7 @@ class Fonts {
       fontSize: 40, fontWeight: FontWeight.w500, color: Colors.black);
 
   static final TextStyle sidebarTitleTextStyle = GoogleFonts.comfortaa(
-      fontSize: 24, fontWeight: FontWeight.w800, color: Colors.grey[600]);
+      fontSize: 24, fontWeight: FontWeight.w800, color: CustomColors.white);
 
   static final TextStyle pluListTextStyle = GoogleFonts.comfortaa(
       fontWeight: FontWeight.w800, color: Colors.grey[600]);

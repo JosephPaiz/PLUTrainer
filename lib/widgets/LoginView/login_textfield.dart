@@ -20,21 +20,33 @@ class _LoginTextfieldState extends State<LoginTextfield> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 500, // Establece el ancho deseado
+      width: 500,
       child: TextField(
         controller: widget.controller,
         keyboardType: TextInputType.number,
         inputFormatters: <TextInputFormatter>[
           FilteringTextInputFormatter.digitsOnly,
         ],
+        style: const TextStyle(color: CustomColors.white),
         decoration: InputDecoration(
           filled: true,
-          fillColor: CustomColors.white,
+          fillColor: CustomColors.deepDarkGrey,
           labelText: LocalizationsEsp.enterYourSuperKey,
+          labelStyle: const TextStyle(color: Colors.grey),
           floatingLabelBehavior: FloatingLabelBehavior.never,
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(18),
-            borderSide: BorderSide.none,
+            borderSide: const BorderSide(
+              color: CustomColors.lightGreen,
+              width: 2.0,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: const BorderSide(
+              color: CustomColors.lightGreen,
+              width: 2.0,
+            ),
           ),
           contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         ),

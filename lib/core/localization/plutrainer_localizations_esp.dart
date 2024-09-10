@@ -2,10 +2,10 @@ class LocalizationsEsp {
   //Sidebar
   static const String titleApp = 'Entrenador PLU';
   static const String homeButton = 'Inicio';
-  static const String learningButton = 'Aprender:Pronto';
+  static const String learningButton = 'Aprender';
   static const String trainingButton = 'Entrenamiento';
   static const String examButton = 'Prueba';
-  static const String historyButton = 'Historial:Prontos';
+  static const String historyButton = 'Historial';
   static const String userButton = 'Cerrar Sesión';
   //PlayStopButton
   static const String playText = 'Iniciar';

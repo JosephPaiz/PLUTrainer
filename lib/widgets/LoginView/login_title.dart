@@ -16,7 +16,6 @@ class _LoginTitleState extends State<LoginTitle>
   @override
   void initState() {
     super.initState();
-    // Inicializar el ViewModel y las animaciones
     Provider.of<LoginTitleViewModel>(context, listen: false).initialize(this);
   }
 

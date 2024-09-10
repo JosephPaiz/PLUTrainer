@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
@@ -25,10 +26,10 @@ class SidebarMenu extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       width: sideBarViewModel.isOpenSideBar ? 250 : 90,
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: CustomColors.darkGrey,
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(50.0),
-          bottomRight: Radius.circular(50.0),
+          topRight: Radius.circular(20.0),
+          bottomRight: Radius.circular(20.0),
         ),
       ),
       child: Column(
@@ -109,11 +110,11 @@ class SidebarMenu extends StatelessWidget {
                     // NavigationService.navigateTo(context, '/user');
                   },
                 ),
-                ContractButton(
-                  onTap: () {
-                    sideBarViewModel.contractSideBar();
-                  },
-                ),
+                // ContractButton(
+                //   onTap: () {
+                //     sideBarViewModel.contractSideBar();
+                //   },
+                // ),
               ],
             ),
           ),

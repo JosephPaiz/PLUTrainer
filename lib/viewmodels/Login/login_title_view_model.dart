@@ -10,7 +10,7 @@ class LoginTitleViewModel extends ChangeNotifier {
 
   void initialize(TickerProvider vsync) {
     _controller = AnimationController(
-      duration: const Duration(seconds: 1),
+      duration: const Duration(milliseconds: 700),
       vsync: vsync,
     );
 
