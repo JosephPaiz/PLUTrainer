@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
+import 'package:plu_trainer/widgets/Home/test_widget.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -48,15 +49,12 @@ class _AnimatedTextOverlayState extends State<HomeLayout>
             Center(
               child: FadeTransition(
                 opacity: _opacityAnimation,
-                child: Container(
-                  padding: const EdgeInsets.all(70),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Text(
-                      'Entrenate en PLU y genera una nueva experiencia.',
-                      style: Fonts.homeViewTitleTextStyle),
+                child: const InformationCardWidget(
+                  title: 'Respuestas Correctas',
+                  description: 'Porcentaje de respuestas correctas',
+                  number: '1/10',
+                  backGroundColor: Color(0xFF675DF5),
+                  icon: Icons.check_circle,
                 ),
               ),
             ),
