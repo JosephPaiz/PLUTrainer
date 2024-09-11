@@ -42,27 +42,26 @@ class _SideBarButtonState extends State<SideBarButton> {
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: widget.isSelected
-                  ? Colors.green
+                  ? CustomColors.darkGreen
                   : _isHovered
-                      ? CustomColors.lightGrey
-                      : CustomColors.mediumGrey,
+                      ? CustomColors.grey
+                      : CustomColors.white,
               borderRadius: BorderRadius.circular(15.0),
             ),
             child: Center(
               child: ListTile(
                 leading: Icon(
                   widget.icon,
-                  color: CustomColors.white,
+                  color: widget.isSelected
+                      ? CustomColors.white
+                      : CustomColors.lightDeepgrey,
                   size: 24.0,
                 ),
                 title: widget.isSidebarOpen
                     ? Text(widget.text,
-                        style: Fonts.sideBarButtonTextStyleActive
-
-                        //  TextStyle(
-                        //   color: widget.isSelected ? Colors.white : Colors.grey,
-                        // ),
-                        )
+                        style: widget.isSelected
+                            ? Fonts.sideBarButtonTextStyleActive
+                            : Fonts.sideBarButtonTextStyledesactive)
                     : null,
               ),
             ),

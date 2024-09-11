@@ -12,10 +12,13 @@ class CustomColors {
   static const Color darkGrey = Color(0xff2D2D2D);
   static const Color mediumGrey = Color(0xff3A3A3A);
   static const Color deepGrey = Color(0xff808080);
+  static const Color lightDeepgrey = Color(0xff8A8A8A);
   static const Color lightGrey = Color(0xff4F4F4F);
   static const Color grey = Color(0xffe1e1e1);
 
   static const Color deepDarkGreen = Color(0xFF0B4C38);
+  static const Color darkGreen = Color(0xFF00A859);
+
   static const Color deepGreen = Color(0xff26a903);
   static const Color green = Color(0xff7cdf62);
   static const Color lightGreen = Color(0xff00FF75);

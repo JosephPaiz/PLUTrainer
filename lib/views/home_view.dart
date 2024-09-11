@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/widgets/Home/home_layout.dart';
 
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
@@ -14,7 +15,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: CustomColors.grey,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
           return const Center(
@@ -30,8 +31,8 @@ class _HomeViewState extends State<HomeView> {
               Expanded(
                 flex: 4,
                 child: Container(
-                  color: Colors.green,
-                  child: HomeLayout(),
+                  color: CustomColors.grey,
+                  child: const HomeLayout(),
                 ),
               )
             ],

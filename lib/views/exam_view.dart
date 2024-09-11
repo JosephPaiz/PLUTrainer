@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/widgets/Exam/ExamSelectionBar/exam_selection_bar.dart';
 import 'package:plu_trainer/widgets/PLUHelper/pluhelper_view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
@@ -21,7 +22,7 @@ class _ExamViewState extends State<ExamView> {
     final productViewModel = Provider.of<ProductViewModel>(context);
     final timerViewModel = Provider.of<TimerViewModel>(context);
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: CustomColors.grey,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
           return const Center(
@@ -37,7 +38,7 @@ class _ExamViewState extends State<ExamView> {
               Expanded(
                 flex: 4,
                 child: Container(
-                  color: Colors.green,
+                  color: CustomColors.grey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -26,18 +26,29 @@ class SidebarMenu extends StatelessWidget {
       duration: const Duration(milliseconds: 300),
       width: sideBarViewModel.isOpenSideBar ? 250 : 90,
       decoration: const BoxDecoration(
-        color: CustomColors.darkGrey,
+        color: CustomColors.white,
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(20.0),
-          bottomRight: Radius.circular(20.0),
+          topRight: Radius.circular(25.0),
+          bottomRight: Radius.circular(25.0),
         ),
       ),
       child: Column(
         children: [
           DrawerHeader(
-            child: Text(
-              sideBarViewModel.isOpenSideBar ? LocalizationsEsp.titleApp : 'PT',
-              style: Fonts.sidebarTitleTextStyle,
+            child: Column(
+              children: [
+                Text(
+                  sideBarViewModel.isOpenSideBar
+                      ? LocalizationsEsp.titleApp
+                      : 'PT',
+                  style: Fonts.sidebarTitleTextStyle,
+                ),
+                Text(
+                  sideBarViewModel.isOpenSideBar ? 'PAIZ MATARRITA JOSEPH' : '',
+                  style: const TextStyle(
+                      fontSize: 14, color: CustomColors.darkGreen),
+                ),
+              ],
             ),
           ),
           Expanded(
@@ -110,11 +121,6 @@ class SidebarMenu extends StatelessWidget {
                     // NavigationService.navigateTo(context, '/user');
                   },
                 ),
-                // ContractButton(
-                //   onTap: () {
-                //     sideBarViewModel.contractSideBar();
-                //   },
-                // ),
               ],
             ),
           ),
