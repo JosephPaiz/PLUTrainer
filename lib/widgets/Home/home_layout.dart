@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
-import 'package:plu_trainer/widgets/Home/test_widget.dart';
+import 'package:plu_trainer/widgets/Home/chart_menu.dart';
+import 'package:plu_trainer/widgets/Home/information_card_menu.dart';
+import 'package:plu_trainer/widgets/Home/information_card_widget.dart';
+import 'package:plu_trainer/widgets/Home/doughnut_chart.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -46,15 +49,16 @@ class _AnimatedTextOverlayState extends State<HomeLayout>
               width: double.infinity,
               height: double.infinity,
             ),
-            Center(
-              child: FadeTransition(
-                opacity: _opacityAnimation,
-                child: const InformationCardWidget(
-                  title: 'Respuestas Correctas',
-                  description: 'Porcentaje de respuestas correctas',
-                  number: '1/10',
-                  backGroundColor: Color(0xFF675DF5),
-                  icon: Icons.check_circle,
+            FadeTransition(
+              opacity: _opacityAnimation,
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InformationCardMenu(),
+                    const ChartMenu(),
+                  ],
                 ),
               ),
             ),
