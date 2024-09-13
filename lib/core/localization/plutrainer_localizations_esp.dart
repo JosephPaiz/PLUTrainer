@@ -45,7 +45,7 @@ class LocalizationsEsp {
   static const String averagePerTestcardDescription =
       'promedio del puntaje por prueba';
   static const String pluHelperUsageCardDescription =
-      'Promedio de uso del ayudante de PLU';
+      'Promedio de usos del ayudante de PLU';
   static const String timePerQuestionCardDescription =
       'Promedio de tiempo por pregunta';
 }

@@ -98,7 +98,6 @@ class InformationCardViewModel extends ChangeNotifier {
       _numberOfPLUHelper = 0;
       _totalPLUHelper = 0;
       _averagePerPlUHelper = 0;
-      notifyListeners();
     } else {
       _totalAnsweredQuestions =
           answeredQuestions.fold(0, (sum, item) => sum + item);
@@ -113,7 +112,7 @@ class InformationCardViewModel extends ChangeNotifier {
       _totalPLUHelper = _pluHelperUsage.fold(0, (sum, item) => sum + item);
       _numberOfPLUHelper = _pluHelperUsage.length;
       _averagePerPlUHelper = _totalPLUHelper / _numberOfPLUHelper;
-      notifyListeners();
     }
+    notifyListeners();
   }
 }

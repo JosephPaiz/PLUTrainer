@@ -113,7 +113,6 @@ class _AnimatedTextOverlayState extends State<HomeLayout>
 
   @override
   Widget build(BuildContext context) {
-    // Accede al LoginViewModel para obtener la superkeyValue
     final loginViewModel = Provider.of<LoginViewModel>(context, listen: false);
     final superkey = loginViewModel.superkeyValue;
 
@@ -139,8 +138,7 @@ class _AnimatedTextOverlayState extends State<HomeLayout>
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    InformationCardMenu(
-                        superkey: superkey), // Pasamos la superkey
+                    InformationCardMenu(),
                     const ChartMenu(),
                   ],
                 ),
