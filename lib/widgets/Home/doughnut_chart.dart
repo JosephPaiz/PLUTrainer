@@ -17,7 +17,7 @@ class _DoughnutChartState extends State<DoughnutChart> {
       width: 300,
       height: 300,
       decoration: BoxDecoration(
-        color: CustomColors.grey,
+        color: CustomColors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: PieChart(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/viewmodels/History/history_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
+import 'package:plu_trainer/viewmodels/Home/information_card_view_model.dart';
 import 'package:plu_trainer/viewmodels/Learning/leaning_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
@@ -62,6 +63,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => ProfileWithRoleViewModel()),
         ChangeNotifierProvider(create: (context) => HistoryViewModel()),
         ChangeNotifierProvider(create: (context) => LeaningViewModel()),
+        ChangeNotifierProvider(create: (context) => InformationCardViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

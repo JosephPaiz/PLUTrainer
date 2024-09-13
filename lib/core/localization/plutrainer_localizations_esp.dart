@@ -39,4 +39,13 @@ class LocalizationsEsp {
       'Entrena tu mente en los PLUS trantando de completar un reto de 6 productos en corto tiempo.';
   static const String trainYourEyesightDescrition =
       'Entrena tu vista en los PLUS observando la imagen del producto y acertando la respuesta.';
+
+  static const String correctAnswerCardDescription =
+      'Promedio de uso del ayudante de PLU';
+  static const String averagePerTestcardDescription =
+      'promedio del puntaje por prueba';
+  static const String pluHelperUsageCardDescription =
+      'Promedio de uso del ayudante de PLU';
+  static const String timePerQuestionCardDescription =
+      'Promedio de tiempo por pregunta';
 }

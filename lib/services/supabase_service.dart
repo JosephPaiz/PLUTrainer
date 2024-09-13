@@ -161,11 +161,9 @@ class SupabaseService {
       final response = await _client
           .rpc('get_products_by_letter', params: {'letter_input': letter});
 
-      // Verificar si la respuesta no está vacía
       if (response != null && response.isNotEmpty) {
         _logger.d('Productos recuperados: $response');
 
-        // Mapear los datos de la respuesta en objetos Product
         return (response as List).map((json) {
           return Product.fromJson(json as Map<String, dynamic>);
         }).toList();

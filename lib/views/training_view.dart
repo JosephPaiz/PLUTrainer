@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 import 'package:plu_trainer/widgets/Training/training_option_button.dart';
 import 'package:plu_trainer/viewmodels/Training/training_view_model.dart';
@@ -18,7 +19,7 @@ class _TrainingViewState extends State<TrainingView> {
         Provider.of<TrainingViewModel>(context); // Obtener el ViewModel
 
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: CustomColors.grey,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 600) {
           return const Center(
