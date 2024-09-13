@@ -173,7 +173,6 @@ class SupabaseService {
         return [];
       }
     } catch (e) {
-      // En caso de error, lo registra y lanza la excepción
       _logger.e('Error al obtener productos por letra: $e');
       throw Exception('Error al obtener productos por letra.');
     }

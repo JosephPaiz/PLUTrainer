@@ -1,17 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
-import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
-import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
+import 'package:plu_trainer/viewmodels/sidebar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:provider/provider.dart';
 
-class SidebarMenu extends StatelessWidget {
+class SidebarMenu extends StatefulWidget {
   const SidebarMenu({super.key});
+
+  @override
+  _SidebarMenuState createState() => _SidebarMenuState();
+}
+
+class _SidebarMenuState extends State<SidebarMenu> {
+  @override
+  void initState() {
+    super.initState();
+    _loadSuperkeyAndInitialize();
+  }
+
+  Future<void> _loadSuperkeyAndInitialize() async {
+    final loginViewModel = Provider.of<LoginViewModel>(context, listen: false);
+    final superkey = loginViewModel.superkeyValue;
+
+    if (superkey != null) {
+      final sideBarViewModel =
+          Provider.of<SideBarViewModel>(context, listen: false);
+      await sideBarViewModel.initialize(superkey);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +64,19 @@ class SidebarMenu extends StatelessWidget {
                       : 'PT',
                   style: Fonts.sidebarTitleTextStyle,
                 ),
-                Text(
-                  sideBarViewModel.isOpenSideBar ? 'PAIZ MATARRITA JOSEPH' : '',
-                  style: const TextStyle(
-                      fontSize: 14, color: CustomColors.darkGreen),
-                ),
+                sideBarViewModel.isOpenSideBar
+                    ? (sideBarViewModel.profileName != null
+                        ? Text(
+                            sideBarViewModel.profileName!,
+                            style: const TextStyle(
+                                fontSize: 14, color: CustomColors.darkGreen),
+                          )
+                        : const CircularProgressIndicator())
+                    : const Text(
+                        'Loading',
+                        style: TextStyle(
+                            fontSize: 14, color: CustomColors.darkGreen),
+                      ),
               ],
             ),
           ),

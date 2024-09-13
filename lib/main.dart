@@ -24,7 +24,7 @@ import 'package:plu_trainer/views/user_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
-import 'package:plu_trainer/viewmodels/Training/sidebar_view_model.dart';
+import 'package:plu_trainer/viewmodels/sidebar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/selectionbar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/Views/home_view.dart';
