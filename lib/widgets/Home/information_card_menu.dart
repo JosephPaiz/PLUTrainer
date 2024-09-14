@@ -49,7 +49,8 @@ class _InformationCardMenuState extends State<InformationCardMenu> {
                 child: InformationCardWidget(
                   title: 'Respuestas Correctas',
                   description: LocalizationsEsp.correctAnswerCardDescription,
-                  number: '${informationCardViewModel.realCorrectAnswers}/10',
+                  number:
+                      '${informationCardViewModel.realCorrectAnswers.toStringAsFixed(2)}/10',
                   backGroundColor: const Color(0xFF675DF5),
                   icon: Icons.check_circle,
                 ),
