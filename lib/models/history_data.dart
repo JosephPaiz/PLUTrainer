@@ -6,7 +6,7 @@ class HistoryData {
   final int pluHelperUsage;
   final String trainingType;
   final int duration;
-  final DateTime date; // Nuevo campo para la fecha
+  final DateTime date;
 
   HistoryData({
     required this.superKey,
@@ -16,10 +16,9 @@ class HistoryData {
     required this.pluHelperUsage,
     required this.trainingType,
     required this.duration,
-    required this.date, // Agregar la fecha en el constructor
+    required this.date,
   });
 
-  // Convertir el objeto a un Map que se pueda insertar en la base de datos
   Map<String, dynamic> toMap() {
     return {
       'superkey': superKey,
@@ -29,8 +28,7 @@ class HistoryData {
       'pluhelper_usage': pluHelperUsage,
       'training_type': trainingType,
       'duration': duration,
-      'date': date
-          .toIso8601String(), // Convertir la fecha a un formato legible por la base de datos
+      'date': date.toIso8601String(),
     };
   }
 }

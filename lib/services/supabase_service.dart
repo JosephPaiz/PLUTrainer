@@ -65,7 +65,6 @@ class SupabaseService {
 
   Future<void> insertHistory(HistoryData historyData) async {
     try {
-      // Verifica si ya existe un registro con el mismo superkey, training_type y fecha/hora exacta
       final recentHistory = await _client
           .from('history')
           .select()
@@ -73,15 +72,14 @@ class SupabaseService {
           .eq('training_type', historyData.trainingType)
           .eq('date', historyData.date.toIso8601String().split('.')[0])
           .limit(1)
-          .maybeSingle(); // Utiliza maybeSingle para recibir null si no existe coincidencia
+          .maybeSingle();
 
       if (recentHistory != null) {
         _logger.w(
             'Se encontró una inserción reciente, omitiendo nueva inserción.');
-        return; // Si ya existe un registro reciente, omite la inserción
+        return;
       }
 
-      // Si no se encuentra una inserción reciente, procede a insertar
       final response =
           await _client.from('history').insert(historyData.toMap()).select();
 
@@ -92,33 +90,6 @@ class SupabaseService {
       }
     } catch (e) {
       _logger.e('Error al insertar la historia: $e');
-    }
-  }
-
-  Future<bool> doesHistoryExist(int superKey,
-      {required int superkey,
-      required String trainingType,
-      required DateTime date}) async {
-    try {
-      // Se hace la verificación utilizando solo la fecha (sin milisegundos)
-      final response = await _client
-          .from('history')
-          .select(
-              'id') // Solo selecciona la columna id para comprobar existencia
-          .eq('superkey', superkey)
-          .eq('training_type', trainingType)
-          .gte(
-              'date',
-              date
-                  .toIso8601String()
-                  .split('.')[0]) // Comparar fecha hasta el nivel de segundos
-          .limit(1) // Limitar la consulta a 1 fila
-          .maybeSingle(); // Esta función devuelve el resultado o null si no hay coincidencias
-
-      return response != null; // Si la respuesta es distinta de null, ya existe
-    } catch (e) {
-      _logger.e('Error al verificar existencia de la historia: $e');
-      return false;
     }
   }
 
