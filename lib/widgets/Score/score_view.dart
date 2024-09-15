@@ -31,19 +31,23 @@ class _ScoreViewState extends State<ScoreView> {
   @override
   void initState() {
     super.initState();
+    _insertHistory();
+  }
 
+  void _insertHistory() {
     final scoreViewModel = Provider.of<ScoreViewModel>(context, listen: false);
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    if (widget.shouldInsert) {
       scoreViewModel.updateData(
-          products: widget.products,
-          responses: widget.responses,
-          superKey: widget.superKey,
-          duration: widget.duration,
-          trainingType: widget.trainingType,
-          pluHelperUsage: widget.pluHelperUsage,
-          shouldInsert: widget.shouldInsert);
-    });
+        products: widget.products,
+        responses: widget.responses,
+        superKey: widget.superKey,
+        duration: widget.duration,
+        trainingType: widget.trainingType,
+        pluHelperUsage: widget.pluHelperUsage,
+        shouldInsert: widget.shouldInsert,
+      );
+    }
   }
 
   @override
