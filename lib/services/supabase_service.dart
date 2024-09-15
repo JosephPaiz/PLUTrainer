@@ -95,7 +95,7 @@ class SupabaseService {
     }
   }
 
-  Future<bool> doesHistoryExist(
+  Future<bool> doesHistoryExist(int superKey,
       {required int superkey,
       required String trainingType,
       required DateTime date}) async {

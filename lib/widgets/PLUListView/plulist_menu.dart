@@ -141,25 +141,18 @@ class _PLUListMenuState extends State<PLUListMenu> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    final productsViewModel = Provider.of<ProductViewModel>(context);
-    final scoreViewModel = Provider.of<ScoreViewModel>(context);
-
-    // Solo resetea los datos si showScore es false
-    if (!productsViewModel.showScore) {
-      scoreViewModel.resetData();
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     final productsViewModel = Provider.of<ProductViewModel>(context);
     final loginViewModel = Provider.of<LoginViewModel>(context);
     final timerViewModel = Provider.of<TimerViewModel>(context);
     final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
+    final scoreViewModel = Provider.of<ScoreViewModel>(context);
 
     final int superkey = loginViewModel.superkeyValue ?? 0;
+
+    if (!productsViewModel.showScore && scoreViewModel.hasInserted) {
+      scoreViewModel.resetData();
+    }
 
     return Expanded(
       child: Center(
@@ -177,56 +170,56 @@ class _PLUListMenuState extends State<PLUListMenu> {
                   duration: timerViewModel.elapsedSeconds,
                   trainingType: widget.trainingType,
                   pluHelperUsage: pluHelperViewModel.pluHelperUsage,
-                  shouldInsert: productsViewModel.showScore,
-                )
-              : _buildContent(productsViewModel),
+                  shouldInsert: !scoreViewModel.hasInserted)
+              : Column(
+                  children: [
+                    const TimerView(),
+                    productsViewModel.isLoading
+                        ? const CircularProgressIndicator()
+                        : productsViewModel.errorMessage != null
+                            ? Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(productsViewModel.errorMessage!),
+                                  const SizedBox(height: 20),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      productsViewModel.fetchRandomProducts();
+                                    },
+                                    child: const Text('Reintentar'),
+                                  ),
+                                ],
+                              )
+                            : Expanded(
+                                child: ListView.builder(
+                                  itemCount: productsViewModel.products.length,
+                                  itemBuilder: (context, index) {
+                                    return AnimatedOpacity(
+                                      opacity: productsViewModel
+                                              .visibilityFlags[index]
+                                          ? 1.0
+                                          : 0.0,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      child: PLUListText(
+                                        showIcon: index <
+                                            productsViewModel.results.length,
+                                        isCorrectAnswer: productsViewModel
+                                                    .results.length >
+                                                index
+                                            ? productsViewModel.results[index]
+                                            : false,
+                                        text: productsViewModel
+                                            .products[index].name,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                  ],
+                ),
         ),
       ),
-    );
-  }
-
-  Widget _buildContent(ProductViewModel productsViewModel) {
-    if (productsViewModel.isLoading) {
-      return const CircularProgressIndicator();
-    }
-
-    if (productsViewModel.errorMessage != null) {
-      return _buildErrorState(productsViewModel);
-    }
-
-    return Expanded(
-      child: ListView.builder(
-        itemCount: productsViewModel.products.length,
-        itemBuilder: (context, index) {
-          return AnimatedOpacity(
-            opacity: productsViewModel.visibilityFlags[index] ? 1.0 : 0.0,
-            duration: const Duration(milliseconds: 500),
-            child: PLUListText(
-              showIcon: index < productsViewModel.results.length,
-              isCorrectAnswer: productsViewModel.results.length > index
-                  ? productsViewModel.results[index]
-                  : false,
-              text: productsViewModel.products[index].name,
-            ),
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _buildErrorState(ProductViewModel productsViewModel) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(productsViewModel.errorMessage!),
-        const SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {
-            productsViewModel.fetchRandomProducts();
-          },
-          child: const Text('Reintentar'),
-        ),
-      ],
     );
   }
 }
