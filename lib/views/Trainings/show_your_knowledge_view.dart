@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
@@ -24,7 +25,7 @@ class _ExamViewState extends State<ShowYourKnowledgeView> {
     final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
     final stopWatchViewModel = Provider.of<StopWatchViewModel>(context);
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: CustomColors.grey,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
           return const Center(
@@ -40,7 +41,7 @@ class _ExamViewState extends State<ShowYourKnowledgeView> {
               Expanded(
                 flex: 4,
                 child: Container(
-                  color: Colors.green,
+                  color: CustomColors.grey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

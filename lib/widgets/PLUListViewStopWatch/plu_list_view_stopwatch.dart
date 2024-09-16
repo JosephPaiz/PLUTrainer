@@ -3,6 +3,7 @@ import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
+import 'package:plu_trainer/viewmodels/score_view_model.dart';
 import 'package:plu_trainer/widgets/PLUListView/plulist_text.dart';
 import 'package:plu_trainer/widgets/Score/score_view.dart';
 import 'package:plu_trainer/widgets/Stopwatch/stop_watch.dart';
@@ -34,6 +35,7 @@ class _PluListMenuState extends State<PluListViewStopwatch> {
     final loginViewModel = Provider.of<LoginViewModel>(context);
     final stopWatchViewModel = Provider.of<StopWatchViewModel>(context);
     final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
+    final scoreViewModel = Provider.of<ScoreViewModel>(context);
 
     final int superkey = loginViewModel.superkeyValue ?? 0;
 
@@ -48,13 +50,24 @@ class _PluListMenuState extends State<PluListViewStopwatch> {
       }
     });
 
+    if (!pluListStopWatchViewModel.showScore && scoreViewModel.hasInserted) {
+      scoreViewModel.resetData();
+    }
+
     return Expanded(
       child: Center(
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-          ),
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                  offset: Offset(0, 5),
+                )
+              ]),
           width: 500,
           child: pluListStopWatchViewModel.showScore
               ? ScoreView(
@@ -62,11 +75,9 @@ class _PluListMenuState extends State<PluListViewStopwatch> {
                   responses: pluListStopWatchViewModel.results,
                   superKey: superkey,
                   duration: stopWatchViewModel.elapsedSeconds,
-                  trainingType: 'Muestra tu conocimiento',
+                  trainingType: 'Muestra tu Conocimiento',
                   pluHelperUsage: pluHelperViewModel.pluHelperUsage,
-                  shouldInsert: pluListStopWatchViewModel.showScore,
-                  // productsViewModel.showScore
-                )
+                  shouldInsert: !scoreViewModel.hasInserted)
               : Column(
                   children: [
                     const StopWatchView(),
