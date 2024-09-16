@@ -7,6 +7,7 @@ import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/sidebar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
+import 'package:plu_trainer/widgets/contract_button.dart';
 import 'package:provider/provider.dart';
 
 class SidebarMenu extends StatefulWidget {
@@ -73,7 +74,7 @@ class _SidebarMenuState extends State<SidebarMenu> {
                           )
                         : const CircularProgressIndicator())
                     : const Text(
-                        'Loading',
+                        '',
                         style: TextStyle(
                             fontSize: 14, color: CustomColors.darkGreen),
                       ),
@@ -94,17 +95,17 @@ class _SidebarMenuState extends State<SidebarMenu> {
                     NavigationService.navigateTo(context, '/home');
                   },
                 ),
-                SideBarButton(
-                  icon: HugeIcons.strokeRoundedEditRoad,
-                  text: LocalizationsEsp.learningButton,
-                  isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                  index: 1,
-                  isSelected: sideBarViewModel.selectedIndex == 1,
-                  onTap: () {
-                    // sideBarViewModel.selectIndex(1);
-                    // NavigationService.navigateTo(context, '/learning');
-                  },
-                ),
+                // SideBarButton(
+                //   icon: HugeIcons.strokeRoundedEditRoad,
+                //   text: LocalizationsEsp.learningButton,
+                //   isSidebarOpen: sideBarViewModel.isOpenSideBar,
+                //   index: 1,
+                //   isSelected: sideBarViewModel.selectedIndex == 1,
+                //   onTap: () {
+                //     // sideBarViewModel.selectIndex(1);
+                //     // NavigationService.navigateTo(context, '/learning');
+                //   },
+                // ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedBlockGame,
                   text: LocalizationsEsp.trainingButton,
@@ -150,6 +151,9 @@ class _SidebarMenuState extends State<SidebarMenu> {
                     // NavigationService.navigateTo(context, '/user');
                   },
                 ),
+                ContractButton(onTap: () {
+                  sideBarViewModel.contractSideBar();
+                })
               ],
             ),
           ),

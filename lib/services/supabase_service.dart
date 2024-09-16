@@ -24,6 +24,27 @@ class SupabaseService {
     }
   }
 
+  Future<List<Product>> fetchRandomProductsWithImage() async {
+    try {
+      final response =
+          await _client.rpc('get_random_products_with_images').select();
+
+      // ignore: unnecessary_null_comparison
+      if (response != null && response.isNotEmpty) {
+        _logger.d('Recovered Products: $response');
+        return (response as List)
+            .map((json) => Product.fromJson(json as Map<String, dynamic>))
+            .toList();
+      } else {
+        _logger.e('Error: No products were found.');
+        throw Exception('No products were obtained.');
+      }
+    } catch (e) {
+      _logger.e('Exception: $e');
+      throw Exception('Error during fetchRandomProductsWithImage: $e');
+    }
+  }
+
   Future<List<Product>> fetchRandomMoreProducts() async {
     final response = await _client.rpc('get_random_more_products').select();
 
@@ -83,6 +104,7 @@ class SupabaseService {
       final response =
           await _client.from('history').insert(historyData.toMap()).select();
 
+      // ignore: unnecessary_null_comparison
       if (response != null && response.isNotEmpty) {
         _logger.d('Historia insertada correctamente en Supabase.');
       } else {

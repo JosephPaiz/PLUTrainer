@@ -59,7 +59,20 @@ class _ExamViewState extends State<TrainYourMindView> {
                         child: Padding(
                           padding: const EdgeInsets.all(30),
                           child: PLUTextFiedBar(
-                            pluHelper: const PLUHelperView(),
+                            pluHelper: productViewModel.isLoading ||
+                                    productViewModel.products.isEmpty
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                : PLUHelperView(
+                                    pluText: productViewModel
+                                        .products[productViewModel.currentIndex]
+                                        .plu
+                                        .toString(),
+                                    isTimerRunning:
+                                        timerViewModel.isTimerRunning,
+                                    results: productViewModel.results,
+                                    products: productViewModel.products,
+                                  ),
                             onPLUEntered: timerViewModel.isTimerRunning
                                 ? (pluStr) {
                                     productViewModel.checkPLU(pluStr);

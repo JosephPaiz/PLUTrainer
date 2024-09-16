@@ -24,6 +24,6 @@ class TrainingViewModel extends ChangeNotifier {
   final List<String> rutes = [
     '/training/showyourknowledge',
     '/training/trainyourmind',
-    '/training',
+    '/training/trainyoureyesight',
   ];
 }

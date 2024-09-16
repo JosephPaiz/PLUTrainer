@@ -53,7 +53,22 @@ class _ExamViewState extends State<ExamView> {
                         child: Padding(
                           padding: const EdgeInsets.all(30),
                           child: PLUTextFiedBar(
-                            pluHelper: const PLUHelperView(),
+                            pluHelper: productViewModel.isLoading ||
+                                    productViewModel.products.isEmpty ||
+                                    productViewModel.currentIndex >=
+                                        productViewModel.products.length
+                                ? const Center(
+                                    child: CircularProgressIndicator())
+                                : PLUHelperView(
+                                    pluText: productViewModel
+                                        .products[productViewModel.currentIndex]
+                                        .plu
+                                        .toString(),
+                                    isTimerRunning:
+                                        timerViewModel.isTimerRunning,
+                                    results: productViewModel.results,
+                                    products: productViewModel.products,
+                                  ),
                             onPLUEntered: timerViewModel.isTimerRunning
                                 ? (pluStr) {
                                     productViewModel.checkPLU(pluStr);

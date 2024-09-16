@@ -31,7 +31,7 @@ class LocalizationsEsp {
 
   static const String showYourKnowledge = 'Muestra tu conocimiento';
   static const String trainYourMind = 'Entrena tu mente';
-  static const String trainYourEyesight = 'Entrena tu vista: Pronto';
+  static const String trainYourEyesight = 'Entrena tu vista';
 
   static const String showYourKnowledgeDescription =
       'Muestra tu conocimientos en PLUS acertando la mayor cantidad de productos en el menor tiempo.';

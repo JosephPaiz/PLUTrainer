@@ -6,6 +6,7 @@ import 'package:plu_trainer/viewmodels/Home/information_card_view_model.dart';
 import 'package:plu_trainer/viewmodels/Learning/leaning_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
+import 'package:plu_trainer/viewmodels/Training/plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
@@ -64,6 +65,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HistoryViewModel()),
         ChangeNotifierProvider(create: (context) => LeaningViewModel()),
         ChangeNotifierProvider(create: (context) => InformationCardViewModel()),
+        ChangeNotifierProvider(create: (context) => PluListImageViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
