@@ -107,7 +107,7 @@ class _PluListImageViewState extends State<PluListImageView> {
                                               .products[pluListImageViewModel
                                                   .currentIndex]
                                               .imageUrl ??
-                                          '', // Verifica si hay una URL disponible
+                                          '',
                                     )
                                   else
                                     const Text(

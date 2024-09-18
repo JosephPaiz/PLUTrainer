@@ -7,7 +7,6 @@ import 'package:plu_trainer/services/navigation_service.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_button.dart';
 import 'package:plu_trainer/viewmodels/sidebar_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
-import 'package:plu_trainer/widgets/contract_button.dart';
 import 'package:provider/provider.dart';
 
 class SidebarMenu extends StatefulWidget {
@@ -95,25 +94,14 @@ class _SidebarMenuState extends State<SidebarMenu> {
                     NavigationService.navigateTo(context, '/home');
                   },
                 ),
-                // SideBarButton(
-                //   icon: HugeIcons.strokeRoundedEditRoad,
-                //   text: LocalizationsEsp.learningButton,
-                //   isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                //   index: 1,
-                //   isSelected: sideBarViewModel.selectedIndex == 1,
-                //   onTap: () {
-                //     // sideBarViewModel.selectIndex(1);
-                //     // NavigationService.navigateTo(context, '/learning');
-                //   },
-                // ),
                 SideBarButton(
                   icon: HugeIcons.strokeRoundedBlockGame,
                   text: LocalizationsEsp.trainingButton,
                   isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                  index: 2,
-                  isSelected: sideBarViewModel.selectedIndex == 2,
+                  index: 1,
+                  isSelected: sideBarViewModel.selectedIndex == 1,
                   onTap: () {
-                    sideBarViewModel.selectIndex(2);
+                    sideBarViewModel.selectIndex(1);
                     NavigationService.navigateTo(context, '/training');
                   },
                 ),
@@ -121,10 +109,10 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   icon: HugeIcons.strokeRoundedBlockchain04,
                   text: LocalizationsEsp.examButton,
                   isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                  index: 3,
-                  isSelected: sideBarViewModel.selectedIndex == 3,
+                  index: 2,
+                  isSelected: sideBarViewModel.selectedIndex == 2,
                   onTap: () {
-                    sideBarViewModel.selectIndex(3);
+                    sideBarViewModel.selectIndex(2);
                     NavigationService.navigateTo(context, '/exam');
                   },
                 ),
@@ -132,10 +120,10 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   icon: HugeIcons.strokeRoundedWorkHistory,
                   text: LocalizationsEsp.historyButton,
                   isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                  index: 4,
-                  isSelected: sideBarViewModel.selectedIndex == 4,
+                  index: 3,
+                  isSelected: sideBarViewModel.selectedIndex == 3,
                   onTap: () {
-                    sideBarViewModel.selectIndex(4);
+                    sideBarViewModel.selectIndex(3);
                     NavigationService.navigateTo(context, '/history');
                   },
                 ),
@@ -143,17 +131,14 @@ class _SidebarMenuState extends State<SidebarMenu> {
                   icon: HugeIcons.strokeRoundedUser,
                   text: LocalizationsEsp.userButton,
                   isSidebarOpen: sideBarViewModel.isOpenSideBar,
-                  index: 5,
-                  isSelected: sideBarViewModel.selectedIndex == 5,
+                  index: 4,
+                  isSelected: sideBarViewModel.selectedIndex == 4,
                   onTap: () {
                     sideBarViewModel.selectIndex(0);
                     loginViewModel.logout(context);
                     // NavigationService.navigateTo(context, '/user');
                   },
                 ),
-                ContractButton(onTap: () {
-                  sideBarViewModel.contractSideBar();
-                })
               ],
             ),
           ),
