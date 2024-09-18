@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 
 class DoughnutChart extends StatefulWidget {
+  const DoughnutChart({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _DoughnutChartState createState() => _DoughnutChartState();
 }
 
@@ -48,16 +51,15 @@ class _DoughnutChartState extends State<DoughnutChart> {
     }
 
     return List.generate(4, (i) {
-      final isTouched = false;
-      final double fontSize = isTouched ? 25 : 16;
-      final double radius = isTouched ? 60 : 50;
+      const double fontSize = 16;
+      const double radius = 50;
 
       return PieChartSectionData(
         color: getColor(i),
         value: values[i],
         title: '${values[i]}%',
         radius: radius,
-        titleStyle: TextStyle(
+        titleStyle: const TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
           color: Colors.white,

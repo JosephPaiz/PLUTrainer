@@ -38,7 +38,7 @@ class _UserViewState extends State<UserView> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        child: UserViewLayout(),
+                        child: const UserViewLayout(),
                       ),
                     ),
                   ),

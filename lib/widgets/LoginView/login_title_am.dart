@@ -38,13 +38,10 @@ class _LoginTitleAMState extends State<LoginTitleAM>
             color: Colors.white,
             borderRadius: BorderRadius.circular(12.0),
           ),
-          child: RichText(
-            text: TextSpan(
-              children: [
-                TextSpan(text: 'A', style: Fonts.amRed),
-                TextSpan(text: 'M', style: Fonts.amGreen),
-              ],
-            ),
+          child: Image.asset(
+            'assets/images/automercado_logo/auto-mercado-logo.png',
+            width: 240,
+            height: 100,
           ),
         ),
       ),

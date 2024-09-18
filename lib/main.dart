@@ -3,7 +3,6 @@ import 'package:plu_trainer/Views/training_view.dart';
 import 'package:plu_trainer/viewmodels/History/history_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Home/information_card_view_model.dart';
-import 'package:plu_trainer/viewmodels/Learning/leaning_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_image_view_model.dart';
@@ -19,7 +18,6 @@ import 'package:plu_trainer/views/Trainings/train_your_mind_view.dart';
 import 'package:plu_trainer/views/auth_checker.dart';
 import 'package:plu_trainer/views/exam_view.dart';
 import 'package:plu_trainer/views/history_view.dart';
-import 'package:plu_trainer/views/leaning_viewd.dart';
 import 'package:plu_trainer/views/login_view.dart';
 import 'package:plu_trainer/views/user_view.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -63,7 +61,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => StopWatchViewModel()),
         ChangeNotifierProvider(create: (context) => ProfileWithRoleViewModel()),
         ChangeNotifierProvider(create: (context) => HistoryViewModel()),
-        ChangeNotifierProvider(create: (context) => LeaningViewModel()),
         ChangeNotifierProvider(create: (context) => InformationCardViewModel()),
         ChangeNotifierProvider(create: (context) => PluListImageViewModel()),
       ],
@@ -77,7 +74,6 @@ class MyApp extends StatelessWidget {
         home: const AuthChecker(),
         routes: {
           '/home': (context) => const HomeView(),
-          '/learning': (context) => const LearningView(),
           '/training': (context) => const TrainingView(),
           '/training/showyourknowledge': (context) =>
               const ShowYourKnowledgeView(),

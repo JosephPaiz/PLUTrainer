@@ -14,7 +14,7 @@ class _ChartMenuState extends State<ChartMenu> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(30),
+      padding: const EdgeInsets.all(30),
       child: Container(
         width: 600,
         height: 400,
@@ -22,16 +22,14 @@ class _ChartMenuState extends State<ChartMenu> {
           color: CustomColors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Center(
+        child: const Center(
           child: Row(
-            mainAxisAlignment:
-                MainAxisAlignment.center, // Centra en el eje horizontal
-            crossAxisAlignment:
-                CrossAxisAlignment.center, // Centra en el eje vertical
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               DoughnutChart(),
-              SizedBox(width: 40), // Espacio entre el gráfico y el texto
-              const ChartTextMenu(),
+              SizedBox(width: 40),
+              ChartTextMenu(),
             ],
           ),
         ),

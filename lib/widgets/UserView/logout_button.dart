@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 
 class LogoutButton extends StatefulWidget {
   final bool isSelectionBarOpen;
@@ -35,7 +34,7 @@ class _SelectionbarButtonState extends State<LogoutButton> {
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Container(
             decoration: BoxDecoration(color: Colors.red[900]),
-            child: Text('Cerrar Sesión'),
+            child: const Text('Cerrar Sesión'),
           )),
     );
   }

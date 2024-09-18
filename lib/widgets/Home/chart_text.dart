@@ -7,6 +7,7 @@ class ChartText extends StatefulWidget {
   const ChartText({super.key, required this.text, required this.color});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChartTextState createState() => _ChartTextState();
 }
 

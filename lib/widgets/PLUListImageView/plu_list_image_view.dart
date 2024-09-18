@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
@@ -30,6 +29,7 @@ class _PluListImageViewState extends State<PluListImageView> {
         final imageUrls = viewModel.products
             .map((product) => product.imageUrl ?? '')
             .toList();
+        // ignore: use_build_context_synchronously
         preCacheImages(context, imageUrls);
       });
     });

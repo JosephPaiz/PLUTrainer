@@ -18,6 +18,7 @@ class InformationCardViewModel extends ChangeNotifier {
   double _realCorrectAnswers = 0;
   double _totalPLUHelper = 0;
 
+  // ignore: unused_field
   int _countCorrectAnswers = 0;
   int _numberOfPLUHelper = 0;
   int _totalCorrectAnswers = 0;
