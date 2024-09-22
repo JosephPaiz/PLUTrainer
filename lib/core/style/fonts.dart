@@ -74,4 +74,7 @@ class Fonts {
 
   static final TextStyle homeViewTitleTextStyle = GoogleFonts.comfortaa(
       fontSize: 40, fontWeight: FontWeight.w800, color: Colors.white);
+
+  static final TextStyle charMenuTitle =
+      GoogleFonts.comfortaa(fontSize: 40, color: Colors.black);
 }

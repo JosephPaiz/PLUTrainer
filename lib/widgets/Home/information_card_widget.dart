@@ -28,7 +28,6 @@ class _InformationCardWidgetState extends State<InformationCardWidget> {
   late Color backGroundColor;
   late IconData icon;
 
-  // Variable para controlar si está en hover
   bool isHovering = false;
 
   @override
@@ -114,7 +113,7 @@ class _InformationCardWidgetState extends State<InformationCardWidget> {
                     ),
                     child: Icon(
                       icon,
-                      color: backGroundColor, // Color del ícono
+                      color: backGroundColor,
                       size: 30,
                     ),
                   ),

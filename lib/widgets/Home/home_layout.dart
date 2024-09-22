@@ -65,7 +65,9 @@ class _AnimatedTextOverlayState extends State<HomeLayout>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InformationCardMenu(),
-                    ChartMenu(),
+                    ChartMenu(
+                      percentValues: [10, 50, 20, 20],
+                    ),
                   ],
                 ),
               ),

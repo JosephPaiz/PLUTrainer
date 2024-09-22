@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/viewmodels/Login/login_title_view_model.dart';
 import 'package:provider/provider.dart';
 

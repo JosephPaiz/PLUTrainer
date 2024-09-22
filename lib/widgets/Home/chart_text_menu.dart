@@ -1,78 +1,50 @@
-// import 'package:flutter/material.dart';
-// import 'package:plu_trainer/widgets/Home/chart_text.dart';
-
-// class ChartTextMenu extends StatefulWidget {
-//   const ChartTextMenu({super.key});
-
-//   @override
-//   State<ChartTextMenu> createState() => _ChartTextMenuState();
-// }
-
-// class _ChartTextMenuState extends State<ChartTextMenu> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Center(
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           ChartText(
-//             text: 'Respuestas Correctas',
-//             color: Colors.green,
-//           ),
-//           ChartText(
-//             text: 'Respuestas Fallidas',
-//             color: Colors.red,
-//           ),
-//           ChartText(
-//             text: 'Logro pasar',
-//             color: Colors.blue,
-//           ),
-//           ChartText(
-//             text: 'No logro pasar',
-//             color: Colors.orange,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/widgets/Home/chart_text.dart';
 
 class ChartTextMenu extends StatefulWidget {
-  const ChartTextMenu({super.key});
+  final List<double> percentValues;
+  const ChartTextMenu({super.key, required this.percentValues});
 
   @override
   State<ChartTextMenu> createState() => _ChartTextMenuState();
 }
 
 class _ChartTextMenuState extends State<ChartTextMenu> {
+  late List<double> percentValues = [];
+
+  @override
+  void initState() {
+    percentValues = widget.percentValues;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment:
-          MainAxisAlignment.center, // Centra los textos verticalmente
-      crossAxisAlignment:
-          CrossAxisAlignment.start, // Alinea los textos a la izquierda
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ChartText(
-          text: 'Respuestas Correctas',
+          percentName: 'Respuestas Correctas',
+          percentValue: percentValues[1].toStringAsFixed(0),
           color: Colors.green,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ChartText(
-          text: 'Respuestas Fallidas',
+          percentName: 'Respuestas Fallidas',
+          percentValue: percentValues[3].toStringAsFixed(0),
           color: Colors.red,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ChartText(
-          text: 'Logro pasar',
+          percentName: 'Logro pasar',
+          percentValue: percentValues[0].toStringAsFixed(0),
           color: Colors.blue,
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         ChartText(
-          text: 'No logro pasar',
+          percentName: 'No logro pasar',
+          percentValue: percentValues[2].toStringAsFixed(0),
           color: Colors.orange,
         ),
       ],

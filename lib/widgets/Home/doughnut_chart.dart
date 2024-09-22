@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 
 class DoughnutChart extends StatefulWidget {
-  const DoughnutChart({super.key});
+  final List<double> values;
+  const DoughnutChart({super.key, required this.values});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -11,8 +12,13 @@ class DoughnutChart extends StatefulWidget {
 }
 
 class _DoughnutChartState extends State<DoughnutChart> {
-  // List<double> values = [40, 30, 20, 10];
-  List<double> values = [40, 30, 10, 20];
+  List<double> values = [];
+
+  @override
+  void initState() {
+    values = widget.values;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,19 +57,13 @@ class _DoughnutChartState extends State<DoughnutChart> {
     }
 
     return List.generate(4, (i) {
-      const double fontSize = 16;
       const double radius = 50;
 
       return PieChartSectionData(
         color: getColor(i),
         value: values[i],
-        title: '${values[i]}%',
+        title: '',
         radius: radius,
-        titleStyle: const TextStyle(
-          fontSize: fontSize,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
       );
     });
   }
