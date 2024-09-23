@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/services/navigation_service.dart';
 
@@ -43,45 +44,45 @@ class _TrainingOptionButtonState extends State<TrainingOptionButton> {
           },
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 100),
-            width: _isHovered ? 265 : 250,
+            width: _isHovered ? 305 : 300,
             height: _isHovered ? 515 : 500,
             decoration: BoxDecoration(
-                color: _isHovered
-                    ? Colors.grey[300]
-                    : Colors.white.withOpacity(0.5),
+                border: Border.all(color: CustomColors.darkGreen, width: 1),
+                color: _isHovered ? Colors.grey[200] : Colors.white,
                 borderRadius: BorderRadius.circular(20)),
             alignment: Alignment.center,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Text(
+                    widget.nameOfTheTraining,
+                    style: Fonts.trainingOptionButtonText,
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
                 Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.blue),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(30),
+                          topRight: Radius.circular(30),
+                          bottomRight: Radius.circular(30)),
+                      color: CustomColors.darkGreen),
                   child: Padding(
                     padding: const EdgeInsets.all(25.0),
                     child: Icon(
                       widget.trainingIcon,
-                      size: 100,
+                      size: 130,
                       color: Colors.white,
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 50,
-                ),
-                Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      widget.nameOfTheTraining,
-                      style: Fonts.trainingOptionButtonText,
-                    ),
-                  ),
+                  height: 10,
                 ),
                 Container(
                   alignment: Alignment.center,

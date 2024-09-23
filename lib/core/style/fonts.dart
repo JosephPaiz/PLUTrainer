@@ -34,7 +34,7 @@ class Fonts {
   );
 
   static final TextStyle trainingOptionButtonText = GoogleFonts.comfortaa(
-      fontSize: 15, fontWeight: FontWeight.w800, color: Colors.white);
+      fontSize: 20, fontWeight: FontWeight.w800, color: CustomColors.darkGrey);
 
   static final TextStyle trainingOptionButtonDescription =
       GoogleFonts.comfortaa(
