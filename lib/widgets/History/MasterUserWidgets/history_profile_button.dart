@@ -40,48 +40,58 @@ class _HistoryProfileButtonState extends State<HistoryProfileButton> {
             });
           },
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 150),
-            width: _isHovered ? 270 : 250,
-            height: _isHovered ? 170 : 150,
+            duration: const Duration(milliseconds: 130),
+            width: _isHovered ? 255 : 250,
+            height: _isHovered ? 155 : 150,
             decoration: BoxDecoration(
-              color: CustomColors
-                  .backgroundHistoryProfileButton[widget.selectColor],
+              color: CustomColors.white,
+              border: Border.all(color: CustomColors.darkGreen, width: 1.0),
               borderRadius: BorderRadius.circular(20),
               boxShadow: _isHovered
                   ? [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(
-                            0, 3), // Cambia la posición de la sombra
+                        blurRadius: 5,
+                        offset: const Offset(0, 3),
                       ),
                     ]
                   : [],
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
+                Align(
+                  alignment: Alignment.topCenter,
                   child: Container(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      widget.name,
-                      style: const TextStyle(fontSize: 15, color: Colors.black),
+                    height: 70,
+                    decoration: const BoxDecoration(
+                      color: CustomColors.darkGreen,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(25),
+                      ),
+                    ),
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Text(
+                        widget.name,
+                        style: const TextStyle(
+                            fontSize: 15, color: CustomColors.white),
+                      ),
                     ),
                   ),
                 ),
+                const Spacer(),
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: Alignment.bottomLeft,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: CustomColors
-                            .tagHistoryProfileButton[widget.selectColor],
+                        color: CustomColors.deepRed,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Padding(

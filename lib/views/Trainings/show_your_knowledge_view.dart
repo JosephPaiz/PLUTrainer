@@ -3,11 +3,11 @@ import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/stop_watch_view_model.dart';
-import 'package:plu_trainer/widgets/PLUHelperUniversal/plu_helper_universal.dart';
-import 'package:plu_trainer/widgets/PLUListViewStopWatch/plu_list_view_stopwatch.dart';
-import 'package:plu_trainer/widgets/SelectionBarNoOptions/selection_bar_no_options.dart';
+import 'package:plu_trainer/widgets/Training/PLUHelperUniversal/plu_helper_universal.dart';
+import 'package:plu_trainer/widgets/Training/PLUListViewStopWatch/plu_list_view_stopwatch.dart';
+import 'package:plu_trainer/widgets/Training/SelectionBarNoOptions/selection_bar_no_options.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
-import 'package:plu_trainer/widgets/PLUTextField/plutextfield_bar.dart';
+import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
 import 'package:provider/provider.dart';
 
 class ShowYourKnowledgeView extends StatefulWidget {

@@ -3,9 +3,9 @@ import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart'
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
-import 'package:plu_trainer/widgets/LoginView/login_textfield.dart';
-import 'package:plu_trainer/widgets/LoginView/login_title.dart';
-import 'package:plu_trainer/widgets/LoginView/login_title_am.dart';
+import 'package:plu_trainer/widgets/Training/LoginView/login_textfield.dart';
+import 'package:plu_trainer/widgets/Training/LoginView/login_title.dart';
+import 'package:plu_trainer/widgets/Training/LoginView/login_title_am.dart';
 import 'package:provider/provider.dart';
 
 class LoginView extends StatefulWidget {

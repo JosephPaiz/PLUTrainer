@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_image_view_model.dart';
-import 'package:plu_trainer/widgets/PLUHelper/pluhelper_view.dart';
-import 'package:plu_trainer/widgets/PLUListImageView/plu_list_image_view.dart';
-import 'package:plu_trainer/widgets/SelectionBarImage/selection_bar_image_menu.dart';
+import 'package:plu_trainer/widgets/Training/PLUHelper/pluhelper_view.dart';
+import 'package:plu_trainer/widgets/Training/PLUListImageView/plu_list_image_view.dart';
+import 'package:plu_trainer/widgets/Training/SelectionBarImage/selection_bar_image_menu.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
-import 'package:plu_trainer/widgets/PLUTextField/plutextfield_bar.dart';
+import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
 import 'package:provider/provider.dart';
 
 class TrainYourEyesightView extends StatefulWidget {

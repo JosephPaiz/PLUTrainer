@@ -3,9 +3,9 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/viewmodels/products_view_model.dart';
-import 'package:plu_trainer/widgets/SelectionBar/playstop_button.dart';
+import 'package:plu_trainer/widgets/Training/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
-import 'package:plu_trainer/widgets/SelectionBar/restar_button.dart';
+import 'package:plu_trainer/widgets/Training/SelectionBar/restar_button.dart';
 import 'package:provider/provider.dart';
 
 class ExamSelectionBar extends StatefulWidget {
