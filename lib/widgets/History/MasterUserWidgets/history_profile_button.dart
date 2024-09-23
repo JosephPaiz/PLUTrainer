@@ -4,14 +4,12 @@ import 'package:plu_trainer/core/style/custom_colors.dart';
 class HistoryProfileButton extends StatefulWidget {
   final String name;
   final String rol;
-  final int selectColor;
   final VoidCallback onTap;
 
   const HistoryProfileButton({
     super.key,
     required this.name,
     required this.rol,
-    required this.selectColor,
     required this.onTap,
   });
 

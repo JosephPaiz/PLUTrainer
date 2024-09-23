@@ -65,7 +65,6 @@ class _HistoryMasterProfileLayoutState
                             return HistoryProfileButton(
                               name: profileName,
                               rol: role,
-                              selectColor: roleId - 1,
                               onTap: () {
                                 setState(() {
                                   _selectedSuperkey = profileSuperkey;
