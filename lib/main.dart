@@ -1,3 +1,4 @@
+import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
@@ -63,6 +64,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HistoryViewModel()),
         ChangeNotifierProvider(create: (context) => InformationCardViewModel()),
         ChangeNotifierProvider(create: (context) => PluListImageViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => ExamPluListImageViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

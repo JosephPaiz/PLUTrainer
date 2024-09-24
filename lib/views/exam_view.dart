@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
+import 'package:plu_trainer/widgets/Exam/ExamPLUTextField/exam_plu_text_field.dart';
+import 'package:plu_trainer/widgets/Exam/ExamPluListImage/exam_plu_list_image_view.dart';
 import 'package:plu_trainer/widgets/Exam/ExamSelectionBar/exam_selection_bar.dart';
-import 'package:plu_trainer/widgets/Training/PLUHelper/pluhelper_view.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
-import 'package:plu_trainer/widgets/Training/PLUListView/plulist_menu.dart';
-import 'package:plu_trainer/viewmodels/products_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
-import 'package:plu_trainer/widgets/Training/PLUTextField/plutextfield_bar.dart';
 import 'package:provider/provider.dart';
 
 class ExamView extends StatefulWidget {
@@ -19,7 +18,8 @@ class ExamView extends StatefulWidget {
 class _ExamViewState extends State<ExamView> {
   @override
   Widget build(BuildContext context) {
-    final productViewModel = Provider.of<ProductViewModel>(context);
+    final examPluListImageViewModel =
+        Provider.of<ExamPluListImageViewModel>(context);
     final timerViewModel = Provider.of<TimerViewModel>(context);
     return Scaffold(
       backgroundColor: CustomColors.grey,
@@ -46,36 +46,20 @@ class _ExamViewState extends State<ExamView> {
                         padding: EdgeInsets.all(30),
                         child: ExamSelectionBar(),
                       ),
-                      const PLUListMenu(
-                        trainingType: 'Prueba',
+                      const ExamPluListImageView(
+                        trainingType: 'Entrena tu Vista',
                       ),
                       Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(30),
-                          child: PLUTextFiedBar(
-                            pluHelper: productViewModel.isLoading ||
-                                    productViewModel.products.isEmpty ||
-                                    productViewModel.currentIndex >=
-                                        productViewModel.products.length
-                                ? const Center(
-                                    child: CircularProgressIndicator())
-                                : PLUHelperView(
-                                    pluText: productViewModel
-                                        .products[productViewModel.currentIndex]
-                                        .plu
-                                        .toString(),
-                                    isTimerRunning:
-                                        timerViewModel.isTimerRunning,
-                                    results: productViewModel.results,
-                                    products: productViewModel.products,
-                                  ),
-                            onPLUEntered: timerViewModel.isTimerRunning
-                                ? (pluStr) {
-                                    productViewModel.checkPLU(pluStr);
-                                  }
-                                : (pluStr) {},
-                          ),
-                        ),
+                            padding: const EdgeInsets.all(30),
+                            child: ExamPLUTextFieldBar(
+                              onPLUEntered: timerViewModel.isTimerRunning
+                                  ? (pluStr) {
+                                      examPluListImageViewModel
+                                          .checkPLU(pluStr);
+                                    }
+                                  : (pluStr) {},
+                            )),
                       )
                     ],
                   ),
