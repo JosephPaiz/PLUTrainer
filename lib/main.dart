@@ -1,3 +1,4 @@
+import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
@@ -66,6 +67,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PluListImageViewModel()),
         ChangeNotifierProvider(
             create: (context) => ExamPluListImageViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => ExamAlertDialogAccessViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

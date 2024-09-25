@@ -61,7 +61,9 @@ class _ExamViewState extends State<TrainYourMindView> {
                           padding: const EdgeInsets.all(30),
                           child: PLUTextFiedBar(
                             pluHelper: productViewModel.isLoading ||
-                                    productViewModel.products.isEmpty
+                                    productViewModel.products.isEmpty ||
+                                    productViewModel.currentIndex >=
+                                        productViewModel.products.length
                                 ? const Center(
                                     child: CircularProgressIndicator())
                                 : PLUHelperView(

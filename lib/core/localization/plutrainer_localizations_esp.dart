@@ -48,4 +48,6 @@ class LocalizationsEsp {
       'Promedio de usos del ayudante de PLU';
   static const String timePerQuestionCardDescription =
       'Promedio de tiempo por pregunta';
+
+  static const String insertSuperKey = 'Inserta la super clave';
 }

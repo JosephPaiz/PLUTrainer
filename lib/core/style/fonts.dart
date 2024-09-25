@@ -53,7 +53,8 @@ class Fonts {
       fontWeight: FontWeight.w800, color: Colors.grey[600]);
   static final TextStyle historyProfileText =
       GoogleFonts.comfortaa(fontWeight: FontWeight.w800, color: Colors.white);
-
+  static final TextStyle examAlertDialogText = GoogleFonts.comfortaa(
+      fontWeight: FontWeight.w800, color: Colors.white, fontSize: 17);
   static final TextStyle sideBarButtonTextStyleActive = GoogleFonts.comfortaa(
       fontWeight: FontWeight.w800, color: CustomColors.white);
 
@@ -77,4 +78,10 @@ class Fonts {
 
   static final TextStyle charMenuTitle =
       GoogleFonts.comfortaa(fontSize: 40, color: Colors.black);
+
+  static final TextStyle examTitleMenu =
+      GoogleFonts.comfortaa(fontSize: 40, color: Colors.black);
+
+  static final TextStyle examButtonText =
+      GoogleFonts.comfortaa(fontSize: 15, color: Colors.white);
 }

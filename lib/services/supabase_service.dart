@@ -205,4 +205,21 @@ class SupabaseService {
       throw Exception('Error al obtener productos por letra.');
     }
   }
+
+  Future<bool> hasPermissions(int superkey) async {
+    try {
+      final response = await _client
+          .rpc('profile_has_permissions', params: {'superkey': superkey});
+
+      if (response != null && response is bool) {
+        return response;
+      } else {
+        print('Unexpected response type: ${response.runtimeType}');
+        return false;
+      }
+    } catch (e) {
+      print('Error checking permissions: $e');
+      return false;
+    }
+  }
 }

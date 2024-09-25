@@ -5,7 +5,7 @@ import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart'
 
 class PLUTextFiedBar extends StatefulWidget {
   final void Function(String) onPLUEntered;
-  final Widget pluHelper; // El widget que será pasado como argumento
+  final Widget pluHelper;
 
   const PLUTextFiedBar(
       {super.key, required this.onPLUEntered, required this.pluHelper});

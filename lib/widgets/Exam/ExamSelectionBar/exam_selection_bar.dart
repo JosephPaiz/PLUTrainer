@@ -47,30 +47,6 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
       _isInitialized = true;
     }
   }
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
-  //   final productViewModel = Provider.of<ProductViewModel>(context);
-  //   final playStopButtonViewModel =
-  //       Provider.of<PlayStopButtonViewModel>(context);
-
-  //   timerViewModel.onTimerEnd = () {
-  //     timerViewModel.stopTimer();
-  //     playStopButtonViewModel.stopPlaying();
-  //   };
-  //   productViewModel.connectToTimer(timerViewModel);
-
-  //   if (productViewModel.showScore) {
-  //     productViewModel.checkResultsLength();
-  //     timerViewModel.stopTimer();
-  //     playStopButtonViewModel.stopPlaying();
-  //   }
-
-  //   if (!_isInitialized) {
-  //     timerViewModel.initializeTimer(120);
-  //     _isInitialized = true;
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
