@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_score_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
-import 'package:plu_trainer/viewmodels/Training/plu_list_image_view_model.dart';
-import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/viewmodels/score_view_model.dart';
+import 'package:plu_trainer/widgets/Exam/ExamScore/exam_score_view.dart';
 import 'package:plu_trainer/widgets/Training/PLUListImageView/plu_list_image_widget.dart';
 import 'package:plu_trainer/widgets/Training/PLUListImageView/plu_list_text_widget.dart';
-import 'package:plu_trainer/widgets/Training/Score/score_view.dart';
 import 'package:plu_trainer/widgets/Training/Timer/timer_view.dart';
 import 'package:provider/provider.dart';
 
@@ -49,13 +49,16 @@ class _PluListImageViewState extends State<ExamPluListImageView> {
         Provider.of<ExamPluListImageViewModel>(context);
     final loginViewModel = Provider.of<LoginViewModel>(context);
     final timerViewModel = Provider.of<TimerViewModel>(context);
-    final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
     final scoreViewModel = Provider.of<ScoreViewModel>(context);
+    final examAlertDialogAccessViewModel =
+        Provider.of<ExamAlertDialogAccessViewModel>(context);
+    final examScoreViewModel =
+        Provider.of<ExamScoreViewModel>(context, listen: false);
 
     final int superkey = loginViewModel.superkeyValue ?? 0;
 
     if (!examPluListImageViewModel.showScore && scoreViewModel.hasInserted) {
-      scoreViewModel.resetData();
+      examScoreViewModel.resetData();
     }
 
     return Expanded(
@@ -74,13 +77,13 @@ class _PluListImageViewState extends State<ExamPluListImageView> {
               ]),
           width: 500,
           child: examPluListImageViewModel.showScore
-              ? ScoreView(
+              ? ExamScoreView(
                   products: examPluListImageViewModel.products,
                   responses: examPluListImageViewModel.results,
                   superKey: superkey,
                   duration: timerViewModel.elapsedSeconds,
-                  trainingType: widget.trainingType,
-                  pluHelperUsage: pluHelperViewModel.pluHelperUsage,
+                  authorizedSuperkey:
+                      examAlertDialogAccessViewModel.authorizedSuperkey,
                   shouldInsert: !scoreViewModel.hasInserted)
               : Column(
                   children: [

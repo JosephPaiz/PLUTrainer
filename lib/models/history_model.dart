@@ -6,7 +6,7 @@ class HistoryModel {
   final int pluHelperUsage;
   final int duration;
   final DateTime date;
-  final String trainingType; // Nueva propiedad para training_type
+  final String trainingType;
 
   HistoryModel({
     required this.profileName,
@@ -16,7 +16,7 @@ class HistoryModel {
     required this.pluHelperUsage,
     required this.duration,
     required this.date,
-    required this.trainingType, // Añadir el training_type al constructor
+    required this.trainingType,
   });
 
   factory HistoryModel.fromMap(Map<String, dynamic> map) {

@@ -1,5 +1,6 @@
 import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_score_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
             create: (context) => ExamPluListImageViewModel()),
         ChangeNotifierProvider(
             create: (context) => ExamAlertDialogAccessViewModel()),
+        ChangeNotifierProvider(create: (context) => ExamScoreViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

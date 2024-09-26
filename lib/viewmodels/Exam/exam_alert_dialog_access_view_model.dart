@@ -5,6 +5,7 @@ class ExamAlertDialogAccessViewModel extends ChangeNotifier {
   final TextEditingController superkeyController = TextEditingController();
   final SupabaseService _supabaseService;
   String message = '';
+  int authorizedSuperkey = 0;
   bool hasPermission = false;
   bool isLoading = false;
 
@@ -25,9 +26,13 @@ class ExamAlertDialogAccessViewModel extends ChangeNotifier {
 
       hasPermission = await _supabaseService.hasPermissions(superkey);
 
-      message = hasPermission
-          ? 'Superclave válida. Puedes continuar.'
-          : 'Superclave no válida. Inténtalo de nuevo.';
+      if (hasPermission) {
+        authorizedSuperkey = superkey;
+        message = 'Superclave válida. Puedes continuar.';
+      } else {
+        authorizedSuperkey = 0;
+        message = 'Superclave no válida. Inténtalo de nuevo.';
+      }
     } catch (e) {
       message = 'Error al verificar la superclave. Inténtalo más tarde.';
       hasPermission = false;

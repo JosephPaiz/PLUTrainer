@@ -1,3 +1,4 @@
+import 'package:plu_trainer/models/exam_history_data.dart';
 import 'package:plu_trainer/models/history_data.dart';
 import 'package:plu_trainer/models/history_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -86,23 +87,26 @@ class SupabaseService {
 
   Future<void> insertHistory(HistoryData historyData) async {
     try {
-      final recentHistory = await _client
-          .from('history')
-          .select()
-          .eq('superkey', historyData.superKey)
-          .eq('training_type', historyData.trainingType)
-          .eq('date', historyData.date.toIso8601String().split('.')[0])
-          .limit(1)
-          .maybeSingle();
-
-      if (recentHistory != null) {
-        _logger.w(
-            'Se encontró una inserción reciente, omitiendo nueva inserción.');
-        return;
-      }
-
       final response =
           await _client.from('history').insert(historyData.toMap()).select();
+
+      // ignore: unnecessary_null_comparison
+      if (response != null && response.isNotEmpty) {
+        _logger.d('Historia insertada correctamente en Supabase.');
+      } else {
+        _logger.e('Error insertando la historia.');
+      }
+    } catch (e) {
+      _logger.e('Error al insertar la historia: $e');
+    }
+  }
+
+  Future<void> examInsertHistory(ExamHistoryData examHistoryData) async {
+    try {
+      final response = await _client
+          .from('exam_history')
+          .insert(examHistoryData.toMap())
+          .select();
 
       // ignore: unnecessary_null_comparison
       if (response != null && response.isNotEmpty) {

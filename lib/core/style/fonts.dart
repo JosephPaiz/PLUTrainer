@@ -64,6 +64,8 @@ class Fonts {
 
   static final TextStyle scoreViewTitleTexStyle = GoogleFonts.comfortaa(
       fontSize: 30, fontWeight: FontWeight.w800, color: Colors.black);
+  static final TextStyle scoreNameViewTitleTexStyle = GoogleFonts.comfortaa(
+      fontSize: 13, fontWeight: FontWeight.w800, color: Colors.black);
 
   static final TextStyle historyViewTitleTextStyle = GoogleFonts.comfortaa(
       fontSize: 35, fontWeight: FontWeight.w800, color: Colors.black);

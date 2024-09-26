@@ -58,9 +58,6 @@ class _HistoryMasterProfileLayoutState
                             final role = profileWithRoles.roles.isNotEmpty
                                 ? profileWithRoles.roles.first.roleName
                                 : 'No role';
-                            final roleId = profileWithRoles.roles.isNotEmpty
-                                ? profileWithRoles.roles.first.id
-                                : 0;
 
                             return HistoryProfileButton(
                               name: profileName,

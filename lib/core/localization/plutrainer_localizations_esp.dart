@@ -20,6 +20,7 @@ class LocalizationsEsp {
   static const String answeredAnswers = 'Respuestas contestadas';
   static const String correctAnswersText = 'Respuestas correctas';
   static const String pluHelperUsage = 'Usos de PLU Helper';
+  static const String authorizedSuperkey = 'Autorizado por';
   static const String duration = 'Duración';
   static const String result = 'Resultado';
 

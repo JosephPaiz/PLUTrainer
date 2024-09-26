@@ -3,12 +3,10 @@ import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
-import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
 import 'package:plu_trainer/widgets/Exam/ExamExitButton/exam_exit_button.dart';
 import 'package:plu_trainer/widgets/Training/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
-import 'package:plu_trainer/widgets/Training/SelectionBar/restar_button.dart';
 import 'package:provider/provider.dart';
 
 class ExamSelectionBar extends StatefulWidget {
@@ -53,7 +51,6 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
   @override
   Widget build(BuildContext context) {
     final timerViewModel = Provider.of<TimerViewModel>(context);
-    final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
     final examPluListImageViewModel =
         Provider.of<ExamPluListImageViewModel>(context);
     final playStopButtonViewModel =
