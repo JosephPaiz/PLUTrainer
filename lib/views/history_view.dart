@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/widgets/History/history_screen.dart';
 import 'package:plu_trainer/widgets/SideBar/sidebar_menu.dart';
 
@@ -13,7 +14,7 @@ class _HistoryViewState extends State<HistoryView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green,
+      backgroundColor: CustomColors.grey,
       body: LayoutBuilder(builder: (context, constraints) {
         if (constraints.maxWidth < 800) {
           return const Center(
@@ -29,8 +30,7 @@ class _HistoryViewState extends State<HistoryView> {
               Expanded(
                 flex: 4,
                 child: Container(
-                    color: const Color.fromRGBO(76, 175, 80, 1),
-                    child: const HistoryScreen()), // Usar HistoryScreen aquí
+                    color: CustomColors.grey, child: const HistoryScreen()),
               ),
             ],
           );

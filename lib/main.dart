@@ -1,6 +1,8 @@
 import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_score_view_model.dart';
+import 'package:plu_trainer/viewmodels/History/exam_history_view_model.dart';
+import 'package:plu_trainer/viewmodels/History/history_button_select_mode_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/plu_list_stopwatch_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
@@ -71,6 +73,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => ExamAlertDialogAccessViewModel()),
         ChangeNotifierProvider(create: (context) => ExamScoreViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => HistoryButtonSelectModeViewModel()),
+        ChangeNotifierProvider(create: (context) => ExamHistoryViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/widgets/History/history_profile_layout.dart';
+import 'package:plu_trainer/widgets/History/Training/history_profile_layout.dart';
+import 'package:plu_trainer/widgets/History/history_combination_view.dart';
 import 'package:provider/provider.dart';
 import 'package:plu_trainer/viewmodels/History/profile_with_role_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
@@ -72,9 +73,10 @@ class _HistoryMasterProfileLayoutState
                         ),
                       ),
                     )
-          : HistoryProfileLayout(
-              superkey: loginViewModel.superkeyValue ?? 0,
-            ),
+          // : HistoryProfileLayout(
+          //     superkey: loginViewModel.superkeyValue ?? 0,
+          //   ),
+          : HistoryCombinationView(superkey: loginViewModel.superkeyValue ?? 0),
     );
   }
 }

@@ -12,17 +12,15 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20), // Definir padding
+      padding: const EdgeInsets.all(20),
       child: ClipRRect(
-        borderRadius:
-            BorderRadius.circular(20), // Aplicamos el BorderRadius aquí
+        borderRadius: BorderRadius.circular(20),
         child: Container(
           // No necesitas Expanded aquí
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Colors.white, // Definir el color de fondo
-          child:
-              const HistoryMasterProfileLayout(), // El contenido que se mostrará
+          color: Colors.white,
+          child: const HistoryMasterProfileLayout(),
         ),
       ),
     );

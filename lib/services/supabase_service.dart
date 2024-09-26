@@ -1,4 +1,5 @@
 import 'package:plu_trainer/models/exam_history_data.dart';
+import 'package:plu_trainer/models/exam_history_model.dart';
 import 'package:plu_trainer/models/history_data.dart';
 import 'package:plu_trainer/models/history_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -160,6 +161,29 @@ class SupabaseService {
       if (response.isNotEmpty) {
         return (response as List)
             .map((data) => HistoryModel.fromMap(data as Map<String, dynamic>))
+            .toList();
+      } else {
+        return [];
+      }
+    } catch (e) {
+      _logger.e('Error fetching history: $e');
+      throw Exception('Failed to fetch history.');
+    }
+  }
+
+  Future<List<ExamHistoryModel>> fetchExamHistoryBySuperkey(
+      int superkey) async {
+    try {
+      final response = await _client
+          .from('exam_history')
+          .select(
+              'score, answered_questions, correct_answers, authorized_superkey, duration, date')
+          .eq('superkey', superkey);
+
+      if (response.isNotEmpty) {
+        return (response as List)
+            .map((data) =>
+                ExamHistoryModel.fromMap(data as Map<String, dynamic>))
             .toList();
       } else {
         return [];

@@ -2,32 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
 
-class HistoryProfileText extends StatefulWidget {
+class ExamHistoryProfileText extends StatefulWidget {
   final String result;
   final String answeredAnswers;
   final String correctAnswers;
-  final String pluHelperUsage;
+  final String authorizedSuperkey;
   final String duration;
-  final String trainingType;
-  const HistoryProfileText(
-      {super.key,
-      required this.result,
-      required this.answeredAnswers,
-      required this.correctAnswers,
-      required this.pluHelperUsage,
-      required this.duration,
-      required this.trainingType});
+  const ExamHistoryProfileText({
+    super.key,
+    required this.result,
+    required this.answeredAnswers,
+    required this.correctAnswers,
+    required this.authorizedSuperkey,
+    required this.duration,
+  });
 
   @override
-  State<HistoryProfileText> createState() => _HistoryProfileTextState();
+  State<ExamHistoryProfileText> createState() => _HistoryProfileTextState();
 }
 
-class _HistoryProfileTextState extends State<HistoryProfileText> {
+class _HistoryProfileTextState extends State<ExamHistoryProfileText> {
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        // Usamos Expanded para que todos los elementos tengan el mismo ancho
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(7),
@@ -93,7 +91,7 @@ class _HistoryProfileTextState extends State<HistoryProfileText> {
               ),
               child: Center(
                 child: Text(
-                  widget.pluHelperUsage,
+                  widget.authorizedSuperkey,
                   style: Fonts.historyProfileText,
                 ),
               ),
@@ -112,24 +110,6 @@ class _HistoryProfileTextState extends State<HistoryProfileText> {
               child: Center(
                 child: Text(
                   widget.duration,
-                  style: Fonts.historyProfileText,
-                ),
-              ),
-            ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(7),
-            child: Container(
-              height: 50,
-              decoration: BoxDecoration(
-                color: CustomColors.deepGrey,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Center(
-                child: Text(
-                  widget.trainingType,
                   style: Fonts.historyProfileText,
                 ),
               ),
