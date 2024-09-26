@@ -50,4 +50,5 @@ class LocalizationsEsp {
       'Promedio de tiempo por pregunta';
 
   static const String insertSuperKey = 'Inserta la super clave';
+  static const String exitText = 'Salir';
 }

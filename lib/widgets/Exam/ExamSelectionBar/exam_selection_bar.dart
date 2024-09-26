@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:plu_trainer/Widgets/contract_button.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/pluhelper_view_model.dart';
 import 'package:plu_trainer/viewmodels/Training/timer_view_model.dart';
+import 'package:plu_trainer/widgets/Exam/ExamExitButton/exam_exit_button.dart';
 import 'package:plu_trainer/widgets/Training/SelectionBar/playstop_button.dart';
 import 'package:plu_trainer/viewmodels/Training/playstop_button_view_model.dart.dart';
 import 'package:plu_trainer/widgets/Training/SelectionBar/restar_button.dart';
@@ -54,9 +56,10 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
     final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
     final examPluListImageViewModel =
         Provider.of<ExamPluListImageViewModel>(context);
-
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
+    final examAlertDialogAccessViewModel =
+        Provider.of<ExamAlertDialogAccessViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
@@ -97,13 +100,13 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
                           timerViewModel.startTimer();
                         },
                 ),
-                RestarButton(
-                    icon: HugeIcons.strokeRoundedReload,
+                ExamExitButton(
+                    icon: HugeIcons.strokeRoundedUnavailable,
                     isSelectionBarOpen: selectionBarIsOpen,
                     onTap: () {
                       examPluListImageViewModel.resetButton();
                       timerViewModel.resetTimer();
-                      pluHelperViewModel.resetPluHelperUsage();
+                      examAlertDialogAccessViewModel.resetState();
                     }),
               ],
             ),
