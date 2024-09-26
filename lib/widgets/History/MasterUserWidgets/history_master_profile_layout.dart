@@ -73,9 +73,6 @@ class _HistoryMasterProfileLayoutState
                         ),
                       ),
                     )
-          // : HistoryProfileLayout(
-          //     superkey: loginViewModel.superkeyValue ?? 0,
-          //   ),
           : HistoryCombinationView(superkey: loginViewModel.superkeyValue ?? 0),
     );
   }
