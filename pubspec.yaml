@@ -44,7 +44,9 @@ dependencies:
   shared_preferences: ^2.0.6
   fl_chart: ^0.69.0
   cached_network_image: ^3.2.1
-
+  excel: ^2.0.6
+  html: ^0.15.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,3 +1,4 @@
+import 'package:plu_trainer/models/exa_history_file_model.dart';
 import 'package:plu_trainer/models/exam_history_data.dart';
 import 'package:plu_trainer/models/exam_history_model.dart';
 import 'package:plu_trainer/models/history_data.dart';
@@ -248,6 +249,34 @@ class SupabaseService {
     } catch (e) {
       print('Error checking permissions: $e');
       return false;
+    }
+  }
+
+  Future<List<ExamHistoryFileModel>> getExamHistoryByDateRange(
+      DateTime startDate, DateTime endDate) async {
+    try {
+      final response = await _client.rpc(
+        'get_exam_history_by_date_range',
+        params: {
+          'start_date': startDate.toUtc().toIso8601String(),
+          'end_date': endDate.toUtc().toIso8601String(),
+        },
+      );
+
+      if (response != null && response is List) {
+        _logger.i(response);
+        return response
+            .map((data) => ExamHistoryFileModel.fromMap(data))
+            .toList();
+      } else {
+        _logger.w(
+            'No se encontraron registros de examen en el rango de fechas especificado.');
+        return [];
+      }
+    } catch (e) {
+      _logger.e('Error al obtener el historial de exámenes: $e');
+      throw Exception(
+          'Error al obtener el historial de exámenes por rango de fechas.');
     }
   }
 }

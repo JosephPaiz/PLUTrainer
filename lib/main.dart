@@ -1,4 +1,5 @@
 import 'package:plu_trainer/viewmodels/Exam/exam_alert_dialog_access_view_model.dart';
+import 'package:plu_trainer/viewmodels/Exam/exam_history_download_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_plu_list_image_view_model.dart';
 import 'package:plu_trainer/viewmodels/Exam/exam_score_view_model.dart';
 import 'package:plu_trainer/viewmodels/History/exam_history_view_model.dart';
@@ -76,6 +77,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
             create: (context) => HistoryButtonSelectModeViewModel()),
         ChangeNotifierProvider(create: (context) => ExamHistoryViewModel()),
+        ChangeNotifierProvider(
+            create: (context) => ExamHistoryDownloadViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
