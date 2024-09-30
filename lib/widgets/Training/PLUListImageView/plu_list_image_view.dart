@@ -31,9 +31,19 @@ class _PluListImageViewState extends State<PluListImageView> {
             .toList();
         // ignore: use_build_context_synchronously
         preCacheImages(context, imageUrls);
+        // final timerViewModel = Provider.of<TimerViewModel>(context);
+        // viewModel.connectToTimer(timerViewModel);
       });
     });
   }
+
+  @override
+  // void didChangeDependencies() {
+  //   final viewModel = Provider.of<PluListImageViewModel>(context, listen: true);
+  //   final timerViewModel = Provider.of<TimerViewModel>(context);
+  //   viewModel.connectToTimer(timerViewModel);
+  //   super.didChangeDependencies();
+  // }
 
   void preCacheImages(BuildContext context, List<String> imageUrls) {
     for (String url in imageUrls) {

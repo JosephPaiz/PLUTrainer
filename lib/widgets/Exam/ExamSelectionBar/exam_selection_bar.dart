@@ -17,21 +17,29 @@ class ExamSelectionBar extends StatefulWidget {
 }
 
 class _ExamSelectionBarState extends State<ExamSelectionBar> {
-  bool selectionBarIsOpen = true;
+  bool _selectionBarIsOpen = true;
   bool _isInitialized = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (!_isInitialized) {
+      _initializeViewModels();
+      _isInitialized = true;
+    }
+  }
+
+  void _initializeViewModels() {
     final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
     final playStopButtonViewModel =
-        Provider.of<PlayStopButtonViewModel>(context);
+        Provider.of<PlayStopButtonViewModel>(context, listen: false);
     final examPluListImageViewModel =
-        Provider.of<ExamPluListImageViewModel>(context);
+        Provider.of<ExamPluListImageViewModel>(context, listen: false);
 
     timerViewModel.onTimerEnd = () {
       timerViewModel.stopTimer();
       playStopButtonViewModel.stopPlaying();
+      setState(() {});
     };
 
     examPluListImageViewModel.connectToTimer(timerViewModel);
@@ -42,42 +50,61 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
       playStopButtonViewModel.stopPlaying();
     }
 
-    if (!_isInitialized) {
-      timerViewModel.initializeTimer(120);
-      _isInitialized = true;
+    timerViewModel.initializeTimer(120);
+  }
+
+  void _toggleSelectionBar() {
+    setState(() {
+      _selectionBarIsOpen = !_selectionBarIsOpen;
+    });
+  }
+
+  void _handlePlayStop() {
+    final playStopButtonViewModel =
+        Provider.of<PlayStopButtonViewModel>(context, listen: false);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
+
+    if (playStopButtonViewModel.isPlaying) {
+      playStopButtonViewModel.togglePlayStop();
+      timerViewModel.stopTimer();
+    } else {
+      playStopButtonViewModel.togglePlayStop();
+      timerViewModel.startTimer();
     }
+  }
+
+  void _handleReset() {
+    final examPluListImageViewModel =
+        Provider.of<ExamPluListImageViewModel>(context, listen: false);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
+    final examAlertDialogAccessViewModel =
+        Provider.of<ExamAlertDialogAccessViewModel>(context, listen: false);
+
+    examPluListImageViewModel.resetButton();
+    timerViewModel.resetTimer();
+    examAlertDialogAccessViewModel.resetState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final timerViewModel = Provider.of<TimerViewModel>(context);
-    final examPluListImageViewModel =
-        Provider.of<ExamPluListImageViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
-    final examAlertDialogAccessViewModel =
-        Provider.of<ExamAlertDialogAccessViewModel>(context);
+    final timerViewModel = Provider.of<TimerViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? 500 : 250,
+      width: _selectionBarIsOpen ? 500 : 250,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: Row(
         children: [
           Align(
             alignment: Alignment.centerLeft,
             child: ContractButton(
-              onTap: () {
-                setState(() {
-                  selectionBarIsOpen = !selectionBarIsOpen;
-                });
-              },
+              onTap: _toggleSelectionBar,
             ),
           ),
           Expanded(
@@ -85,26 +112,15 @@ class _ExamSelectionBarState extends State<ExamSelectionBar> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 PlayStopButton(
-                  isSelectionBarOpen: selectionBarIsOpen,
+                  isSelectionBarOpen: _selectionBarIsOpen,
                   isPlaying: playStopButtonViewModel.isPlaying,
-                  onTap: playStopButtonViewModel.isPlaying
-                      ? () {
-                          playStopButtonViewModel.togglePlayStop();
-                          timerViewModel.stopTimer();
-                        }
-                      : () {
-                          playStopButtonViewModel.togglePlayStop();
-                          timerViewModel.startTimer();
-                        },
+                  onTap: _handlePlayStop,
                 ),
                 ExamExitButton(
-                    icon: HugeIcons.strokeRoundedUnavailable,
-                    isSelectionBarOpen: selectionBarIsOpen,
-                    onTap: () {
-                      examPluListImageViewModel.resetButton();
-                      timerViewModel.resetTimer();
-                      examAlertDialogAccessViewModel.resetState();
-                    }),
+                  icon: HugeIcons.strokeRoundedUnavailable,
+                  isSelectionBarOpen: _selectionBarIsOpen,
+                  onTap: _handleReset,
+                ),
               ],
             ),
           ),

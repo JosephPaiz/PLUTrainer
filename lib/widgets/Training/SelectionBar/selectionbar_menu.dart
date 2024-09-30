@@ -19,34 +19,44 @@ class SelectionBarMenu extends StatefulWidget {
   final String secondText;
   final String thirdText;
 
-  const SelectionBarMenu(
-      {super.key,
-      required this.firstTime,
-      required this.secondTime,
-      required this.thirdTime,
-      required this.firstText,
-      required this.secondText,
-      required this.thirdText});
+  const SelectionBarMenu({
+    super.key,
+    required this.firstTime,
+    required this.secondTime,
+    required this.thirdTime,
+    required this.firstText,
+    required this.secondText,
+    required this.thirdText,
+  });
 
   @override
   State<SelectionBarMenu> createState() => _SelectionBarMenuState();
 }
 
 class _SelectionBarMenuState extends State<SelectionBarMenu> {
-  bool selectionBarIsOpen = true;
+  bool _selectionBarIsOpen = true;
   bool _isInitialized = false;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (!_isInitialized) {
+      _initializeViewModels();
+      _isInitialized = true;
+    }
+  }
+
+  void _initializeViewModels() {
     final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
-    final productViewModel = Provider.of<ProductViewModel>(context);
+    final productViewModel =
+        Provider.of<ProductViewModel>(context, listen: false);
     final playStopButtonViewModel =
-        Provider.of<PlayStopButtonViewModel>(context);
+        Provider.of<PlayStopButtonViewModel>(context, listen: false);
 
     timerViewModel.onTimerEnd = () {
       timerViewModel.stopTimer();
       playStopButtonViewModel.stopPlaying();
+      setState(() {});
     };
 
     productViewModel.connectToTimer(timerViewModel);
@@ -57,42 +67,82 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
       playStopButtonViewModel.stopPlaying();
     }
 
-    if (!_isInitialized) {
-      timerViewModel.initializeTimer(widget.firstTime);
-      _isInitialized = true;
+    timerViewModel.initializeTimer(widget.firstTime);
+  }
+
+  void _toggleSelectionBar() {
+    setState(() {
+      _selectionBarIsOpen = !_selectionBarIsOpen;
+    });
+  }
+
+  void _handleTimeSelection(int index, int time) {
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
+    final selectionBarViewModel =
+        Provider.of<SelectionBarViewModel>(context, listen: false);
+    final productsViewModel =
+        Provider.of<ProductViewModel>(context, listen: false);
+
+    if (!timerViewModel.isTimerRunning) {
+      productsViewModel.fetchRandomProducts();
+      selectionBarViewModel.selectIndex(index);
+      timerViewModel.setTimerDuration(time);
     }
+  }
+
+  void _handlePlayStop() {
+    final playStopButtonViewModel =
+        Provider.of<PlayStopButtonViewModel>(context, listen: false);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
+    final productsViewModel =
+        Provider.of<ProductViewModel>(context, listen: false);
+
+    if (!productsViewModel.showScore) {
+      if (playStopButtonViewModel.isPlaying) {
+        playStopButtonViewModel.togglePlayStop();
+        timerViewModel.stopTimer();
+      } else {
+        playStopButtonViewModel.togglePlayStop();
+        timerViewModel.startTimer();
+      }
+    }
+  }
+
+  void _handleReset() {
+    final productsViewModel =
+        Provider.of<ProductViewModel>(context, listen: false);
+    final timerViewModel = Provider.of<TimerViewModel>(context, listen: false);
+    final pluHelperViewModel =
+        Provider.of<PLUHelperViewModel>(context, listen: false);
+    final playStopButtonViewModel =
+        Provider.of<PlayStopButtonViewModel>(context, listen: false);
+
+    productsViewModel.resetButton();
+    timerViewModel.resetTimer();
+    pluHelperViewModel.resetPluHelperUsage();
+    playStopButtonViewModel.stopPlaying();
   }
 
   @override
   Widget build(BuildContext context) {
     final selectionBarViewModel = Provider.of<SelectionBarViewModel>(context);
-    final productsViewModel = Provider.of<ProductViewModel>(context);
-    final timerViewModel = Provider.of<TimerViewModel>(context);
     final playStopButtonViewModel =
         Provider.of<PlayStopButtonViewModel>(context);
-    final pluHelperViewModel = Provider.of<PLUHelperViewModel>(context);
+    final timerViewModel = Provider.of<TimerViewModel>(context);
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
       height: 50,
-      width: selectionBarIsOpen ? MediaQuery.of(context).size.width : 500,
+      width: _selectionBarIsOpen ? MediaQuery.of(context).size.width : 500,
       decoration: const BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: Row(
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: ContractButton(
-              onTap: () {
-                setState(() {
-                  selectionBarIsOpen = !selectionBarIsOpen;
-                });
-              },
-            ),
+            child: ContractButton(onTap: _toggleSelectionBar),
           ),
           Expanded(
             child: Row(
@@ -101,65 +151,35 @@ class _SelectionBarMenuState extends State<SelectionBarMenu> {
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeQuarterPass,
                   text: '${widget.firstText}min',
-                  isSelectionBarOpen: selectionBarIsOpen,
+                  isSelectionBarOpen: _selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 0,
-                  onTap: timerViewModel.isTimerRunning
-                      ? () {}
-                      : () {
-                          productsViewModel.fetchRandomProducts();
-                          selectionBarViewModel.selectIndex(0);
-                          timerViewModel.setTimerDuration(widget.firstTime);
-                        },
+                  onTap: () => _handleTimeSelection(0, widget.firstTime),
                 ),
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeHalfPass,
                   text: '${widget.secondText}min',
-                  isSelectionBarOpen: selectionBarIsOpen,
+                  isSelectionBarOpen: _selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 1,
-                  onTap: timerViewModel.isTimerRunning
-                      ? () {}
-                      : () {
-                          productsViewModel.fetchRandomProducts();
-                          selectionBarViewModel.selectIndex(1);
-                          timerViewModel.setTimerDuration(widget.secondTime);
-                        },
+                  onTap: () => _handleTimeSelection(1, widget.secondTime),
                 ),
                 SelectionbarButton(
                   icon: HugeIcons.strokeRoundedTimeQuarter,
                   text: '${widget.thirdText}min',
-                  isSelectionBarOpen: selectionBarIsOpen,
+                  isSelectionBarOpen: _selectionBarIsOpen,
                   isSeleccted: selectionBarViewModel.selectedIndex == 2,
-                  onTap: timerViewModel.isTimerRunning
-                      ? () {}
-                      : () {
-                          productsViewModel.fetchRandomProducts();
-                          selectionBarViewModel.selectIndex(2);
-                          timerViewModel.setTimerDuration(widget.thirdTime);
-                        },
+                  onTap: () => _handleTimeSelection(2, widget.thirdTime),
                 ),
                 PlayStopButton(
-                  isSelectionBarOpen: selectionBarIsOpen,
-                  isPlaying: playStopButtonViewModel.isPlaying,
-                  onTap: productsViewModel.showScore
-                      ? () {}
-                      : playStopButtonViewModel.isPlaying
-                          ? () {
-                              playStopButtonViewModel.togglePlayStop();
-                              timerViewModel.stopTimer();
-                            }
-                          : () {
-                              playStopButtonViewModel.togglePlayStop();
-                              timerViewModel.startTimer();
-                            },
+                  isSelectionBarOpen: _selectionBarIsOpen,
+                  isPlaying: playStopButtonViewModel.isPlaying &&
+                      timerViewModel.timeLeft > 0,
+                  onTap: _handlePlayStop,
                 ),
                 RestarButton(
-                    icon: HugeIcons.strokeRoundedReload,
-                    isSelectionBarOpen: selectionBarIsOpen,
-                    onTap: () {
-                      productsViewModel.resetButton();
-                      timerViewModel.resetTimer();
-                      pluHelperViewModel.resetPluHelperUsage();
-                    }),
+                  icon: HugeIcons.strokeRoundedReload,
+                  isSelectionBarOpen: _selectionBarIsOpen,
+                  onTap: _handleReset,
+                ),
               ],
             ),
           ),

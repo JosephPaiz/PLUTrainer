@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:plu_trainer/core/style/custom_colors.dart';
 
 class PluListImageWidget extends StatelessWidget {
   final String imageUrl;
@@ -11,7 +12,9 @@ class PluListImageWidget extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       placeholder: (context, url) => const Center(
-        child: CircularProgressIndicator(),
+        child: CircularProgressIndicator(
+          color: CustomColors.darkGreen,
+        ),
       ),
       errorWidget: (context, url, error) =>
           const Icon(Icons.error, color: Colors.red),

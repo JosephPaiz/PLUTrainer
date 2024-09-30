@@ -40,8 +40,8 @@ class TimerViewModel extends ChangeNotifier {
           stopTimer();
           if (onTimerEnd != null) {
             onTimerEnd!();
-            notifyListeners();
           }
+          notifyListeners();
         }
       },
     );
