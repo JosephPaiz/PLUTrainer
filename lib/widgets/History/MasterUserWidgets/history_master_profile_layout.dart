@@ -89,7 +89,13 @@ class _HistoryMasterProfileLayoutState
                                       .fetchExamHistory();
                                 },
                               ),
-                              Text(examHistoryDownloadViewModel.error ?? '')
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(
+                                  examHistoryDownloadViewModel.error ?? '',
+                                  style: Fonts.errorMessageFont,
+                                ),
+                              )
                             ],
                           ),
                           Wrap(

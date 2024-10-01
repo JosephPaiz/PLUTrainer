@@ -86,4 +86,9 @@ class Fonts {
 
   static final TextStyle examButtonText =
       GoogleFonts.comfortaa(fontSize: 15, color: Colors.white);
+
+  //Alerts
+
+  static final TextStyle errorMessageFont =
+      GoogleFonts.comfortaa(fontSize: 15, color: CustomColors.deepRed);
 }

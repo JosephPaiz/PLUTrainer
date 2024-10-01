@@ -59,6 +59,13 @@ class _LoginViewState extends State<LoginView>
                       } else {}
                     },
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      loginViewModel.errorMessage ?? '',
+                      style: Fonts.errorMessageFont,
+                    ),
+                  )
                 ],
               ),
             ],
