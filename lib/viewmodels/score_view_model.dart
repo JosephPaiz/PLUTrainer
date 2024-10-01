@@ -119,6 +119,7 @@ class ScoreViewModel extends ChangeNotifier {
   }
 
   void resetData() {
+    _logger.d('Reset data score is ready');
     _previousProducts = [];
     _responses = [];
     superKey = 0;

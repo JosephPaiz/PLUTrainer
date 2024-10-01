@@ -31,8 +31,6 @@ class _PluListImageViewState extends State<PluListImageView> {
             .toList();
         // ignore: use_build_context_synchronously
         preCacheImages(context, imageUrls);
-        // final timerViewModel = Provider.of<TimerViewModel>(context);
-        // viewModel.connectToTimer(timerViewModel);
       });
     });
   }

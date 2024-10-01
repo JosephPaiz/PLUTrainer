@@ -43,15 +43,14 @@ class _ScoreViewState extends State<ExamScoreView> {
         superKey: widget.superKey,
         duration: widget.duration,
         authorizedSuperkey: widget.authorizedSuperkey,
-        shouldInsert: widget.shouldInsert,
+        // shouldInsert: widget.shouldInsert,
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final examScoreViewModel =
-        Provider.of<ExamScoreViewModel>(context, listen: true);
+    final examScoreViewModel = Provider.of<ExamScoreViewModel>(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
