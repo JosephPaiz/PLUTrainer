@@ -55,14 +55,8 @@ class _PluListImageViewState extends State<ExamPluListImageView> {
     final scoreViewModel = Provider.of<ScoreViewModel>(context);
     final examAlertDialogAccessViewModel =
         Provider.of<ExamAlertDialogAccessViewModel>(context);
-    // final examScoreViewModel =
-    //     Provider.of<ExamScoreViewModel>(context, listen: false);
 
     final int superkey = loginViewModel.superkeyValue ?? 0;
-
-    // if (!examPluListImageViewModel.showScore && scoreViewModel.hasInserted) {
-    //   examScoreViewModel.resetData();
-    // }
 
     return Expanded(
       child: Center(
