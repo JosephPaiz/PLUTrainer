@@ -35,14 +35,6 @@ class _PluListImageViewState extends State<PluListImageView> {
     });
   }
 
-  @override
-  // void didChangeDependencies() {
-  //   final viewModel = Provider.of<PluListImageViewModel>(context, listen: true);
-  //   final timerViewModel = Provider.of<TimerViewModel>(context);
-  //   viewModel.connectToTimer(timerViewModel);
-  //   super.didChangeDependencies();
-  // }
-
   void preCacheImages(BuildContext context, List<String> imageUrls) {
     for (String url in imageUrls) {
       precacheImage(NetworkImage(url), context);

@@ -10,25 +10,29 @@ class ExamHistoryDownloadViewModel extends ChangeNotifier {
 
   DateTime? _startDate;
   DateTime? _endDate;
+  String _starDateText = '';
+  String _endDateText = '';
   List<ExamHistoryFileModel> _examHistory = [];
   bool _isLoading = false;
   String? _error;
 
-  // Getters
   DateTime? get startDate => _startDate;
   DateTime? get endDate => _endDate;
   List<ExamHistoryFileModel> get examHistory => _examHistory;
   bool get isLoading => _isLoading;
   String? get error => _error;
 
-  // Setters para las fechas
   void setStartDate(DateTime date) {
     _startDate = date;
+    _starDateText = '${date.day}/${date.month}/${date.year}';
+
     notifyListeners();
   }
 
   void setEndDate(DateTime date) {
     _endDate = date;
+    _endDateText = '${date.day}/${date.month}/${date.year}';
+
     notifyListeners();
   }
 
@@ -107,14 +111,43 @@ class ExamHistoryDownloadViewModel extends ChangeNotifier {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Historial'];
 
-    sheetObject.appendRow(['Nombre', 'Puntaje promedio', 'Duración promedio']);
+    CellStyle defaultCellStyle = CellStyle(
+      backgroundColorHex: "#FFFFFF",
+      fontFamily: getFontFamily(FontFamily.Calibri),
+    );
+
+    CellStyle redCellStyle = CellStyle(
+      backgroundColorHex: "#FF0000",
+      fontFamily: getFontFamily(FontFamily.Calibri),
+    );
+
+    sheetObject.appendRow(
+        ['Nombre', 'Puntaje promedio', 'Duración promedio', 'Estado']);
 
     averageScoresAndDuration.forEach((name, averages) {
+      var rowIndex = sheetObject.maxRows;
+
+      String estado =
+          averages['averageScore']! >= 80 ? 'Aprobado' : 'Reprobado';
+
       sheetObject.appendRow([
         name,
         averages['averageScore'],
         averages['averageDuration'],
+        estado, // Agregar el estado
       ]);
+
+      var scoreCell = sheetObject
+          .cell(CellIndex.indexByColumnRow(columnIndex: 1, rowIndex: rowIndex));
+      if (averages['averageScore']! < 80) {
+        scoreCell.cellStyle = redCellStyle;
+      } else {
+        scoreCell.cellStyle = defaultCellStyle;
+      }
+
+      var durationCell = sheetObject
+          .cell(CellIndex.indexByColumnRow(columnIndex: 2, rowIndex: rowIndex));
+      durationCell.cellStyle = defaultCellStyle;
     });
 
     var excelBytes = excel.encode()!;
@@ -123,15 +156,18 @@ class ExamHistoryDownloadViewModel extends ChangeNotifier {
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
     final url = html.Url.createObjectUrlFromBlob(blob);
     final anchor = html.AnchorElement(href: url)
-      ..setAttribute('download', 'historial_promedio.xlsx')
+      ..setAttribute(
+          'download', 'Historial-prueba-plu-$_starDateText-$_endDateText.xlsx')
       ..click();
     html.Url.revokeObjectUrl(url);
 
-    _error = 'Archivo Excel descargado con éxito.';
+    _error = 'Promedio de las pruebas PLU descargado con éxito.';
     notifyListeners();
   }
 
   void resetDates() {
+    _starDateText = '';
+    _endDateText = '';
     _startDate = null;
     _endDate = null;
     _examHistory = [];

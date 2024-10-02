@@ -7,6 +7,7 @@ class HistoryDatepicker extends StatefulWidget {
   const HistoryDatepicker({super.key, required this.onDateSelected});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HistoryDatepickerState createState() => _HistoryDatepickerState();
 }
 
@@ -20,6 +21,20 @@ class _HistoryDatepickerState extends State<HistoryDatepicker> {
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
+      builder: (BuildContext context, Widget? child) {
+        return Theme(
+          data: ThemeData.light().copyWith(
+            primaryColor: CustomColors.darkGreen,
+            colorScheme: const ColorScheme.light(
+              primary: CustomColors.darkGreen,
+              onPrimary: CustomColors.white,
+              onSurface: CustomColors.black,
+            ),
+            dialogBackgroundColor: CustomColors.white,
+          ),
+          child: child!,
+        );
+      },
     );
     if (picked != null && picked != selectedDate) {
       setState(() {

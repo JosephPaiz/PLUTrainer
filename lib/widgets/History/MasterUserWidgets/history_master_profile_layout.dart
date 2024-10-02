@@ -24,11 +24,20 @@ class _HistoryMasterProfileLayoutState
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      init();
+    });
+  }
+
+  void init() {
     final loginViewModel = Provider.of<LoginViewModel>(context, listen: false);
     if (loginViewModel.isAuthorized) {
       Provider.of<ProfileWithRoleViewModel>(context, listen: false)
           .fetchProfilesWithRoles();
     }
+    final examHistoryDownloadViewModel =
+        Provider.of<ExamHistoryDownloadViewModel>(context, listen: false);
+    examHistoryDownloadViewModel.resetDates();
   }
 
   @override
