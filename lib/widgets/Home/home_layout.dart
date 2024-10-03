@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
-import 'package:plu_trainer/widgets/Home/chart_menu.dart';
-import 'package:plu_trainer/widgets/Home/information_card_menu.dart';
+import 'package:plu_trainer/widgets/Home/ChartMenu/chart_menu.dart';
+import 'package:plu_trainer/widgets/Home/InformationCard/information_card_menu.dart';
 import 'package:provider/provider.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
 

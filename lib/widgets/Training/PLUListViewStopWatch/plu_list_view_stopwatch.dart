@@ -23,8 +23,11 @@ class _PluListMenuState extends State<PluListViewStopwatch> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PLUHelperViewModel>(context, listen: false)
+          .resetPluHelperUsage();
       Provider.of<PLUListStopWatchViewModel>(context, listen: false)
           .fetchRandomMoreProducts();
+      Provider.of<ScoreViewModel>(context, listen: false).resetData();
     });
   }
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/style/custom_colors.dart';
 import 'package:plu_trainer/core/style/fonts.dart';
-import 'package:plu_trainer/widgets/Home/chart_text_menu.dart';
-import 'package:plu_trainer/widgets/Home/doughnut_chart.dart';
+import 'package:plu_trainer/widgets/Home/ChartMenu/chart_text_menu.dart';
+import 'package:plu_trainer/widgets/Home/ChartMenu/doughnut_chart.dart';
 
 class ChartMenu extends StatefulWidget {
   final List<double> percentValues;

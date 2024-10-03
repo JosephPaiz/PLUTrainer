@@ -22,8 +22,11 @@ class _PLUListMenuState extends State<PLUListMenu> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PLUHelperViewModel>(context, listen: false)
+          .resetPluHelperUsage();
       Provider.of<ProductViewModel>(context, listen: false)
           .fetchRandomProducts();
+      Provider.of<ScoreViewModel>(context, listen: false).resetData();
     });
   }
 

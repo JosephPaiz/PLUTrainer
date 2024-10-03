@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:plu_trainer/widgets/Home/chart_text.dart';
+import 'package:plu_trainer/widgets/Home/ChartMenu/chart_text.dart';
 
 class ChartTextMenu extends StatefulWidget {
   final List<double> percentValues;

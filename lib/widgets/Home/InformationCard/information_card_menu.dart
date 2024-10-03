@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plu_trainer/core/localization/plutrainer_localizations_esp.dart';
 import 'package:plu_trainer/viewmodels/Home/information_card_view_model.dart';
 import 'package:plu_trainer/viewmodels/Login/login_view_model.dart';
-import 'package:plu_trainer/widgets/Home/information_card_widget.dart';
+import 'package:plu_trainer/widgets/Home/InformationCard/information_card_widget.dart';
 import 'package:provider/provider.dart';
 
 class InformationCardMenu extends StatefulWidget {

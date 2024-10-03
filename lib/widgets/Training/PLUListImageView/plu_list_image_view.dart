@@ -23,6 +23,8 @@ class _PluListImageViewState extends State<PluListImageView> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<PLUHelperViewModel>(context, listen: false)
+          .resetPluHelperUsage();
       final viewModel =
           Provider.of<PluListImageViewModel>(context, listen: false);
       viewModel.fetchRandomProductsWithImage().then((_) {
@@ -31,6 +33,7 @@ class _PluListImageViewState extends State<PluListImageView> {
             .toList();
         // ignore: use_build_context_synchronously
         preCacheImages(context, imageUrls);
+        Provider.of<ScoreViewModel>(context, listen: false).resetData();
       });
     });
   }
