@@ -28,7 +28,7 @@ class LoginViewModel extends ChangeNotifier {
         _superkeyValue = superkey;
 
         _isAuthorized =
-            await _supabaseService.isUserInRole(superkey, [1, 2, 4]);
+            await _supabaseService.isUserInRole(superkey, [1, 2, 3, 4]);
 
         // ignore: use_build_context_synchronously
         Navigator.pushReplacementNamed(context, '/home');
